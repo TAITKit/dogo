@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>ML16</title></head>
+<body><h1><a name="ml-lecture-16:" class="md-header-anchor"></a><span>ML Lecture 16: </span></h1>
+<h5><a name="unsupervised-learning---deep-auto-encoder" class="md-header-anchor"></a><span>Unsupervised Learning - Deep Auto-encoder</span></h5>
+<blockquote><p><span>臺灣大學人工智慧中心</span>
+<span>科技部人工智慧技術暨全幅健康照護聯合研究中心</span>
+<a href='http://ai.ntu.edu.tw' target='_blank' class='url'>http://ai.ntu.edu.tw</a></p>
+</blockquote>
+<h3><a name="auto-encoder" class="md-header-anchor"></a><span>Auto-encoder</span></h3>
+<ul>
+<li><p><span>Unsupervised Learning</span></p>
+</li>
+<li><p><span>壓縮的效果</span></p>
+</li>
+<li><p><span>Encoder</span></p>
+<ul>
+<li><span>From input to vector</span></li>
+
+</ul>
+</li>
+<li><p><span>Decoder</span></p>
+<ul>
+<li><span>From vector to origin Input</span></li>
+
+</ul>
+</li>
+<li><p><span>Need to train Encoder and Decoder together</span></p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_2.jpg" width="70%">
+	</p>
+<hr />
+<h3><a name="recap-:-pca" class="md-header-anchor"></a><span>Recap : PCA</span></h3>
+<ul>
+<li><p><span>In PCA</span></p>
+<ul>
+<li><span>v.s. In Neural Network</span></li>
+
+</ul>
+</li>
+<li><p><span>Minus </span>\bar{x}</p>
+<ul>
+<li><span>like normalize in neural network (NN)</span></li>
+
+</ul>
+</li>
+<li><p><span>Time a weight</span></p>
+<ul>
+<li><span>like connect a layer in NN</span></li>
+
+</ul>
+</li>
+<li><p><span>minimize the difference between input and reconstruction </span></p>
+<ul>
+<li><span>make the output like the input</span></li>
+
+</ul>
+</li>
+<li><p><span>Input x</span></p>
+<ul>
+<li><span>Input layer</span></li>
+
+</ul>
+</li>
+<li><p><span>Output 的 </span>\hat{x}</p>
+<ul>
+<li><span>Output layer</span></li>
+
+</ul>
+</li>
+<li><p><span>Component&#39;s weight</span></p>
+<ul>
+<li><span>bottleneck layer</span></li>
+<li><span>which has lower dimensions</span></li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_3.jpg" width="70%"></p>
+<hr />
+<h3><a name="deep-auto-encoder" class="md-header-anchor"></a><span>Deep Auto-encoder</span></h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_4.jpg" width="70%"></p>
+<ul>
+<li><span>PCA 只有一個 hidden layer，而我們可以有更多 hidden layer</span></li>
+<li><span>output 是 </span>\hat{x}<span>，希望這個 x 跟 </span>\hat{x}<span> 越接近越好</span></li>
+<li><span>training: back propagation</span></li>
+
+</ul>
+<hr />
+<ul>
+<li><span>從 input 到 bottleneck layer 的部分就是 encoder</span></li>
+<li><span>從 bottleneck layer 的 output 到最後的</span>\hat{x}<span> 到最後整個 network 的 output 就是 decoder</span></li>
+
+</ul>
+<hr />
+<h4><a name="compared-on-mnist" class="md-header-anchor"></a><span>Compared on MNIST</span></h4>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_5.jpg" width="70%"></p>
+<ul>
+<li><p><span>PCA</span></p>
+<ul>
+<li><span>784 維降到 30 維</span></li>
+<li><span>再從 30 維 reconstruct 回 784 維</span></li>
+<li><span>較模糊的</span></li>
+
+</ul>
+</li>
+<li><p><span>deep auto-encoder</span></p>
+<ul>
+<li><span>784 維，先擴展成 1000 維，再把 1000 維降到 500 維再降到 250 維再降到 30 維</span></li>
+<li><span>再把 30 維變成 250 維再變成 500 維 1000 維，再解回來 784 維</span></li>
+<li><span>較清楚</span></li>
+
+</ul>
+</li>
+
+</ul>
+<h4><a name="compared-on-2-dimension" class="md-header-anchor"></a><span>Compared on 2 dimension </span></h4>
+<h5><a name="visualize-on-2-dimension" class="md-header-anchor"></a><span>visualize on 2 dimension </span></h5>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_6.jpg" width="70%"></p>
+<ul>
+<li><p><span>PCA</span></p>
+<ul>
+<li><span>混在一起</span></li>
+
+</ul>
+</li>
+<li><p><span>deep auto-encoder 的話</span></p>
+<ul>
+<li><span>是分開的</span></li>
+<li><span>不同的數字會變一群一群</span></li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_8.jpg" width="70%"></p>
+<hr />
+<h3><a name="use-on-text-preprocessing" class="md-header-anchor"></a><span>Use on Text Preprocessing</span></h3>
+<ul>
+<li><p><span>文字搜尋</span></p>
+<ul>
+<li><p><span>vector space model</span></p>
+<ul>
+<li><span>文章都表示成空間中的一個 vector</span></li>
+
+</ul>
+</li>
+<li><p><span>計算輸入的查詢詞彙跟每一篇 document 之間的 inner product 或是 cosine similarity 等等</span></p>
+</li>
+<li><p><span>根據值的大小決定是否 retrieve</span></p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_9.jpg" width="70%"></p>
+<h5><a name="%E6%8A%8A%E4%B8%80%E5%80%8B-document-%E8%AE%8A%E6%88%90%E4%B8%80%E5%80%8B-vector" class="md-header-anchor"></a><span>把一個 document 變成一個 vector</span></h5>
+<ul>
+<li><p><span>bag-of-word</span></p>
+<ul>
+<li><span>最 trivial </span></li>
+<li><span>Term Frequency</span></li>
+<li><span>Inverse Document Frequency</span></li>
+<li><span>TFIDF</span></li>
+<li><span>沒辦法考慮任何語意相關的東西，每一個詞彙都是 independent</span></li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_10.jpg" width="70%"></p>
+<ul>
+<li><p><span>auto-encoder</span></p>
+<ul>
+<li><span>input: document</span></li>
+<li><span>query: 一段文字</span></li>
+
+</ul>
+</li>
+
+</ul>
+<p><span>用比較小的 lexicon size，把一個 document 就把它變成一個 vector，再把這個 vector 通過一個 encoder，把他壓成二維，然後 Visualize</span></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_10.jpg" width="70%"></p>
+<p><span>發現同一類的 document，就都集中在一起，散佈像一朵花一樣</span></p>
+<p><span>要做搜尋的時候</span></p>
+<ul>
+<li><span>輸入一個詞彙、查詢詞</span></li>
+<li><span>把 query 也通過這個 encoder，把他變成一個二維的 vector</span></li>
+<li><span>看query 落在哪邊，就可以知道說這個 query 是哪個 topic</span></li>
+
+</ul>
+<p>&nbsp;</p>
+<h3><a name="use-on-image-searching" class="md-header-anchor"></a><span>Use on Image Searching </span></h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_13.jpg" width="70%"></p>
+<ul>
+<li><span>以圖找圖。</span></li>
+<li><span>最簡單的方法，在 pixel wise 上做比較，但是找不到好的結果的。</span></li>
+
+</ul>
+<h3><a name="auto-encoder-for-cnn" class="md-header-anchor"></a><span>Auto-encoder for CNN</span></h3>
+<ul>
+<li><span>應該要用 deep auto-encoder 把每一張 image 變成一個 code，然後在 code 上面再去做搜尋</span></li>
+<li><span>因為這是 unsupervised</span></li>
+<li><span>train 這種 auto-encoder 的 data 是永遠不缺的</span></li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_14.jpg" width="70%"></p>
+<p><span>在這種 code 上面算相似度的話，就會得到比較好的結果</span></p>
+<hr />
+<p><span>如果 encoder 的部分是做  convolution 再做pooling，convolution 再做pooling</span>
+<span>理論上 decoder 應該就是做跟 encode 相反的事情</span>
+<span>本來有 pooling 就做 unpooling，本來有 convolution 就做 deconvolution</span></p>
+<h4><a name="unpooling" class="md-header-anchor"></a><span>Unpooling</span></h4>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_15.jpg" width="70%"></p>
+<ul>
+<li><p><span>要把原來比較小的 matrix 擴大</span></p>
+</li>
+<li><p><span>方法一</span></p>
+<ul>
+<li><span>記住pooing是從哪裡取值，照樣還原回去</span></li>
+<li><span>沒有取值的部分捕0</span></li>
+
+</ul>
+</li>
+<li><p><span>方法二</span></p>
+<ul>
+<li><span>直接把那個值複製四份，不用去記從哪裡取 (Keras 是用這種方式)</span></li>
+
+</ul>
+</li>
+
+</ul>
+<hr />
+<h4><a name="deconvolution" class="md-header-anchor"></a><span>Deconvolution</span></h4>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_16.jpg" width="70%"></p>
+<ul>
+<li><span>事實上 deconvolution 就是 convolution</span></li>
+<li><span>不同點是在他們的 weight 是相反</span></li>
+<li><span>做的 operation 一樣也就是 convolution 這件事</span></li>
+
+</ul>
+<p>&nbsp;</p>
+<h3><a name="using-with-pre-training" class="md-header-anchor"></a><span>Using with Pre-training</span></h3>
+<p><span>有時候在煩惱怎麼做參數的 initialization，這種找比較好的 initialization 方法，就叫做 pre-training。那可以用 auto-encoder 來做 pre-training</span></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_17.jpg" width="70%"></p>
+<p><span>先 train 784-1000-784，把 weight(</span>W_1<span>) 記下來</span></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_18.jpg" width="70%"></p>
+<p><span>再 train 784-1000-1000-1000</span>
+<span>784-1000 部分的 weight(</span>W_1<span>) 用前面的，並 fix 住</span>
+<span>一樣把 weight(</span>W_2<span>) 記下來</span></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_19.jpg" width="70%"></p>
+<p><span>再 train 784-1000-1000-500-1000</span>
+<span>784-1000 部分的 weight(</span>W_1<span>) 以及1000-1000 部分的 weight(</span>W_2<span>) 用前面的，並 fix 住</span>
+<span>一樣把 weight(</span>W_3<span>) 記下來</span></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_20.jpg" width="70%"></p>
+<p><span>就可以整個串起來，並把剛剛那些 weight (</span>W_1<span>, </span>W_2<span>, </span>W_3<span>)  作為 model 的 initialization，再 random initialize 最後 500 到 100 的 weight，再用 back propagation 去調一遍，我們稱之為 fine tune。</span></p>
+<h3><a name="generating-outputs" class="md-header-anchor"></a><span>Generating Outputs</span></h3>
+<ul>
+<li><span>那個 decoder 其實是有妙用的，可以拿 decoder 來產生新的 image</span></li>
+<li><span>也就是說我們把 learn 好的 decoder 拿出來，然後給他一個 random 的 input number，output 希望就是一張圖</span></li>
+
+</ul>
+<hr />
+<p><span>這件事可以做到嗎，其實這件事做起來相當容易</span></p>
+<ul>
+<li><span>在MNIST dataset上，把每一張圖，784 維的 image 通過一個 hidden layer 然後 project 到二維</span></li>
+<li><span>再把二維通過一個 hidden layer 解回原來的 image</span></li>
+<li><span>那在 encoder 的部分，那個二維的 vector 畫出來長這樣</span></li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_23.jpg" width="70%"></p>
+<ul>
+<li><p><span>在紅色這個框框裡面等間隔的去 sample 一個二維的 vector 出來</span></p>
+</li>
+<li><p><span>然後把那個二維的 vector 丟到 NN decoder 裡面， output 一個 image 出來</span></p>
+</li>
+<li><p><span>可以發現很多有趣的現象</span></p>
+<ul>
+<li><span>從下到上，感覺是圓圈然後慢慢的就垮了</span></li>
+<li><span>右下這邊本來是不知道是四還是九，然後變八</span></li>
+<li><span>再往上然後越來越細，變成 1</span></li>
+<li><span>最後不知道為什麼變成 2，還蠻有趣的</span></li>
+
+</ul>
+</li>
+
+</ul>
+<p><span>會發現在這邊感覺比較差，是因為在這邊其實是沒有 image，所以你在 input image 的時候其實不會對到這邊。</span>
+<span>這個區域的 vector sample 出來，通過 decoder 他解回來不是 image</span></p>
+<p>&nbsp;</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_24.jpg" width="70%"></p>
+<p><span>所以要 Sample 到一個好的地方</span>
+<span>因為我必須要先觀察一下二維 vector 的分佈，才能知道哪邊是有值的，才知道從那個地方 sample 出來比較有可能是一個 image。</span></p>
+<p><span>可是這樣你要先分析二維的 code 感覺有點麻煩，有個很簡單的做法就是在你的 code 上面加 regularization。在你的 code 直接加上 L2 的 regularization，讓所有的 code 都比較接近零。接下來就在零附近 sample就好了。</span></p>
+<p><span>接下來我就以零為中心，然後等距的在這個紅框內 sample image，sample 出來就這個樣子。</span></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Auto-encoder/Unsupervised_Learning-Deep_Auto-encoder_24.jpg" width="70%"></p>
+<p><span>從這邊你就可以觀察到很多有趣的現象</span>
+<span>會發現說：</span></p>
+<ul>
+<li><p><span>這個 dimension 是有意義的</span></p>
+<ul>
+<li><span>從左到右橫軸代表的是有沒有圈圈</span></li>
+<li><span>縱的呢，本來是正的，然後慢慢就倒過來</span></li>
+
+</ul>
+</li>
+
+</ul>
+<p><span>所以你可以不只是做 encode，還可以用 code 來畫。這個 image 並不是從原來 image database sample 出來的，他是 machine 自己畫出來的。</span></p>
+<hr />
+<p><span>臺灣大學人工智慧中心</span>
+<span>科技部人工智慧技術暨全幅健康照護聯合研究中心</span>
+<a href='http://aintu.tw' target='_blank' class='url'>http://aintu.tw</a></p>
+</body>
+</html>

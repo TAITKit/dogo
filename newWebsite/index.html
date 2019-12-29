@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>AINTU 講義</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <script src="js/handout_list.json"></script>
+      <script src="js/renderList.js"></script>
+    </head>
+   <body onload="createList()">
+
+       <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+              <a class="navbar-brand ml-4" href="#">
+                    <img src="./logo1.png" width=326.83rem height= 60rem alt="">
+                  </a>
+          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-sm-4">
+              <li class="nav-item">
+                <a class="nav-link active" href="">機器學習講義 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../datasource.html">機器學習資料源</a>
+              </li>
+            </ul>
+          </div>
+          </nav>
+      <div class="container">
+
+          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
+      
+      <div class="row">
+         
+         <div class="col-7 ml-4 mt-4">
+            <div id="cardLists" data-spy="scroll" data-target="#myScrollspy" data-offset="0"
+                  style="height:40rem;overflow-y: scroll;padding:5px; ">
+                   
+            </div>
+         </div>
+         <div class="col mr-4 mt-4 mb-4">
+            <nav id="myScrollspy">
+              <div class="list-group" id="menu" style="height:40rem;overflow-y: scroll;">
+              </div>
+            </nav>
+          </div>
+       </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   </body>
+</html>

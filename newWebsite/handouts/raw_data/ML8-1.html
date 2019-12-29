@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>ML-8-1</title></head>
+<body><h1>ML Lecture 8-1: &quot;Hello World&quot; of Deep Learning</h1>
+<blockquote><p>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 <a href='http://ai.ntu.edu.tw/'>http://ai.ntu.edu.tw</a></p>
+</blockquote>
+<h3>Toolkit Introduction</h3>
+<ul>
+<li><p><strong>Tensorflow</strong> &amp; <strong>Theano</strong>：
+都非常 Flexible，需要花較多的時間去熟悉使用，故課程堂中介紹的是另一個 toolkit</p>
+</li>
+<li><p><strong>Keras</strong>：
+其實是 Tensorflow 跟 Theano 的 interface，操作上較簡單，多有現成的 function 可以 call</p>
+<blockquote><p>Documentation：<a href='http://keras.io/' target='_blank' class='url'>http://keras.io/</a>
+Example：<a href='https://github.com/fchollet/keras/tree/master/examples' target='_blank' class='url'>https://github.com/fchollet/keras/tree/master/examples</a> </p>
+</blockquote>
+</li>
+
+</ul>
+<p>&nbsp;</p>
+<h3>&quot;Hello World&quot; (First Program of Deep Learning)</h3>
+<hr />
+<h4>Problem Definition</h4>
+<ul>
+<li>範例：Handwriting Digit Recognition</li>
+<li>Data：<strong>MNIST</strong>,  <a href='https://yann.lecun.com/exdb/mnist/' target='_blank' class='url'>https://yann.lecun.com/exdb/mnist/</a>
+Keras 提供自動下載 MNIST data 的 function, <a href='https://keras.io/datasets/' target='_blank' class='url'>https://keras.io/datasets/</a></li>
+<li>Input：一張 image，Size: 28*28
+Output：這張 image 是 0~9 的哪個數字</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_4.jpg" width="70%"></p>
+<hr />
+<h4>Implementation</h4>
+<ol start='' >
+<li><p><strong>Define a set of function</strong>：</p>
+<pre><code class='language-python' lang='python'>model = Sequential( )
+# 宣告一個 model
+</code></pre>
+<pre><code class='language-python' lang='python'>model.add( Dense( input dim = 28*28, output dim = 500))
+# Dense  -&gt; Fully Connected Layer
+# Input  -&gt; 28*28 vector
+# Output -&gt; 500 neuron
+</code></pre>
+<pre><code class='language-python' lang='python'>model.add( Activation(&#39;sigmoid&#39;) )
+# activation function -&gt; Sigmoid function
+# activation function 也可是 softplus, softsign, relu, tanh, linear...等
+</code></pre>
+<pre><code class='language-python' lang='python'>model.add( Dense(output dim = 500))
+model.add( Activation(&#39;sigmoid&#39;) )
+# 再加一層新的 layer，其 input 即上一層的 output，因此只需要定義 output 就好
+</code></pre>
+<pre><code class='language-python' lang='python'>model.add( Dense(output dim = 10))
+model.add( Activation(&#39;softmax&#39;) )
+# 最後做分類要 output 10 個數字，故最後 output 設 10 維
+</code></pre>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_5.jpg" width="70%"></p>
+</li>
+<li><p><strong>Goodness of function</strong>：</p>
+<pre><code class='language-python' lang='python'>Model.compile( loss = &quot;categorical_crossentropy&quot;, 
+							 optimizer = &#39;adam&#39;, metrics = [&#39;accuracy&#39;])
+# 定義要使用的 loss function，這裡用 cross entropy
+# categorical_crossentropy 即為 cross entropy
+</code></pre>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_6.jpg" width="70%"></p>
+</li>
+<li><p><strong>Pick the best function</strong>：</p>
+<p>&lt;3.1&gt; Configuration</p>
+<pre><code class='language-python' lang='python'>model.compile( loss = &quot;categorical_crossentropy&quot;, 
+							 optimizer = &#39;adam&#39;, metrics = [&#39;accuracy&#39;])
+# 決定 optimizer(要 用什麼方式，找出最好的function)，這裡使用 adam
+# 亦可用 SGD, RMSProp, Adagrad, Adamax...等
+</code></pre>
+<p>&lt;3.2&gt; Find the optimal network parameters</p>
+<pre><code class='language-python' lang='python'>model.fit(x_train, y_train, batch_size=100, nb_epoch=20)
+# 第一個參數(x_train)是給 training data(Images)
+# 第二個參數(y_train)是給 Label(0~9的哪個數字)
+# 這兩個參數的存法(numpy array)如下圖所示
+</code></pre>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_8.jpg" width="70%"></p>
+<ul>
+<li><p><strong>Batch</strong> &amp; <strong>Epoch</strong>：</p>
+<ul>
+<li><p>做 Deep Learning 時，會將 training data 隨機的選 x 個放進一個 batch，x 即為 batch_size</p>
+</li>
+<li><p>不斷地 pick batch，直到所有的 mini batch 都被 update 一次，即為一個 epoch</p>
+<p>nb_epoch 就是重複 update 幾次 epoch</p>
+<blockquote><p>本例中， batc_size = 100， nb_epoch = 20
+1 個 epoch 中會 update 100 次參數，20 個 epoch 即總共會 update 2000 次參數</p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_10.jpg" width="70%">ㄨ</p>
+</li>
+
+</ul>
+</li>
+<li><p><strong>Save &amp; Load Model</strong></p>
+<blockquote><p><a href='https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model' target='_blank' class='url'>https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model</a></p>
+</blockquote>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_14.jpg" width="70%"></p>
+</li>
+<li><p><strong>Testing</strong></p>
+<p>&lt;case 1&gt; </p>
+<pre><code class='language-python' lang='python'>score = model.evaluate(x_test, y_test)
+print(&#39;Total loss on Testing Set:&#39;, score[0])
+print(&#39;Accuracy of Testing Set:&#39;, score[1])
+# 有一組 testing set，也知道該 testing set 的答案
+# 可使用 Keras 算出目前的正確率是多少
+</code></pre>
+<p>&lt;case 2&gt;</p>
+<pre><code class='language-python' lang='python'>result = model.predict(x_test)
+# 無 labeled data，直接 output 出結果
+</code></pre>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+<hr />
+<h4>Speed Comparison（實作上的比較）</h4>
+<ul>
+<li><p><strong>Stochastic Gradient Descent</strong> (Batch size = 1) v.s. <strong>Mini-batch</strong> (Batch size &gt; 1)</p>
+</li>
+<li><p>如下圖，實際在 GTX980 跑 MNIST 的 50000 個 examples 時</p>
+<blockquote><p>batch size = 1：一個 epoch 跑166s
+batch size = 10：一個 epoch 跑 17s</p>
+</blockquote>
+<p>亦即，batch size 越大，每算一個 epoch 的時間越快(短)
+故，在同樣時間內，<strong>參數 <u>update的數目幾乎相同</u> </strong>
+故，選擇 <u><strong>batch size 較大</strong></u>者，因為較 <u><strong>穩定</strong></u>
+<img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_11.jpg" width="70%"></p>
+<p>&nbsp;</p>
+</li>
+<li><p>那為何不將 batch size 設非常大呢？</p>
+<ol start='' >
+<li>硬體限制，GPU 將無法平行運算</li>
+<li>容易陷入 saddle point 或 local minimum 中 (它的 error surface 是坑坑洞洞的)</li>
+
+</ol>
+</li>
+<li><p>以矩陣運算解釋，如下圖</p>
+<blockquote><p>Stochastic Gradient Descent：黃色和綠色 z^1 <u><strong>依序</strong></u>和 W^1 做運算
+Mini-batch：黃色和綠色 z^1 <u><strong>同時</strong></u>和 W^1 做運算</p>
+</blockquote>
+<p>可明顯看出 Mini-batch 運算速度較快
+<img src="http://ai.ntu.edu.tw/aho/JPG/Hello_world_of_Deep_Learning/Hello_world_of_Deep_Learning_13.jpg" width="70%"></p>
+</li>
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>ML17</title></head>
+<body><h1>ML Lecture 17: </h1>
+<h5>Unsupervised Learning - Generation (Part I)</h5>
+<blockquote><p>臺灣大學人工智慧中心
+科技部人工智慧技術暨全幅健康照護聯合研究中心
+<a href='http://aintu.tw' target='_blank' class='url'>http://aintu.tw</a></p>
+</blockquote>
+<h3>Generative Models</h3>
+<ul>
+<li>Component-by-component (PixelRNN)</li>
+<li>Variational Auto-encoder (VAE)</li>
+<li>Generative Adversarial Network (GAN)</li>
+
+</ul>
+<p>上述方法都很新，皆是都是近幾年提出的。</p>
+<p>&nbsp;</p>
+<h3>Component-by-component</h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_5.jpg" width="70%"></p>
+<p>將圖片攤平，用 RNN 以之前的 pixel (RGB三圍向量)去 predict 下一個 pixel，把整張圖畫出來 (unsupervised)</p>
+<p>不只用在圖片，還可以用在語音，像是WaveNet。也可以用在影片：給定一段 video，讓他predict 接下來會發生甚麼事。</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_7.jpg" width="70%"></p>
+<p>Example: Pokemon Image Generation</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_9.jpg" width="70%"></p>
+<p>Dataset &amp; Processed Features</p>
+<p>要對產生出的 Image 做 Evaluation 是很困難的</p>
+<p>&nbsp;</p>
+<h3>Auto-encoder</h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_15.jpg" width="70%"></p>
+<ul>
+<li><p>Input: image  =&gt;  Encode: low dimension code  =&gt;  Decode: Image</p>
+<ul>
+<li>讓 Input &amp; Output兩張圖越接近越好</li>
+
+</ul>
+</li>
+<li><p>Given random code =&gt; Decode: Image?</p>
+<ul>
+<li>效果差</li>
+
+</ul>
+</li>
+
+</ul>
+<h3>Variance Auto-encoder</h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_18.jpg" width="70%"></p>
+<ul>
+<li>比起 Auto-encoder，加了小 trick：不直接 output code，而是先 output 兩個 vector，再與random出來的 Vector 做如圖的運算，當作 code。</li>
+<li>目的是：minimize reconstruction error</li>
+<li>雖然結果沒有 PixelRNN 清晰，但 code 的每一個 dimension 代表特定意思</li>
+<li>也可以用來寫詩，將 IO 從 Image 換成 Sentence</li>
+
+</ul>
+<p>&nbsp;</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_31.jpg" width="70%"></p>
+<p>舉例：以 Pokemon Image 生成為例：</p>
+<p>將其中八維固定，以其他兩維 Random 變化作圖：</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_32.jpg" width="70%"></p>
+<ul>
+<li>可以看出這兩個維度大概表達的意思，分別是腳以及尾巴 (雖然不是很明顯)</li>
+<li>可以透過調整得到一個看起來最 OK 的 Pokemon</li>
+
+</ul>
+<p>&nbsp;</p>
+<hr />
+<p>臺灣大學人工智慧中心
+科技部人工智慧技術暨全幅健康照護聯合研究中心
+<a href='http://aintu.tw' target='_blank' class='url'>http://aintu.tw</a></p>
+</body>
+</html>

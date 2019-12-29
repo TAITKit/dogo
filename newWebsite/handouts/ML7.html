@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <meta charset="utf-8">
+      <title>AINTU 講義</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+
+   <body>
+        <div id="head"></div>
+       <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+          <a class="navbar-brand ml-4" href="../index.html">
+                <img src="../logo1.png" width=326.83rem height= 60rem alt="">
+              </a>
+          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-sm-4">
+              <li class="nav-item">
+                <a class="nav-link active" href="../index.html">機器學習講義 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../datasource.html">機器學習資料源</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+      
+      <div class="container">
+          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
+ 
+                
+
+    <div class="row">
+      
+         
+      <div class="col-9 ml-4 mt-4" style="/*height: 40rem; overflow-y: scroll;*/">
+         <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+          <div class="row mt">
+            <div class="col-lg-9">
+            <h1>ML Lecture 7: Backpropagation</h1>
+<blockquote><p>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 <a href='http://ai.ntu.edu.tw/'>http://ai.ntu.edu.tw</a></p>
+</blockquote>
+<h3>Gradient Descent</h3>
+<ul>
+<li>Backpropagation 就是 Gradient Descent，但 Backpropagation 是較有效率的演算法</li>
+<li>詳見 ML 3-1 Gradient Descent 複習（<a href='https://youtu.be/yKKNr-QKz2Q' target='_blank' class='url'>https://youtu.be/yKKNr-QKz2Q</a>）</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_1.jpg" width="70%"></p>
+<h3>Chain Rule</h3>
+<ul>
+<li><p><strong>Case 1</strong></p>
+<blockquote><p>有兩個 function，<strong>y = g(x)</strong> 、 <strong>z = h(y)</strong>
+=&gt; (output) x 的微小變化，會影響到 z 
+=&gt; (微分) dz/dx = dz/dy * dy/dx </p>
+</blockquote>
+</li>
+<li><p>Case 2</p>
+<blockquote><p>有三個 function，<strong>x = g(s)</strong> 、 <strong>y = h(s)</strong>、 <strong>z = k(x,y)</strong></p>
+<p>=&gt; (output) 改變 s，影響到 x 跟 y，最後影響 z</p>
+<p>=&gt; (微分可拆成兩項) \( \frac{dz}{ds} = \frac{∂z}{∂x} \frac{dx}{ds} + \frac{∂z}{∂y} \frac{dy}{ds}\)</p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_2.jpg" width="70%"></p>
+<h2>Backpropagation</h2>
+<h3>Loss function</h3>
+<ul>
+<li>Loss 來源：
+給定一組 Neural Network 的參數 θ，將 training data, <strong>x<sup>n</sup></strong> 代到 Neural Network 裡面，會 output <strong>y<sup>n</sup></strong>，
+而 <strong>y<sup>n</sup></strong> 和我們希望 output 的 <strong>\hat{y}^n</strong> 之間距離的 function 即為 <strong>C<sup>n</sup></strong></li>
+<li>Total Loss：
+(計算)  L(θ) = \sum\limits_{n=1}^N l^n(θ)
+(微分) \frac{∂L(θ)}{∂w} = \sum\limits_{n=1}^N\frac{∂l^n(θ)}{∂w}</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_3.jpg" width="70%"></p>
+<hr />
+<h4>簡化問題：\frac{∂l}{∂w} = \frac{∂z}{∂w}\frac{∂l}{∂z}  </h4>
+<p>=&gt; 某一筆 data 的 cost, <strong>l</strong> 對參數 w 的偏微分</p>
+<p>(因為算出 \frac{∂l}{∂w} 後，再 \sum 所有 training data，就可以把L(θ) 對某一參數的偏微分算出來了)</p>
+<h2><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_4.jpg" width="70%"></h2>
+<h3>Forward Pass：計算 \frac{∂z}{∂w} 的過程</h3>
+<ul>
+<li><p>規律：z 對參數 w 偏微分的值，即為 w 前面所接 input 的值</p>
+<blockquote><p>Ex：∂z / ∂w_1= x_1 、∂z / ∂w_2= x_2 </p>
+</blockquote>
+</li>
+<li><p>結論：
+要計算每個 weight, w 對 activation functon 的 input, z 的偏微分，
+丟進 input，計算每個 neuron 的 output，就結束了。</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_5.jpg" width="70%"></p>
+<hr />
+<h3>Backward pass：計算 \frac{∂l}{∂z} 的過程</h3>
+<p>假設：此處的 activation function 是 sigmoid function</p>
+<p>\frac{∂l}{∂z} 可以拆成 \frac{∂a}{∂z}\times\frac{∂l}{∂a} </p>
+<ol start='' >
+<li>前項 (\frac{∂a}{∂z}) 就是 sigmoid function 的微分，σ\prime(z)，下圖中藍線所表示</li>
+
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_7.jpg" width="70%"></p>
+<ol start='2' >
+<li><p>後項 (\frac{∂l}{∂a}) 可再拆成 \frac{∂z\prime}{∂a}\frac{∂l}{∂z\prime} + \frac{∂z"}{∂a}\frac{∂l}{∂z"} (假設 a 之後只有兩個 neuron 的情況)</p>
+<p>\frac{∂z\prime}{∂a} 和 \frac{∂z"}{∂a} 即為 w_3 和 w_4，\frac{∂l}{∂z\prime} 和 \frac{∂l}{∂z"} 假設已知</p>
+</li>
+
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_8.jpg" width="70%"></p>
+<ol start='3' >
+<li><p>故可推得 \frac{∂l}{∂z} = σ\prime(z) [w_3\frac{∂l}{∂z\prime} + w_4\frac{∂l}{∂z"}]</p>
+</li>
+<li><p>求出 \frac{∂l}{∂z\prime} 及 \frac{∂l}{∂z"}，有兩種 case</p>
+<ul>
+<li><p><strong>Case 1. Output Layer</strong>：
+紅色 neuron 後，即為 output layer (整個 neural network 的 output)</p>
+<blockquote><p>\frac{∂l}{∂z\prime} = \frac{∂y_1}{∂z\prime} \frac{∂l}{∂y_1}</p>
+<p>\frac{∂l}{∂z"} = \frac{∂y_2}{∂z} \frac{∂l}{∂y_2}</p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_11.jpg" width="70%"></p>
+<ul>
+<li><p><strong>Case 2. Not Output Layer</strong>：
+繼續往下層 layer 走，走到 output layer，再從 output layer 反算回來</p>
+<blockquote><p>如下圖，從 z_5、z_6 的的偏微分算回 z_3、z_4 到 z_1、z_2</p>
+</blockquote>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_16.jpg" width="70%"></p>
+</li>
+
+</ul>
+</li>
+
+</ol>
+<hr />
+<h3>Summarize</h3>
+<ol start='' >
+<li>Forward Pass，算出每個 activation function 的 output (即為它所連接的 weight 的 \frac{∂z}{∂w})</li>
+<li>Backward Pass，將原來的 neural network 反向(如下圖)，每個三角形的 output 就是 \frac{∂l}{∂z}</li>
+<li>最後，兩者相乘即得 \frac{∂l}{∂w}</li>
+
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_17.jpg" width="70%"></p>
+
+            </div>
+            <div class="col-lg-3">
+              
+            </div>
+          </div>
+
+  </section><! --/wrapper -->
+    </section><!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <div id="bottom"></div>
+      </div>
+
+      <div class="col mr-4 mt-4">
+        <div class="list-group" style="position: sticky; position: -webkit-sticky; top: 2rem;">
+          <a class="list-group-item list-group-item-action" href="#head"><i class="fa fa-arrow-up mr-2" style=""></i>講義開頭</a>
+          <a class="list-group-item list-group-item-action" href="#bottom"><i class="fa fa-arrow-down mr-2" style=""></i>講義末尾</a>
+          <a class="list-group-item list-group-item-action" href="../index.html"><i class="fa fa-home mr-2" style=""></i>選單主頁</a>
+        </div>
+     </div>
+    </div>
+      </div>
+   </body>
+        <div id="head"></div>
+</html>

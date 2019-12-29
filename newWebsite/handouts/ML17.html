@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    </script> 
+      <meta charset="utf-8">
+      <title>AINTU 講義</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+
+   <body>
+        <div id="head"></div>
+       <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+          <a class="navbar-brand ml-4" href="../index.html">
+                <img src="../logo1.png" width=326.83rem height= 60rem alt="">
+              </a>
+          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-sm-4">
+              <li class="nav-item">
+                <a class="nav-link active" href="../index.html">機器學習講義 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../datasource.html">機器學習資料源</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+      
+      <div class="container">
+          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
+ 
+                
+
+    <div class="row">
+      
+         
+      <div class="col-9 ml-4 mt-4" style="/*height: 40rem; overflow-y: scroll;*/">
+         <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+          <div class="row mt">
+            <div class="col-lg-9">
+              <h1>ML Lecture 17: </h1>
+<h5>Unsupervised Learning - Generation (Part I)</h5>
+<blockquote><p>臺灣大學人工智慧中心
+科技部人工智慧技術暨全幅健康照護聯合研究中心
+<a href='http://aintu.tw' target='_blank' class='url'>http://aintu.tw</a></p>
+</blockquote>
+<h3>Generative Models</h3>
+<ul>
+<li>Component-by-component (PixelRNN)</li>
+<li>Variational Auto-encoder (VAE)</li>
+<li>Generative Adversarial Network (GAN)</li>
+
+</ul>
+<p>上述方法都很新，皆是都是近幾年提出的。</p>
+<p>&nbsp;</p>
+<h3>Component-by-component</h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_5.jpg" width="70%"></p>
+<p>將圖片攤平，用 RNN 以之前的 pixel (RGB三圍向量)去 predict 下一個 pixel，把整張圖畫出來 (unsupervised)</p>
+<p>不只用在圖片，還可以用在語音，像是WaveNet。也可以用在影片：給定一段 video，讓他predict 接下來會發生甚麼事。</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_7.jpg" width="70%"></p>
+<p>Example: Pokemon Image Generation</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_9.jpg" width="70%"></p>
+<p>Dataset &amp; Processed Features</p>
+<p>要對產生出的 Image 做 Evaluation 是很困難的</p>
+<p>&nbsp;</p>
+<h3>Auto-encoder</h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_15.jpg" width="70%"></p>
+<ul>
+<li><p>Input: image  =&gt;  Encode: low dimension code  =&gt;  Decode: Image</p>
+<ul>
+<li>讓 Input &amp; Output兩張圖越接近越好</li>
+
+</ul>
+</li>
+<li><p>Given random code =&gt; Decode: Image?</p>
+<ul>
+<li>效果差</li>
+
+</ul>
+</li>
+
+</ul>
+<h3>Variance Auto-encoder</h3>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_18.jpg" width="70%"></p>
+<ul>
+<li>比起 Auto-encoder，加了小 trick：不直接 output code，而是先 output 兩個 vector，再與random出來的 Vector 做如圖的運算，當作 code。</li>
+<li>目的是：minimize reconstruction error</li>
+<li>雖然結果沒有 PixelRNN 清晰，但 code 的每一個 dimension 代表特定意思</li>
+<li>也可以用來寫詩，將 IO 從 Image 換成 Sentence</li>
+
+</ul>
+<p>&nbsp;</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_31.jpg" width="70%"></p>
+<p>舉例：以 Pokemon Image 生成為例：</p>
+<p>將其中八維固定，以其他兩維 Random 變化作圖：</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Unsupervised_Learning-Deep_Generative_Model/Unsupervised_Learning-Deep_Generative_Model_32.jpg" width="70%"></p>
+<ul>
+<li>可以看出這兩個維度大概表達的意思，分別是腳以及尾巴 (雖然不是很明顯)</li>
+<li>可以透過調整得到一個看起來最 OK 的 Pokemon</li>
+
+</ul>
+<p>&nbsp;</p>
+<hr />
+<p>臺灣大學人工智慧中心
+科技部人工智慧技術暨全幅健康照護聯合研究中心
+<a href='http://aintu.tw' target='_blank' class='url'>http://aintu.tw</a></p>
+            </div>
+                     
+            
+            <div class="col-lg-3">
+              
+            </div>
+          </div>
+
+  </section><! --/wrapper -->
+    </section><!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <div id="bottom"></div>
+      </div>
+
+      <div class="col mr-4 mt-4">
+          <div class="list-group" style="position: sticky; position: -webkit-sticky; top: 2rem;">
+            <a class="list-group-item list-group-item-action" href="#head"><i class="fa fa-arrow-up mr-2" style=""></i>講義開頭</a>
+            <a class="list-group-item list-group-item-action" href="#bottom"><i class="fa fa-arrow-down mr-2" style=""></i>講義末尾</a>
+            <a class="list-group-item list-group-item-action" href="../index.html"><i class="fa fa-home mr-2" style=""></i>選單主頁</a>
+          </div>
+       </div>
+    </div>
+      </div>
+   </body>
+        <div id="head"></div>
+</html>
