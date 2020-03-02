@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>AINTU 講義</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="data-style.css">
+      <script src="js/keyword.js"></script>
+      <script id="myJson" src="https://taitk.org/api/algorithms" type="application/json"></script>
+      <script type="text/javascript">
+        // $(function printJson() {
+        //     var x = JSON.parse($('#myJson').());
+        //     alert(x); //Foo
+        //  });
+        $(function(){
+        $.getJSON('https://taitk.org/api/algorithms',function(data){
+            console.log('success');
+            // $.each(data.employees,function(i,emp){
+            //     $('ul').append('<li>'+emp.firstName+' '+emp.lastName+'</li>');
+            });
+        })
+      </script>
+      <!-- <script src="js/renderList.js"></script> -->
+      <!-- <script src="js/createJSON.js"></script> -->
+    </head>
+   <body onload="">
+
+
+       <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+              <a class="navbar-brand ml-4" href="#">
+                    <img src="./logo1.png" width=326.83rem height= 60rem alt="">
+                  </a>
+          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-sm-4">
+              <li class="nav-item">
+                <a class="nav-link " href="">機器學習講義 </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../datasource.html">機器學習資料源 <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+          </nav>
+      <div class="container">
+
+          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
+      <div class="row">
+        <button type="button" class="btn mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Machine Learning & Deep Learning</span></button>
+        <button type="button" class="btn btn-info mr-1" style="border-radius: 15px;">情緒分類</button>
+      </div>
+
+
+      <div class="row">
+         
+         <div class="col-7 ml-4 mt-4">
+            <div id="cardLists" data-spy="scroll" data-target="#myScrollspy" data-offset="0"
+                  style="height:40rem;overflow-y: scroll;padding:5px; ">
+                  <div class="card mt-1" id="list-item-1" >
+                    <div class="card-body">
+                      <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>
+                      <p class="card-text"></p>
+                      <a href="./handouts/lecture7.html" class="card-link">Links</a>
+                      <a href="#" class="card-link">Info</a>
+                    </div>
+                  </div>
+
+                  <div class="card mt-1" id="list-item-1" >
+                    <div class="card-body">
+                      <h5 class="card-title">Sound20 Dataset</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Cheng-Hao Tu Yi-Ming Chan Chu-Song Chen</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">中央研究院資訊所</h6>
+                      <p class="card-text">Dataset of 20 different sound for classification。 含20種不同聲音之聲音資料庫</p>
+                      <a href="./handouts/lecture7.html" class="card-link">Links</a>
+                      <a href="#" class="card-link">Info</a>
+                    </div>
+                  </div>
+
+                  <div class="card mt-1" id="list-item-1" >
+                    <div class="card-body">
+                      <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>
+                      <p class="card-text"></p>
+                      <a href="./handouts/lecture7.html" class="card-link">Links</a>
+                      <a href="#" class="card-link">Info</a>
+                    </div>
+                  </div>
+                   
+            </div>
+         </div>
+          </div>
+       </div>
+      </div  >
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   </body>
+</html>

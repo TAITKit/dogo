@@ -1,0 +1,30 @@
+.keyword-button {
+    background-color: rgba(240, 240, 240, 1);    
+    color: rgba(106, 106, 106, 1)
+    /* border: rgb(240, 240, 240); */
+    /* border-radius: 15px; */
+}
+
+.keyword-button.focus {
+    background-color: rgba(220, 245, 227, 1);    
+    box-shadow: none;
+    /* border: rgb(240, 240, 240); */
+    /* border-radius: 15px; */
+}
+
+.btn-badge {
+    background-color: rgb(60, 60, 60);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0.05rem;
+    padding: 0.02rem;
+    text-align: center;
+    vertical-align: middle;
+}
+.badge-text{
+    position:relative;
+    top: 0.1rem;
+    color: rgba(240, 240, 240, 1);
+}

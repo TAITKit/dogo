@@ -38,7 +38,7 @@
   (計算)  $L(θ) = \sum\limits_{n=1}^N l^n(θ)$
   (微分) $$\frac{∂L(θ)}{∂w} = \sum\limits_{n=1}^N\frac{∂l^n(θ)}{∂w}$$
 
-<img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_3.jpg" width="70%">
+​<img src="http://ai.ntu.edu.tw/aho/JPG/Backpropagation/Backpropagation_3.jpg" width="70%">
 
 ---
 
