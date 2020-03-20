@@ -3,28 +3,15 @@
    <head>
       <meta charset="utf-8">
       <title>AINTU 講義</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="data-style.css">
       <script src="js/keyword.js"></script>
-      <script id="myJson" src="https://taitk.org/api/algorithms" type="application/json"></script>
       <script type="text/javascript">
-        // $(function printJson() {
-        //     var x = JSON.parse($('#myJson').());
-        //     alert(x); //Foo
-        //  });
-        $(function(){
-        $.getJSON('https://taitk.org/api/algorithms',function(data){
-            console.log('success');
-            // $.each(data.employees,function(i,emp){
-            //     $('ul').append('<li>'+emp.firstName+' '+emp.lastName+'</li>');
-            });
-        })
+        parseID()
       </script>
-      <!-- <script src="js/renderList.js"></script> -->
-      <!-- <script src="js/createJSON.js"></script> -->
     </head>
-   <body onload="">
+   <body>
 
 
        <!-- Navigation -->
@@ -46,14 +33,45 @@
       <div class="container">
 
           <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
-      <div class="row">
-        <button type="button" class="btn mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+      <div id = "keywords" class="row mt-1">
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
           <span class="btn-badge"><span class="badge-text" style="">#</span></span>
         <span class="btn-text" style="position : relative; top: .07rem;">Machine Learning & Deep Learning</span></button>
-        <button type="button" class="btn btn-info mr-1" style="border-radius: 15px;">情緒分類</button>
+        
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Perception & Emotion</span></button>
+
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Nature Language Processing</span></button>
+        
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Security & Privacy</span></button>
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Decision Support</span></button>
+
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Mental Healthcare</span></button>
+        
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Precision Medicine</span></button>
+
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Society & Law</span></button>
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Data Mining</span></button>
+
+        <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
+          <span class="btn-badge"><span class="badge-text" style="">#</span></span>
+        <span class="btn-text" style="position : relative; top: .07rem;">Chip & Harware Design</span></button>
       </div>
-
-
       <div class="row">
          
          <div class="col-7 ml-4 mt-4">
@@ -63,8 +81,20 @@
                     <div class="card-body">
                       <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>
-                      <p class="card-text"></p>
+                      <p class="card-text"> 中文語篇剖析有四項子任務，包含初級語篇單元分割、 剖析樹建立、主次關係識別、語篇關係辨識等。 本文展示一個點對點中文語篇剖析器，並提出一套統一架構， 可以對輸入之中文篇章直接產生完整的中文語篇剖析結果。 我們的剖析器以遞迴類神經網路為基礎，同時對四項子任務進行學習， 在中文語篇樹庫(CDTB)資料集上，達到最先進的效能。 我們釋出了這個剖析器的原始碼與預先訓練完成的模型， 立即可用。據我們所知，這是第一個開放原始碼的中文剖析工具集， 而且這套獨立的工具集不須依賴外部資源(如句法剖析器)， 便於下游應用的整合。 </p>
                       <a href="./handouts/lecture7.html" class="card-link">Links</a>
+                      <a href="#" class="card-link">Info</a>
+                    </div>
+                  </div>
+
+                  <div class="card mt-1" id="list-item-1" >
+                    <div class="card-body">
+                      <h5 class="card-title">2018-Dialogue evaluation kit</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Ho, Chenghao</h6>
+                      <p class="card-text">針對機器生成的對話品質進行評估
+
+                        使用者輸入語句，待機器產生相對應之回覆後可透過此程式衡量機器生成之對話的品質。衡量指標統整如下表，分別為Coherence(1)、Coherence(2)：衡量機器產生的回應是不是與使用者輸入之句子有所對照/關連; 其中Coherence(1)利用Seq2Seq架構，將使用者所輸入的句子當做編碼器之輸入，機器產生的對話當做解碼器之輸出，最終將解碼器之輸出當中相對應於解碼器之輸入的邏輯運算子得到的機率取對數後平均得到最終分數。Coherence(2)將使用者輸入之句子與機器產生的對話經過遞迴類神經網路之後，再透過一經過學習的權重將兩者做矩陣相乘後得到最終分數。 Language Model Score，衡量機器產生的句子符合人類寫作的程度; 模型利用雙向的遞迴類神經網路針對每一個輸入之文字預測下一個文字產生的機率。最終針對產生的機率運算平均的交叉熵分數。Sentiment Score，利用遞迴類神經網路訓練而成的情緒分類器，目前只提供正負向兩種情緒的判別。</p>
+                      <a href="https://github.com/jojotenya/evaluation_kit" class="card-link">Links</a>
                       <a href="#" class="card-link">Info</a>
                     </div>
                   </div>
@@ -93,10 +123,6 @@
             </div>
          </div>
           </div>
-       </div>
-      </div  >
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      </div>
    </body>
 </html>
