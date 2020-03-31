@@ -53,7 +53,10 @@ function createList() {
     for(var j = 0; j < handout_list[i].url_list.length; j++) {
       var a = document.createElement("a");
       a.className = "card-link";
-      a.textContent = handout_list[i].url_list[j].url_type;
+      data_category = handout_list[i].url_list[j].url_type;
+      a.textContent = data_category;
+      a.setAttribute("data-category", data_category);
+      a.setAttribute("data-label", handout_list[i].title);
       a.href = handout_list[i].url_list[j].url;
       cardBody.appendChild(a);
     }

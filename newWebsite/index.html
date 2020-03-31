@@ -4,6 +4,24 @@
       <meta charset="utf-8">
       <title>AINTU 講義</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161710545-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-161710545-1');
+      </script>
+      <script src="https://ipmeta.io/plugin.js"></script>
+      <script>
+          provideGtagPlugin({
+              serviceProvider: 'dimension1',
+              networkDomain: 'dimension2',
+              networkType: 'dimension3',
+          });
+      </script>
+      <!-- End of Google Analytics -->
       <script src="js/handout_list.json"></script>
       <script src="js/renderList.js"></script>
     </head>
@@ -20,7 +38,7 @@
                 <a class="nav-link active" href="">機器學習講義 <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../datasource.html">機器學習資料源</a>
+                <a class="nav-link" href="datasource.html">機器學習資料源</a>
               </li>
             </ul>
           </div>
@@ -48,5 +66,20 @@
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script>
+          $('a').on('click', function (evt) {
+              evt.preventDefault()
+              const dataset = evt.target.dataset
+              if (window.gtag) {
+                  gtag('event', '點擊', {
+                      event_category: dataset.category || '未分類',
+                      event_label: dataset.label || '未標記',
+                      event_callback: function () { location.href = evt.target.getAttribute('href') }
+                  })
+              } else {
+                  location.href = evt.target.getAttribute('href')
+              }
+          })
+      </script>
    </body>
 </html>
