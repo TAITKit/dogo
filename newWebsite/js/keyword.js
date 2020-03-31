@@ -14,7 +14,7 @@ function parseID() {
 function parseKeywordandContent () {
     for(var i = 0; i < GlobalID.length; i++) {
         $.getJSON('https://taitk.org/api/algorithms/' + GlobalID[i].id, function(subdata) {
-            console.log(subdata.data)
+            //console.log(subdata.data)
             
             var content = subdata.data;
             createCard(content.title, content.authors, content.unit, content.description, content.links, content.datasets, 1);
@@ -92,6 +92,16 @@ function keywordAlias(keyword) {
     }
 }
 
+function trimLink(link){
+    if(link.includes("http")){
+        console.log(link)
+        return link;
+    }
+    else {
+        return "http://" + link;
+    }
+}
+
 function createKeyword(key_string, id) {
     //console.log(key_string)
     var keyword = document.createElement("button");
@@ -160,15 +170,15 @@ function createCard(title, authors, facility, text, links, datasets, id){
     for(var i = 0; i < links.length; i++){
         var link = document.createElement("a");
         link.className = "card-link";
-        link.href = links[i].link;
+        link.href = trimLink(links[i].link);
         link.textContent = "link" + (i + 1);
         card_body.appendChild(link);
     }
-    console.log(datasets)
+    //console.log(datasets)
     for(var i = 0; i < datasets.length; i++){
         var dataset = document.createElement("a");
         dataset.className = "card-link";
-        dataset.href = datasets[i].link;
+        dataset.href = trimLink(datasets[i].link);
         dataset.textContent = datasets[i].name;
         card_body.appendChild(dataset);
     }
