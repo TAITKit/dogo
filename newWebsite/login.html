@@ -35,13 +35,13 @@
           <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mr-sm-4">
               <li class="nav-item">
-                <a class="nav-link active" href="">機器學習講義 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html">機器學習講義 <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="datasource.html">機器學習資料源</a>
               </li>
 			  <li class="nav-item">
-                <a class="nav-link" href="login.html">登入</a>
+                <a class="nav-link active" href="login.html">登入</a>
               </li>
             </ul>
           </div>
@@ -51,20 +51,22 @@
           <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
       
       <div class="row">
-         
-         <div class="col-7 ml-4 mt-4">
-            <div id="cardLists" data-spy="scroll" data-target="#myScrollspy" data-offset="0"
-                  style="height:40rem;overflow-y: scroll;padding:5px; ">
-                   
+	   <div class="col-6 mx-auto">
+                <form method="POST" >
+                    <div class="form-group">
+                        <label for="username">帳號</label>
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密碼</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">登入</button>
+                </form>
             </div>
-         </div>
-         <div class="col mr-4 mt-4 mb-4">
-            <nav id="myScrollspy">
-              <div class="list-group" id="menu" style="height:40rem;overflow-y: scroll;">
-              </div>
-            </nav>
-          </div>
-       </div>
+
+         
+               </div>
       </div>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
