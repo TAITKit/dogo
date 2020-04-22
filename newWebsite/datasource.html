@@ -12,86 +12,71 @@
       </script>
     </head>
    <body>
-
-
-       <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
-              <a class="navbar-brand ml-4" href="index.html">
-                    <img src="./logo1.png" width=326.83rem height= 60rem alt="">
-                  </a>
-          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mr-sm-4">
-              <li class="nav-item">
-                <a class="nav-link " href="index.html">機器學習講義 </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="datasource.html">機器學習資料源 <span class="sr-only">(current)</span></a>
-              </li>
-			  <li class="nav-item">
-                <a class="nav-link" href="login.html">登入</a>
-              </li>
-            </ul>
-          </div>
-          </nav>
-      <div class="container">
-
-          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
-      <div id = "keywords" class="row mt-1">
+      <a class="navbar-brand ml-4" href="index.html">
+        <img src="./logo1.png" width=326.83rem height= 60rem alt="">
+      </a>
+      <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mr-sm-4">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">機器學習講義 </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="datasource.html">機器學習資料源 <span class="sr-only">(current)</span></a>
+          </li>
+			    <li class="nav-item">
+            <a class="nav-link" href="login.html">登入</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="d-flex align-items-center" width="100%" height="33%" style="background-image: url('http://ai.ntu.edu.tw/wp-content/uploads/2019/07/bn-1500x430.jpg'); min-height: 395.47px; min-width: 1378px;">
+      <div class="ml-4">
+        <h2 style="color: white">科技部補助人工智慧技術暨全幅健康照護聯合研究中心<br>臺灣大學人工智慧中心</h2>
+        <p style="color: white">MOST JOINT RESEARCH CENTER FOR AI TECHNOLOGY AND ALL VISTA HEALTHCARE</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
+      <div id = "keywords" class="row mt-1 d-flex justify-content-center">
         <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
           <span class="btn-badge"><span class="badge-text" style="">#</span></span>
-        <span class="btn-text" style="position : relative; top: .07rem;">Testing</span></button>
+        <span class="btn-text" style="position : relative; top: .07rem;">All</span></button>
       </div>
-      <div class="row">
-         
-         <div class="col-7 ml-4 mt-4">
-            <div id="cardLists" data-spy="scroll" data-target="#myScrollspy" data-offset="0"
-                  style="height:40rem;overflow-y: scroll;padding:5px; ">
-                  <!-- <div class="card mt-1" id="list-item-1" >
-                    <div class="card-body">
-                      <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>
-                      <p class="card-text"> 中文語篇剖析有四項子任務，包含初級語篇單元分割、 剖析樹建立、主次關係識別、語篇關係辨識等。 本文展示一個點對點中文語篇剖析器，並提出一套統一架構， 可以對輸入之中文篇章直接產生完整的中文語篇剖析結果。 我們的剖析器以遞迴類神經網路為基礎，同時對四項子任務進行學習， 在中文語篇樹庫(CDTB)資料集上，達到最先進的效能。 我們釋出了這個剖析器的原始碼與預先訓練完成的模型， 立即可用。據我們所知，這是第一個開放原始碼的中文剖析工具集， 而且這套獨立的工具集不須依賴外部資源(如句法剖析器)， 便於下游應用的整合。 </p>
-                      <a href="./handouts/lecture7.html" class="card-link">Links</a>
-                      <a href="#" class="card-link">Info</a>
-                    </div>
-                  </div>
-
-                  <div class="card mt-1" id="list-item-1" >
-                    <div class="card-body">
-                      <h5 class="card-title">2018-Dialogue evaluation kit</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Ho, Chenghao</h6>
-                      <p class="card-text">針對機器生成的對話品質進行評估
-
-                        使用者輸入語句，待機器產生相對應之回覆後可透過此程式衡量機器生成之對話的品質。衡量指標統整如下表，分別為Coherence(1)、Coherence(2)：衡量機器產生的回應是不是與使用者輸入之句子有所對照/關連; 其中Coherence(1)利用Seq2Seq架構，將使用者所輸入的句子當做編碼器之輸入，機器產生的對話當做解碼器之輸出，最終將解碼器之輸出當中相對應於解碼器之輸入的邏輯運算子得到的機率取對數後平均得到最終分數。Coherence(2)將使用者輸入之句子與機器產生的對話經過遞迴類神經網路之後，再透過一經過學習的權重將兩者做矩陣相乘後得到最終分數。 Language Model Score，衡量機器產生的句子符合人類寫作的程度; 模型利用雙向的遞迴類神經網路針對每一個輸入之文字預測下一個文字產生的機率。最終針對產生的機率運算平均的交叉熵分數。Sentiment Score，利用遞迴類神經網路訓練而成的情緒分類器，目前只提供正負向兩種情緒的判別。</p>
-                      <a href="https://github.com/jojotenya/evaluation_kit" class="card-link">Links</a>
-                      <a href="#" class="card-link">Info</a>
-                    </div>
-                  </div>
-
-                  <div class="card mt-1" id="list-item-1" >
-                    <div class="card-body">
-                      <h5 class="card-title">Sound20 Dataset</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Cheng-Hao Tu Yi-Ming Chan Chu-Song Chen</h6>
-                      <h6 class="card-subtitle mb-2 text-muted">中央研究院資訊所</h6>
-                      <p class="card-text">Dataset of 20 different sound for classification。 含20種不同聲音之聲音資料庫</p>
-                      <a href="./handouts/lecture7.html" class="card-link">Links</a>
-                      <a href="#" class="card-link">Info</a>
-                    </div>
-                  </div>
-
-                  <div class="card mt-1" id="list-item-1" >
-                    <div class="card-body">
-                      <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>
-                      <p class="card-text"></p>
-                      <a href="./handouts/lecture7.html" class="card-link">Links</a>
-                      <a href="#" class="card-link">Info</a>
-                    </div>
-                  </div> -->
-                   
+      <div class="row d-flex justify-content-center">
+        
+        <div class="col-7 mt-4">
+          <div id="cardLists" style="height:60rem; overflow-y: scroll;padding:5px; ">
+            <div class="card mt-1" id="list-item-1" >
+              <div class="card-body">
+                <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>
+                <p class="card-text"> 中文語篇剖析有四項子任務，包含初級語篇單元分割、 剖析樹建立、主次關係識別、語篇關係辨識等。 本文展示一個點對點中文語篇剖析器，並提出一套統一架構， 可以對輸入之中文篇章直接產生完整的中文語篇剖析結果。 我們的剖析器以遞迴類神經網路為基礎，同時對四項子任務進行學習， 在中文語篇樹庫(CDTB)資料集上，達到最先進的效能。 我們釋出了這個剖析器的原始碼與預先訓練完成的模型， 立即可用。據我們所知，這是第一個開放原始碼的中文剖析工具集， 而且這套獨立的工具集不須依賴外部資源(如句法剖析器)， 便於下游應用的整合。 </p>
+                <a href="./handouts/lecture7.html" class="card-link">Links</a>
+                <a href="#" class="card-link">Info</a>
+              </div>
             </div>
-         </div>
+
+            <div class="card mt-1" id="list-item-1" >
+              <div class="card-body">
+                <h5 class="card-title">2018-Dialogue evaluation kit</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Ho, Chenghao</h6>
+                <p class="card-text">針對機器生成的對話品質進行評估
+
+                  使用者輸入語句，待機器產生相對應之回覆後可透過此程式衡量機器生成之對話的品質。衡量指標統整如下表，分別為Coherence(1)、Coherence(2)：衡量機器產生的回應是不是與使用者輸入之句子有所對照/關連; 其中Coherence(1)利用Seq2Seq架構，將使用者所輸入的句子當做編碼器之輸入，機器產生的對話當做解碼器之輸出，最終將解碼器之輸出當中相對應於解碼器之輸入的邏輯運算子得到的機率取對數後平均得到最終分數。Coherence(2)將使用者輸入之句子與機器產生的對話經過遞迴類神經網路之後，再透過一經過學習的權重將兩者做矩陣相乘後得到最終分數。 Language Model Score，衡量機器產生的句子符合人類寫作的程度; 模型利用雙向的遞迴類神經網路針對每一個輸入之文字預測下一個文字產生的機率。最終針對產生的機率運算平均的交叉熵分數。Sentiment Score，利用遞迴類神經網路訓練而成的情緒分類器，目前只提供正負向兩種情緒的判別。</p>
+                <a href="https://github.com/jojotenya/evaluation_kit" class="card-link">Links</a>
+                <a href="#" class="card-link">Info</a>
+              </div>
+            </div>-->
           </div>
+        </div>
       </div>
+    </div>
+    <footer class="page-footer font-small" style="background-color: #5b646b; color: #bfbfbf;">
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a style="color: #bfbfbf;" href="http://ai.ntu.edu.tw/"><u>臺灣大學人工智慧中心</u></a>
+      </div>
+    </footer>
    </body>
 </html>

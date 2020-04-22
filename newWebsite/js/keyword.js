@@ -17,6 +17,20 @@ function parseKeywordandContent () {
             //console.log(subdata.data)
             
             var content = subdata.data;
+            //One ID multiple category
+            //DONE: split the category by comma, also, the 32th category is blank (remove ID: 18)
+            /*
+            rawkeywords = subdata.data.category
+            rawkeywords = rawkeywords.split(', ');
+            //console.log(temp)
+            for(var x = 0; x < rawkeywords.length; x++) {
+                temp = rawkeywords[x]
+                temp = keywordAlias(temp)
+                if(!GlobalKeywordObj.hasOwnProperty(temp)) {
+                    createKeyword(temp, 1);
+                    GlobalKeywordObj[temp] = 1;
+                } 
+            }*/
             createCard(content.title, content.authors, content.unit, content.description, content.links, content.datasets, 1);
 
             //One ID one tag
@@ -30,19 +44,7 @@ function parseKeywordandContent () {
                 } 
             }
             
-            //One ID multiple category
-            //TODO: split the category by comma, also, the 32th category is blank (remove ID: 18)
-            rawkeywords = subdata.data.category
-            rawkeywords = rawkeywords.split(', ');
-            //console.log(temp)
-            for(var x = 0; x < rawkeywords.length; x++) {
-                temp = rawkeywords[x]
-                temp = keywordAlias(temp)
-                if(!GlobalKeywordObj.hasOwnProperty(temp)) {
-                    createKeyword(temp, 1);
-                    GlobalKeywordObj[temp] = 1;
-                } 
-            }
+            
         });
     }
 }

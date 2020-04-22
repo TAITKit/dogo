@@ -27,62 +27,69 @@
     </head>
    <body onload="createList()">
 
-       <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
-              <a class="navbar-brand ml-4" href="#">
-                    <img src="./logo1.png" width=326.83rem height= 60rem alt="">
-                  </a>
-          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mr-sm-4">
-              <li class="nav-item">
-                <a class="nav-link active" href="">機器學習講義 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="datasource.html">機器學習資料源</a>
-              </li>
-			  <li class="nav-item">
-                <a class="nav-link" href="login.html">登入</a>
-              </li>
-            </ul>
-          </div>
-          </nav>
-      <div class="container">
-
-          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
-      
-      <div class="row">
-         
-         <div class="col-7 ml-4 mt-4">
-            <div id="cardLists" data-spy="scroll" data-target="#myScrollspy" data-offset="0"
-                  style="height:40rem;overflow-y: scroll;padding:5px; ">
-                   
-            </div>
-         </div>
-         <div class="col mr-4 mt-4 mb-4">
-            <nav id="myScrollspy">
-              <div class="list-group" id="menu" style="height:40rem;overflow-y: scroll;">
-              </div>
-            </nav>
-          </div>
-       </div>
+      <a class="navbar-brand ml-4" href="#">
+        <img src="./logo1.png" width=326.83rem height= 60rem alt="">
+      </a>
+      <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mr-sm-4">
+          <li class="nav-item">
+            <a class="nav-link active" href="">機器學習講義 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="datasource.html">機器學習資料源</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">登入</a>
+          </li>
+        </ul>
       </div>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-      <script>
-          $('a').on('click', function (evt) {
-              evt.preventDefault()
-              const dataset = evt.target.dataset
-              if (window.gtag) {
-                  gtag('event', '點擊', {
-                      event_category: dataset.category || '未分類',
-                      event_label: dataset.label || '未標記',
-                      event_callback: function () { location.href = evt.target.getAttribute('href') }
-                  })
-              } else {
-                  location.href = evt.target.getAttribute('href')
-              }
-          })
-      </script>
+    </nav>
+    <div class="d-flex align-items-center" width="100%" height="33%" style="background-image: url('http://ai.ntu.edu.tw/wp-content/uploads/2019/07/bn-1500x430.jpg'); min-height: 395.47px; min-width: 1378px;">
+      <div class="ml-4">
+        <h2 style="color: white">科技部補助人工智慧技術暨全幅健康照護聯合研究中心<br>臺灣大學人工智慧中心</h2>
+        <p style="color: white">MOST JOINT RESEARCH CENTER FOR AI TECHNOLOGY AND ALL VISTA HEALTHCARE</p>
+      </div>
+    </div>
+    <div class="container">
+      <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>      
+      <div class="row">
+        <div class="col-7 ml-4 mt-4">
+          <div id="cardLists" data-spy="scroll" data-target="#myScrollspy" data-offset="0"
+                style="height:40rem;overflow-y: scroll;padding:5px; ">
+          </div>
+        </div>
+        <div class="col mr-4 mt-4 mb-4">
+          <nav id="myScrollspy">
+            <div class="list-group" id="menu" style="height:40rem;overflow-y: scroll;">
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <footer class="page-footer font-small" style="background-color: #5b646b; color: #bfbfbf;">
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a style="color: #bfbfbf;" href="http://ai.ntu.edu.tw/"><u>臺灣大學人工智慧中心</u></a>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script>
+        $('a').on('click', function (evt) {
+            evt.preventDefault()
+            const dataset = evt.target.dataset
+            if (window.gtag) {
+                gtag('event', '點擊', {
+                    event_category: dataset.category || '未分類',
+                    event_label: dataset.label || '未標記',
+                    event_callback: function () { location.href = evt.target.getAttribute('href') }
+                })
+            } else {
+                location.href = evt.target.getAttribute('href')
+            }
+        })
+    </script>
    </body>
 </html>
