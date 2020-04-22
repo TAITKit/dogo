@@ -1,522 +1,403 @@
 <!doctype html>
-<html style='font-size:13px !important'>
+<html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>ML10</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-@media screen and (max-width: 500px) { 
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; }
-button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.701961); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px !important; }
-tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print { 
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid-page; break-before: avoid-page; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid-page; }
-  .typora-export #write::after { height: 0px; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) { 
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
-code { text-align: left; }
-a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom-width: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-svg[id^="mermaidChart"] { line-height: 1em; }
-mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+<title>ML10</title></head>
+<body><h1>ML Lecture 10: Convolutional Neural Network</h1>
+<blockquote><p>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 <a href='http://ai.ntu.edu.tw/'>http://ai.ntu.edu.tw</a></p>
+</blockquote>
+<h3>Why CNN for Image？</h3>
+<p>當我們使用一般的 DNN，如 Fully connected Feedforward network 做影像辨識時，往往會需要太多參數；
+而透過以下幾點觀察（Property），CNN 可<strong>簡化</strong> neural network 的架構，<strong>使用較少的參數</strong>。</p>
+<ol start='' >
+<li><p>偵測 pattern 是否存在時，不需要看整張 image，只需看圖片的一小部分即可決定，故可簡化參數。</p>
+<blockquote><p>例：只需看下圖的紅色框框，就可決定圖中是否有鳥嘴的存在。</p>
+</blockquote>
+</li>
 
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_1.jpg" width="70%"></p>
+<ol start='2' >
+<li><p>同樣的 pattern 可能會出現在 image 的不同地方，只需用相同的 neuron 就可偵測出來，故可簡化參數。</p>
+<blockquote><p>例：偵測上圖鳥嘴的 neuron 跟偵測下圖鳥嘴的 neuron 可能是一樣的，故我們可共用同一組參數。</p>
+</blockquote>
+</li>
 
-:root {
-    --side-bar-bg-color: #fafafa;
-    --control-text-color: #777;
-}
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_2.jpg" width="70%"></p>
+<ol start='3' >
+<li><p>對 image 做 <strong>subsampling</strong>，這件事對影像辨識沒有太大影響，也可簡化參數</p>
+<blockquote><p>subsampling：拿掉一張 image 的奇數行及偶數列，使其大小變為原本的 1/10</p>
+</blockquote>
+</li>
 
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_3.jpg" width="70%"></p>
+<hr />
+<h3>Structure of CNN</h3>
+<ul>
+<li>Input 一張 image ➡ 反覆做 [Convolution 及 Max Pooling] * (事先決定好的次數) ➡ flatten
+➡ output 的結果再 input 至一般的 Fully connected Feedforward network 中</li>
 
-html {
-    font-size: 16px;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_4.jpg" width="70%"></p>
+<ul>
+<li>Convolution layer：處理上述第一、二個與 pattern 有關的 property
+Max Pooling：處理 Subsampling</li>
 
-body {
-    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_5.jpg" width="70%"></p>
+<hr />
+<h3>Part 1 - Convolution</h3>
+<p><em>黑白圖像（0 代表白色，1 代表黑色）</em></p>
+<ul>
+<li><p><strong>Filter</strong>：Convolution layer 裡有許多組 filter，一個 filter 其實就是一個 matrix</p>
+<p>Filter 中的參數是根據 training data 學得的，3*3 的 size 代表偵測一個 3*3 的 pattern</p>
+</li>
 
-#write {
-    max-width: 860px;
-  	margin: 0 auto;
-  	padding: 30px;
-    padding-bottom: 100px;
-}
-#write > ul:first-child,
-#write > ol:first-child{
-    margin-top: 30px;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_7.jpg" width="70%"></p>
+<ul>
+<li><strong>內積</strong>：filter 從左上角開始放，與 image 中對應的值做內積；如下圖，最左上角與 filter 做內積後得到 3</li>
+<li><strong>Stride</strong>：挪動 filter 的位置，移動多少稱作 stride；如下圖，紅色框框一次偏移 2 格，stride = 2</li>
 
-a {
-    color: #4183C4;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
-}
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-h1 tt,
-h1 code {
-    font-size: inherit;
-}
-h2 tt,
-h2 code {
-    font-size: inherit;
-}
-h3 tt,
-h3 code {
-    font-size: inherit;
-}
-h4 tt,
-h4 code {
-    font-size: inherit;
-}
-h5 tt,
-h5 code {
-    font-size: inherit;
-}
-h6 tt,
-h6 code {
-    font-size: inherit;
-}
-h1 {
-    padding-bottom: .3em;
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
-h2 {
-   padding-bottom: .3em;
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-h4 {
-    font-size: 1.25em;
-}
-h5 {
-    font-size: 1em;
-}
-h6 {
-   font-size: 1em;
-    color: #777;
-}
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
-    margin: 0.8em 0;
-}
-li>ol,
-li>ul {
-    margin: 0 0;
-}
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_9.jpg" width="70%"></p>
+<ul>
+<li><p><strong>偵測</strong>：觀察 filter，他要偵測的 pattern 為圖中是否有出現「左上到右下斜線的值為 (1, 1, 1)」</p>
+<p>			亦即，內積完後，出現最大值的地方，就代表這個 filter 要偵測的 pattern</p>
+</li>
+<li><p><strong>Property 2</strong>：做此步驟時，有考慮 Property 2（同樣的 pattern 可用相同的 filter 偵測出來）</p>
+<blockquote><p>如下圖，左上角及左下角出現了同樣的 pattern，我們用同一個 Filter1 即可偵測出來</p>
+</blockquote>
+</li>
 
-li p.first {
-    display: inline-block;
-}
-ul,
-ol {
-    padding-left: 30px;
-}
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0 15px;
-    color: #777777;
-}
-blockquote blockquote {
-    padding-right: 0;
-}
-table {
-    padding: 0;
-    word-break: initial;
-}
-table tr {
-    border-top: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
-table tr:nth-child(2n),
-thead {
-    background-color: #f8f8f8;
-}
-table tr th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    margin: 0;
-    padding: 6px 13px;
-}
-table tr td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
-}
-table tr th:first-child,
-table tr td:first-child {
-    margin-top: 0;
-}
-table tr th:last-child,
-table tr td:last-child {
-    margin-bottom: 0;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_10.jpg" width="70%"></p>
+<ul>
+<li><p><strong>Feature Map</strong>：一層 convolution layer 中有許多 filter，每個 filter 做完內積後的 image 合稱 Feature Map</p>
+<blockquote><p>如下圖，Filter 2 做完後，得到另一個藍色 4*4 的 matrix，與紅色 4*4 的 matrix 合稱 Feature Map</p>
+</blockquote>
+</li>
 
-.CodeMirror-lines {
-    padding-left: 4px;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_11.jpg" width="70%"></p>
+<hr />
+<p><em>彩色圖像（RGB）</em></p>
+<ul>
+<li>彩色圖像就是好幾個 matrix 疊在一起，是一個立方體；故我們使用的 filter 也是「立方體」。
+計算時，並非每個顏色（channel）分開算，而是每個 filter 同時考慮了不同顏色代表的 channel</li>
 
-.code-tooltip {
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
-    border-top: 1px solid #eef2f2;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_12.jpg" width="70%"></p>
+<ul>
+<li><p>Convolution 與 Fullu Connected 的關係</p>
+<ul>
+<li>Convolution 其實就是一個 neural network</li>
+<li>Convolution 就是 Fully Connected 的 layer 將一些 weight 拿掉</li>
+<li>Feature Map 這個 output 就是 Fully Connected neuron 的 output（綠色框框互相對應）</li>
 
-.md-fences,
-code,
-tt {
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
-}
+</ul>
+</li>
 
-code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_13.jpg" width="70%"></p>
+<ul>
+<li><p>Convolution 與 Fullu Connected 相對應</p>
+<ul>
+<li>Convolution 的 filter 放在左上角，考慮的 pixel 是 [1, 2, 3, 7, 8, 9, 13, 14, 15]</li>
+<li>將左邊 6*6 的 Image 拉成直的，filter 做內積後得到 3，即右圖某個 neuron 的 output 為 3</li>
+<li>左圖 filter 代表的意思為，右圖 neuron 的 weight 只連接到 [1, 2, 3, 7, 8, 9, 13, 14, 15] 這些 pixel 而已</li>
 
-.md-fences {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
-}
+</ul>
+</li>
 
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_14.jpg" width="70%"></p>
+<ul>
+<li><p>Stride = 1</p>
+<ul>
+<li>filter 移動到下一格，得 -1，亦即另外一個 neuron 的 output 為 -1</li>
+<li>這個 neuron 就只連接到 [2, 3, 4, 8, 9, 10, 14, 15, 16] 這些 pixel </li>
 
-.md-task-list-item > input {
-  margin-left: -1.3em;
-}
+</ul>
+</li>
+<li><p>在 Fully Connected layer 中，每個 neuron 本來都有自己獨立的 weight；當我們做 convolution 時</p>
+<ol start='' >
+<li>減少每個 neuron 前面連接的 weight</li>
+<li>強迫某些 neuron 要共用某一組 weight（如下圖中的 pixel 2, pixel 3 等）即 <strong>Shared weights</strong></li>
 
-@media print {
-    html {
-        font-size: 13px;
-    }
-    table,
-    pre {
-        page-break-inside: avoid;
-    }
-    pre {
-        word-wrap: break-word;
-    }
-}
+</ol>
+</li>
 
-.md-fences {
-	background-color: #f8f8f8;
-}
-#write pre.md-meta-block {
-	padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_15.jpg" width="70%"></p>
+<hr />
+<h3>Part 2 - Max Pooling</h3>
+<ul>
+<li><p>根據 Filter 1, Filter 2，我們可以得到兩個 4*4 的 matrix</p>
+<p>將他們 4 個一組（如下圖），接著每組中選出一個數（可選平均、最大值......自行定義）</p>
+</li>
 
-.mathjax-block>.code-tooltip {
-	bottom: .375rem;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_17.jpg" width="70%"></p>
+<ul>
+<li><p>這裡，我們選最大值，故做完一次 Convolution + Max Pooling</p>
+<p>我們將原來 <strong>6*6</strong> 的圖像化簡成一個 <strong>2*2</strong> 的圖像</p>
+<blockquote><p>$Filter1=\left[\begin{matrix}3&0\\3&1\end{matrix}\right]  $       $Filter2=\left[\begin{matrix}-1&1\\0&3\end{matrix}\right]$</p>
+</blockquote>
+</li>
+<li><p><strong>image 深度(維度)</strong>：由「filter 個數」決定</p>
+<blockquote><p>例：這裡只有 Filter 1 及Filter 2，故右下圖中的維度就是 2</p>
+</blockquote>
+</li>
 
-.md-mathjax-midline {
-    background: #fafafa;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_18.jpg" width="70%"></p>
+<ul>
+<li>反覆「Convolution + Max Pooling」的動作
+我們可以重複「Convolution + Max Pooling」的動作，讓 image 越來越小</li>
 
-#write>h3.md-focus:before{
-	left: -1.5625rem;
-	top: .375rem;
-}
-#write>h4.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h5.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h6.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-.md-image>.md-meta {
-    /*border: 1px solid #ddd;*/
-    border-radius: 3px;
-    padding: 2px 0px 0px 4px;
-    font-size: 0.9em;
-    color: inherit;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_19.jpg" width="70%"></p>
+<hr />
+<h3>Part 3 - Flatten</h3>
+<p>將 Feature Map 拉直，丟到一個 Fully Connected Feedforward Network 中，就結束了</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_21.jpg" width="70%"></p>
+<hr />
+<h3>CNN in Keras</h3>
+<ul>
+<li><p>用 Keras implement CNN 時</p>
+<ul>
+<li>相同：training, compile 及 fitting 的部分是一模一樣的</li>
+<li>不同：network 的 structure 及 input 的 format</li>
 
-.md-tag {
-    color: #a7a7a7;
-    opacity: 1;
-}
+</ul>
+</li>
+<li><p>Convolution 時</p>
+<blockquote><p>structure：dense 改成 Convolution2D，(25, 3, 3) 代表 25 個 filter，每個 filter 是 3*3 的 matrix
+input：(28, 28, 1) 代表 28*28 的 image，黑白 image 放 1，彩色 image 放 3</p>
+</blockquote>
+</li>
+<li><p>Max Pooling 時</p>
+<blockquote><p>多 add 一個 2*2 的 layer，代表 2*2 個 pixel 一組，每組中挑一個數出來</p>
+</blockquote>
+</li>
 
-.md-toc { 
-    margin-top:20px;
-    padding-bottom:20px;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_22.jpg" width="70%"></p>
+<ul>
+<li><p>實作</p>
+<ul>
+<li>Input：1*28*28 的 image</li>
+<li><strong>Convolution</strong>：通過 25 個 3*3 的 filter</li>
+<li>Output：25*26*26（25 是 channel 的數目，28*28 通過 3*3 的 filter 不考慮邊得 26*26 image）</li>
+<li><strong>Max Pooling</strong>：2*2 的 pixel 圈成一組，挑其中最大的值</li>
+<li>Output：25*13*13</li>
+<li><strong>Convolution</strong>：通過 50 個 3*3 的 filter</li>
+<li>Output：50*11*11</li>
+<li><strong>Max Pooling</strong>：2*2 的 pixel 圈成一組，挑其中最大的值</li>
+<li>Output：50*5*5</li>
 
-.sidebar-tabs {
-    border-bottom: none;
-}
+</ul>
+</li>
 
-#typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_23.jpg" width="70%"></p>
+<ul>
+<li><ul>
+<li><p><strong>Flatten</strong>：將 50*5*5 拉直成一個 1250 維的 vector，</p>
+<p>				 丟到一個 Fully Connected Feedforward Network 裡面</p>
+</li>
+<li><p>Output：result</p>
+</li>
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
-}
+</ul>
+</li>
 
-/** focus mode */
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_24.jpg" width="70%"></p>
+<hr />
+<h3>What does CNN Learn？</h3>
+<blockquote><p>分析 CNN 的每個步驟</p>
+</blockquote>
+<ul>
+<li><p>Convolution - 第一層 filter</p>
+<ul>
+<li><strong>理解容易</strong>：只要分析 filter 內的值，很容易就知道它在 detect 什麼 pattern</li>
+<li><strong>較難想像</strong>：但是，比較難想像第一層 filter 在做什麼事情</li>
 
-header, .context-menu, .megamenu-content, footer{
-    font-family: "Segoe UI", "Arial", sans-serif;
-}
+</ul>
+</li>
+<li><p>Convolution - 第二層 filter</p>
+<ul>
+<li><p><strong>轉化目標</strong>：轉而分析這些 3*3 filter 的 output，亦即那些 11*11 的矩陣</p>
+</li>
+<li><p><strong>作法</strong>：</p>
+<ol start='' >
+<li>取出第 k 個 11*11 的矩陣，裡面每一個元素我們以 $a_{i,j}^k$ 表示
+$k$ 表示第 $k$ 個 filter，下標 $i,j$ 代表矩陣中的第 $i$ 個 $row$，第 $j$ 個 $column$</li>
+<li>定義 <strong>Degree of activation of the $k^{th}$ filter</strong> ＝ 所有元素的和
+代表第 k 個 filter 被 activate 的程度，亦即現在的 input 跟第 k 個 filter 有多 match</li>
+<li>找一張 image(x)，它可以最大化第 k 個 filter 被 activate 的程度，使用 gradient ascent
+找到這張 image，可以讓 degree 最大，我們觀察 image 就可以知道 filter 在 detect 什麼就結束了</li>
 
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state{
-    visibility: visible;
-}
+</ol>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_29.jpg" width="70%"></p>
+</li>
+<li><p><strong>舉例</strong>：取前 12 個 filter 為例，這些圖共同的特徵就是有線條紋的 pattern
+    故，這裡每一個 filter 的工作就是 detect 圖上是否有某一種線條的 pattern</p>
+</li>
 
-.mac-seamless-mode #typora-sidebar {
-    background-color: #fafafa;
-    background-color: var(--side-bar-bg-color);
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_30.jpg" width="70%"></p>
+</li>
+<li><p>Flatten - 每一個 neuron</p>
+<ul>
+<li><strong>作法</strong>：定義 $a_j$ 為第 $j$ 個 neuron 的 output，再用 Gradient Descent 找一張 image,x 使 $a_j$ 被 maximize</li>
+<li><strong>舉例</strong>：可使前 9 個 neuron 最大化的圖如下，與 filter 不同的是，filter 觀察的是圖的一小部分，neuron 觀察
+    的是整張圖；故，這裡的 neuron 工作就是偵測較大的 pattern，如有圓圈有線條等</li>
 
-.md-lang {
-    color: #b4654d;
-}
+</ul>
+</li>
 
-.html-for-mac .context-menu {
-    --item-hover-bg-color: #E6F0FE;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_31.jpg" width="70%"></p>
+<ul>
+<li><p>Output</p>
+<ul>
+<li><p><strong>作法</strong>：找一張 image，讓該維度的 output 最大</p>
+</li>
+<li><p><strong>舉例</strong>：下面八張圖就是機器學習到的數字 1~8，顯然地，機器學習到的東西跟人類不一樣</p>
+<blockquote><p>Deep Neural Network are Easily Fooled  一段影片中有不少例子</p>
+</blockquote>
+</li>
 
-#md-notification .btn {
-    border: 0;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_32.jpg" width="70%"></p>
+<ul>
+<li><p><strong>改進</strong>：對 image, x 做一些限制，讓機器了解雖然有一些 x 可以最大化 output，但這些 x 不是數字</p>
+<blockquote><p>這裡加的限制是 maximize y 的同時，$\Sigma_{ij}|x_{ij}|$ 越小越好，亦即找出來的 image，只有少部分是筆畫</p>
+</blockquote>
+</li>
 
-.dropdown-menu .divider {
-    border-color: #e5e5e5;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_33.jpg" width="70%"></p>
+</li>
 
-.ty-preferences .window-content {
-    background-color: #fafafa;
-}
+</ul>
+<hr />
+<h3>Deep Dream</h3>
+<ul>
+<li>精神：給機器一張 image，它會在 image 裡面加上它看到的東西</li>
 
-.ty-preferences .nav-group-item.active {
-    color: white;
-    background: #999;
-}
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_37.jpg" width="70%"></p>
+<ul>
+<li><p>原理：</p>
+<ul>
+<li>將 image 丟入 CNN 後，把某一個 hidden layer 拿出來，將這個 filter 的值調大</li>
+<li>讓 positive 的越大，negative 的越小（正的越正，負的越負）</li>
+<li>再將這個調整後的 vector 當作新 image 的目標</li>
 
- .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
-</style>
-</head>
-<body class='typora-export' >
-<div  id='write'  class = 'is-mac'><h1><a name="ml-lecture-10-convolutional-neural-network" class="md-header-anchor"></a><span>ML Lecture 10: Convolutional Neural Network</span></h1><blockquote><p><span>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 </span><a href='http://ai.ntu.edu.tw/'><span>http://ai.ntu.edu.tw</span></a></p></blockquote><h3><a name="why-cnn-for-image" class="md-header-anchor"></a><span>Why CNN for Image？</span></h3><p><span>當我們使用一般的 DNN，如 Fully connected Feedforward network 做影像辨識時，往往會需要太多參數；</span>
-<span>而透過以下幾點觀察（Property），CNN 可</span><strong><span>簡化</span></strong><span> neural network 的架構，</span><strong><span>使用較少的參數</span></strong><span>。</span></p><ol start='' ><li><p><span>偵測 pattern 是否存在時，不需要看整張 image，只需看圖片的一小部分即可決定，故可簡化參數。</span></p><blockquote><p><span>例：只需看下圖的紅色框框，就可決定圖中是否有鳥嘴的存在。</span></p></blockquote></li></ol><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_1.jpg" width="70%"></p><ol start='2' ><li><p><span>同樣的 pattern 可能會出現在 image 的不同地方，只需用相同的 neuron 就可偵測出來，故可簡化參數。</span></p><blockquote><p><span>例：偵測上圖鳥嘴的 neuron 跟偵測下圖鳥嘴的 neuron 可能是一樣的，故我們可共用同一組參數。</span></p></blockquote></li></ol><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_2.jpg" width="70%"></p><ol start='3' ><li><p><span>對 image 做 </span><strong><span>subsampling</span></strong><span>，這件事對影像辨識沒有太大影響，也可簡化參數</span></p><blockquote><p><span>subsampling：拿掉一張 image 的奇數行及偶數列，使其大小變為原本的 1/10</span></p></blockquote></li></ol><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_3.jpg" width="70%"></p><hr /><h3><a name="structure-of-cnn" class="md-header-anchor"></a><span>Structure of CNN</span></h3><ul><li><span>Input 一張 image ➡ 反覆做 [Convolution 及 Max Pooling] * (事先決定好的次數) ➡ flatten</span>
-<span>➡ output 的結果再 input 至一般的 Fully connected Feedforward network 中</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_4.jpg" width="70%"></p><ul><li><span>Convolution layer：處理上述第一、二個與 pattern 有關的 property</span>
-<span>Max Pooling：處理 Subsampling</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_5.jpg" width="70%"></p><hr /><h3><a name="part-1---convolution" class="md-header-anchor"></a><span>Part 1 - Convolution</span></h3><p><em><span>黑白圖像（0 代表白色，1 代表黑色）</span></em></p><ul><li><p><strong><span>Filter</span></strong><span>：Convolution layer 裡有許多組 filter，一個 filter 其實就是一個 matrix</span></p><p><span>Filter 中的參數是根據 training data 學得的，3*3 的 size 代表偵測一個 3</span><span>*</span><span>3 的 pattern</span></p></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_7.jpg" width="70%"></p><ul><li><strong><span>內積</span></strong><span>：filter 從左上角開始放，與 image 中對應的值做內積；如下圖，最左上角與 filter 做內積後得到 3</span></li><li><strong><span>Stride</span></strong><span>：挪動 filter 的位置，移動多少稱作 stride；如下圖，紅色框框一次偏移 2 格，stride = 2</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_9.jpg" width="70%"></p><ul><li><p><strong><span>偵測</span></strong><span>：觀察 filter，他要偵測的 pattern 為圖中是否有出現「左上到右下斜線的值為 (1, 1, 1)」</span></p><p><span>			</span><span>亦即，內積完後，出現最大值的地方，就代表這個 filter 要偵測的 pattern</span></p></li><li><p><strong><span>Property 2</span></strong><span>：做此步驟時，有考慮 Property 2（同樣的 pattern 可用相同的 filter 偵測出來）</span></p><blockquote><p><span>如下圖，左上角及左下角出現了同樣的 pattern，我們用同一個 Filter1 即可偵測出來</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_10.jpg" width="70%"></p><ul><li><p><strong><span>Feature Map</span></strong><span>：一層 convolution layer 中有許多 filter，每個 filter 做完內積後的 image 合稱 Feature Map</span></p><blockquote><p><span>如下圖，Filter 2 做完後，得到另一個藍色 4*4 的 matrix，與紅色 4</span><span>*</span><span>4 的 matrix 合稱 Feature Map</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_11.jpg" width="70%"></p><hr /><p><em><span>彩色圖像（RGB）</span></em></p><ul><li><span>彩色圖像就是好幾個 matrix 疊在一起，是一個立方體；故我們使用的 filter 也是「立方體」。</span>
-<span>計算時，並非每個顏色（channel）分開算，而是每個 filter 同時考慮了不同顏色代表的 channel</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_12.jpg" width="70%"></p><ul><li><p><span>Convolution 與 Fullu Connected 的關係</span></p><ul><li><span>Convolution 其實就是一個 neural network</span></li><li><span>Convolution 就是 Fully Connected 的 layer 將一些 weight 拿掉</span></li><li><span>Feature Map 這個 output 就是 Fully Connected neuron 的 output（綠色框框互相對應）</span></li></ul></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_13.jpg" width="70%"></p><ul><li><p><span>Convolution 與 Fullu Connected 相對應</span></p><ul><li><span>Convolution 的 filter 放在左上角，考慮的 pixel 是 [1, 2, 3, 7, 8, 9, 13, 14, 15]</span></li><li><span>將左邊 6*6 的 Image 拉成直的，filter 做內積後得到 3，即右圖某個 neuron 的 output 為 3</span></li><li><span>左圖 filter 代表的意思為，右圖 neuron 的 weight 只連接到 [1, 2, 3, 7, 8, 9, 13, 14, 15] 這些 pixel 而已</span></li></ul></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_14.jpg" width="70%"></p><ul><li><p><span>Stride = 1</span></p><ul><li><span>filter 移動到下一格，得 -1，亦即另外一個 neuron 的 output 為 -1</span></li><li><span>這個 neuron 就只連接到 [2, 3, 4, 8, 9, 10, 14, 15, 16] 這些 pixel </span></li></ul></li><li><p><span>在 Fully Connected layer 中，每個 neuron 本來都有自己獨立的 weight；當我們做 convolution 時</span></p><ol start='' ><li><span>減少每個 neuron 前面連接的 weight</span></li><li><span>強迫某些 neuron 要共用某一組 weight（如下圖中的 pixel 2, pixel 3 等）即 </span><strong><span>Shared weights</span></strong></li></ol></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_15.jpg" width="70%"></p><hr /><h3><a name="part-2---max-pooling" class="md-header-anchor"></a><span>Part 2 - Max Pooling</span></h3><ul><li><p><span>根據 Filter 1, Filter 2，我們可以得到兩個 4*4 的 matrix</span></p><p><span>將他們 4 個一組（如下圖），接著每組中選出一個數（可選平均、最大值......自行定義）</span></p></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_17.jpg" width="70%"></p><ul><li><p><span>這裡，我們選最大值，故做完一次 Convolution + Max Pooling</span></p><p><span>我們將原來 </span><strong><span>6*6</span></strong><span> 的圖像化簡成一個 </span><strong><span>2</span><span>*</span><span>2</span></strong><span> 的圖像</span></p><blockquote><p><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="18.305ex" height="6.052ex" viewBox="0 -1550.8 7881.4 2605.9" role="img" focusable="false" style="vertical-align: -2.451ex;"><defs><path stroke-width="0" id="E1-MJMATHI-46" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path stroke-width="0" id="E1-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E1-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E1-MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path stroke-width="0" id="E1-MJMATHI-65" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path stroke-width="0" id="E1-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E1-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E1-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E1-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E1-MJSZ3-5B" d="M247 -949V1450H516V1388H309V-887H516V-949H247Z"></path><path stroke-width="0" id="E1-MJSZ3-5D" d="M11 1388V1450H280V-949H11V-887H218V1388H11Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMATHI-46" x="0" y="0"></use><use xlink:href="#E1-MJMATHI-69" x="749" y="0"></use><use xlink:href="#E1-MJMATHI-6C" x="1094" y="0"></use><use xlink:href="#E1-MJMATHI-74" x="1392" y="0"></use><use xlink:href="#E1-MJMATHI-65" x="1753" y="0"></use><use xlink:href="#E1-MJMATHI-72" x="2219" y="0"></use><use xlink:href="#E1-MJMAIN-31" x="2670" y="0"></use><use xlink:href="#E1-MJMAIN-3D" x="3447" y="0"></use><g transform="translate(4503,0)"><use xlink:href="#E1-MJSZ3-5B"></use><g transform="translate(695,0)"><g transform="translate(-13,0)"><use xlink:href="#E1-MJMAIN-33" x="0" y="650"></use><use xlink:href="#E1-MJMAIN-33" x="0" y="-750"></use></g><g transform="translate(1487,0)"><use xlink:href="#E1-MJMAIN-30" x="0" y="650"></use><use xlink:href="#E1-MJMAIN-31" x="0" y="-750"></use></g></g><use xlink:href="#E1-MJSZ3-5D" x="2849" y="-1"></use></g></g></svg></span><script type="math/tex">Filter1=\left[\begin{matrix}3&0\\3&1\end{matrix}\right]  </script><span>       </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="20.112ex" height="6.052ex" viewBox="0 -1550.8 8659.4 2605.9" role="img" focusable="false" style="vertical-align: -2.451ex;"><defs><path stroke-width="0" id="E2-MJMATHI-46" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path stroke-width="0" id="E2-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E2-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E2-MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path stroke-width="0" id="E2-MJMATHI-65" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path stroke-width="0" id="E2-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E2-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E2-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E2-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path stroke-width="0" id="E2-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E2-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E2-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E2-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path stroke-width="0" id="E2-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path stroke-width="0" id="E2-MJSZ3-5B" d="M247 -949V1450H516V1388H309V-887H516V-949H247Z"></path><path stroke-width="0" id="E2-MJSZ3-5D" d="M11 1388V1450H280V-949H11V-887H218V1388H11Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMATHI-46" x="0" y="0"></use><use xlink:href="#E2-MJMATHI-69" x="749" y="0"></use><use xlink:href="#E2-MJMATHI-6C" x="1094" y="0"></use><use xlink:href="#E2-MJMATHI-74" x="1392" y="0"></use><use xlink:href="#E2-MJMATHI-65" x="1753" y="0"></use><use xlink:href="#E2-MJMATHI-72" x="2219" y="0"></use><use xlink:href="#E2-MJMAIN-32" x="2670" y="0"></use><use xlink:href="#E2-MJMAIN-3D" x="3447" y="0"></use><g transform="translate(4503,0)"><use xlink:href="#E2-MJSZ3-5B"></use><g transform="translate(695,0)"><g transform="translate(-13,0)"><g transform="translate(0,650)"><use xlink:href="#E2-MJMAIN-2212" x="0" y="0"></use><use xlink:href="#E2-MJMAIN-31" x="778" y="0"></use></g><use xlink:href="#E2-MJMAIN-30" x="389" y="-750"></use></g><g transform="translate(2265,0)"><use xlink:href="#E2-MJMAIN-31" x="0" y="650"></use><use xlink:href="#E2-MJMAIN-33" x="0" y="-750"></use></g></g><use xlink:href="#E2-MJSZ3-5D" x="3627" y="-1"></use></g></g></svg></span><script type="math/tex">Filter2=\left[\begin{matrix}-1&1\\0&3\end{matrix}\right]</script></p></blockquote></li><li><p><strong><span>image 深度(維度)</span></strong><span>：由「filter 個數」決定</span></p><blockquote><p><span>例：這裡只有 Filter 1 及Filter 2，故右下圖中的維度就是 2</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_18.jpg" width="70%"></p><ul><li><span>反覆「Convolution + Max Pooling」的動作</span>
-<span>我們可以重複「Convolution + Max Pooling」的動作，讓 image 越來越小</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_19.jpg" width="70%"></p><hr /><h3><a name="part-3---flatten" class="md-header-anchor"></a><span>Part 3 - Flatten</span></h3><p><span>將 Feature Map 拉直，丟到一個 Fully Connected Feedforward Network 中，就結束了</span></p><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_21.jpg" width="70%"></p><hr /><h3><a name="cnn-in-keras" class="md-header-anchor"></a><span>CNN in Keras</span></h3><ul><li><p><span>用 Keras implement CNN 時</span></p><ul><li><span>相同：training, compile 及 fitting 的部分是一模一樣的</span></li><li><span>不同：network 的 structure 及 input 的 format</span></li></ul></li><li><p><span>Convolution 時</span></p><blockquote><p><span>structure：dense 改成 Convolution2D，(25, 3, 3) 代表 25 個 filter，每個 filter 是 3*3 的 matrix</span>
-<span>input：(28, 28, 1) 代表 28</span><span>*</span><span>28 的 image，黑白 image 放 1，彩色 image 放 3</span></p></blockquote></li><li><p><span>Max Pooling 時</span></p><blockquote><p><span>多 add 一個 2*2 的 layer，代表 2</span><span>*</span><span>2 個 pixel 一組，每組中挑一個數出來</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_22.jpg" width="70%"></p><ul><li><p><span>實作</span></p><ul><li><span>Input：1*28</span><span>*</span><span>28 的 image</span></li><li><strong><span>Convolution</span></strong><span>：通過 25 個 3</span><span>*</span><span>3 的 filter</span></li><li><span>Output：25*26</span><span>*</span><span>26（25 是 channel 的數目，28</span><span>*</span><span>28 通過 3</span><span>*</span><span>3 的 filter 不考慮邊得 26</span><span>*</span><span>26 image）</span></li><li><strong><span>Max Pooling</span></strong><span>：2*2 的 pixel 圈成一組，挑其中最大的值</span></li><li><span>Output：25*13</span><span>*</span><span>13</span></li><li><strong><span>Convolution</span></strong><span>：通過 50 個 3*3 的 filter</span></li><li><span>Output：50</span><span>*</span><span>11</span><span>*</span><span>11</span></li><li><strong><span>Max Pooling</span></strong><span>：2*2 的 pixel 圈成一組，挑其中最大的值</span></li><li><span>Output：50</span><span>*</span><span>5</span><span>*</span><span>5</span></li></ul></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_23.jpg" width="70%"></p><ul><li><ul><li><p><strong><span>Flatten</span></strong><span>：將 50*5</span><span>*</span><span>5 拉直成一個 1250 維的 vector，</span></p><p><span>				</span><span> 丟到一個 Fully Connected Feedforward Network 裡面</span></p></li><li><p><span>Output：result</span></p></li></ul></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_24.jpg" width="70%"></p><hr /><h3><a name="what-does-cnn-learn" class="md-header-anchor"></a><span>What does CNN Learn？</span></h3><blockquote><p><span>分析 CNN 的每個步驟</span></p></blockquote><ul><li><p><span>Convolution - 第一層 filter</span></p><ul><li><strong><span>理解容易</span></strong><span>：只要分析 filter 內的值，很容易就知道它在 detect 什麼 pattern</span></li><li><strong><span>較難想像</span></strong><span>：但是，比較難想像第一層 filter 在做什麼事情</span></li></ul></li><li><p><span>Convolution - 第二層 filter</span></p><ul><li><p><strong><span>轉化目標</span></strong><span>：轉而分析這些 3*3 filter 的 output，亦即那些 11</span><span>*</span><span>11 的矩陣</span></p></li><li><p><strong><span>作法</span></strong><span>：</span></p><ol start='' ><li><span>取出第 k 個 11*11 的矩陣，裡面每一個元素我們以 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.161ex" height="3.463ex" viewBox="0 -931.3 1360.9 1490.8" role="img" focusable="false" style="vertical-align: -1.3ex;"><defs><path stroke-width="0" id="E3-MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="0" id="E3-MJMATHI-6B" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path stroke-width="0" id="E3-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E3-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E3-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E3-MJMATHI-61" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E3-MJMATHI-6B" x="748" y="498"></use><g transform="translate(529,-303)"><use transform="scale(0.707)" xlink:href="#E3-MJMATHI-69" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E3-MJMAIN-2C" x="345" y="0"></use><use transform="scale(0.707)" xlink:href="#E3-MJMATHI-6A" x="623" y="0"></use></g></g></svg></span><script type="math/tex">a_{i,j}^k</script><span> 表示</span>
-<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.21ex" height="2.168ex" viewBox="0 -807.4 521 933.3" role="img" focusable="false" style="vertical-align: -0.292ex;"><defs><path stroke-width="0" id="E5-MJMATHI-6B" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E5-MJMATHI-6B" x="0" y="0"></use></g></svg></span><script type="math/tex">k</script><span> 表示第 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.21ex" height="2.168ex" viewBox="0 -807.4 521 933.3" role="img" focusable="false" style="vertical-align: -0.292ex;"><defs><path stroke-width="0" id="E5-MJMATHI-6B" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E5-MJMATHI-6B" x="0" y="0"></use></g></svg></span><script type="math/tex">k</script><span> 個 filter，下標 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.791ex" height="2.455ex" viewBox="0 -745.4 1201.7 1057.2" role="img" focusable="false" style="vertical-align: -0.724ex;"><defs><path stroke-width="0" id="E6-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E6-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E6-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E6-MJMATHI-69" x="0" y="0"></use><use xlink:href="#E6-MJMAIN-2C" x="345" y="0"></use><use xlink:href="#E6-MJMATHI-6A" x="789" y="0"></use></g></svg></span><script type="math/tex">i,j</script><span> 代表矩陣中的第 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="0.801ex" height="2.024ex" viewBox="0 -745.4 345 871.3" role="img" focusable="false" style="vertical-align: -0.292ex;"><defs><path stroke-width="0" id="E7-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E7-MJMATHI-69" x="0" y="0"></use></g></svg></span><script type="math/tex">i</script><span> 個 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.837ex" height="1.592ex" viewBox="0 -559.6 1652 685.5" role="img" focusable="false" style="vertical-align: -0.292ex;"><defs><path stroke-width="0" id="E8-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E8-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="0" id="E8-MJMATHI-77" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E8-MJMATHI-72" x="0" y="0"></use><use xlink:href="#E8-MJMATHI-6F" x="451" y="0"></use><use xlink:href="#E8-MJMATHI-77" x="936" y="0"></use></g></svg></span><script type="math/tex">row</script><span>，第 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="0.985ex" height="2.455ex" viewBox="-12 -745.4 424 1057.2" role="img" focusable="false" style="vertical-align: -0.724ex; margin-left: -0.028ex;"><defs><path stroke-width="0" id="E13-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMATHI-6A" x="0" y="0"></use></g></svg></span><script type="math/tex">j</script><span> 個 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="7.586ex" height="2.168ex" viewBox="0 -807.4 3266 933.3" role="img" focusable="false" style="vertical-align: -0.292ex;"><defs><path stroke-width="0" id="E10-MJMATHI-63" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path><path stroke-width="0" id="E10-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="0" id="E10-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E10-MJMATHI-75" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E10-MJMATHI-6D" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E10-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E10-MJMATHI-63" x="0" y="0"></use><use xlink:href="#E10-MJMATHI-6F" x="433" y="0"></use><use xlink:href="#E10-MJMATHI-6C" x="918" y="0"></use><use xlink:href="#E10-MJMATHI-75" x="1216" y="0"></use><use xlink:href="#E10-MJMATHI-6D" x="1788" y="0"></use><use xlink:href="#E10-MJMATHI-6E" x="2666" y="0"></use></g></svg></span><script type="math/tex">column</script></li><li><span>定義 </span><strong><span>Degree of activation of the </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.981ex" height="2.455ex" viewBox="0 -931.3 1283.6 1057.2" role="img" focusable="false" style="vertical-align: -0.292ex;"><defs><path stroke-width="0" id="E11-MJMATHI-6B" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path stroke-width="0" id="E11-MJMATHI-74" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path stroke-width="0" id="E11-MJMATHI-68" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E11-MJMATHI-6B" x="0" y="0"></use><g transform="translate(521,362)"><use transform="scale(0.707)" xlink:href="#E11-MJMATHI-74" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E11-MJMATHI-68" x="361" y="0"></use></g></g></svg></span><script type="math/tex">k^{th}</script><span> filter</span></strong><span> ＝ 所有元素的和</span>
-<span>代表第 k 個 filter 被 activate 的程度，亦即現在的 input 跟第 k 個 filter 有多 match</span></li><li><span>找一張 image(x)，它可以最大化第 k 個 filter 被 activate 的程度，使用 gradient ascent</span>
-<span>找到這張 image，可以讓 degree 最大，我們觀察 image 就可以知道 filter 在 detect 什麼就結束了</span></li></ol><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_29.jpg" width="70%"></p></li><li><p><strong><span>舉例</span></strong><span>：取前 12 個 filter 為例，這些圖共同的特徵就是有線條紋的 pattern</span>
-<span>    故，這裡每一個 filter 的工作就是 detect 圖上是否有某一種線條的 pattern</span></p></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_30.jpg" width="70%"></p></li><li><p><span>Flatten - 每一個 neuron</span></p><ul><li><strong><span>作法</span></strong><span>：定義 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.138ex" height="2.168ex" viewBox="0 -559.6 920.3 933.3" role="img" focusable="false" style="vertical-align: -0.868ex;"><defs><path stroke-width="0" id="E14-MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="0" id="E14-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E14-MJMATHI-61" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E14-MJMATHI-6A" x="748" y="-213"></use></g></svg></span><script type="math/tex">a_j</script><span> 為第 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="0.985ex" height="2.455ex" viewBox="-12 -745.4 424 1057.2" role="img" focusable="false" style="vertical-align: -0.724ex; margin-left: -0.028ex;"><defs><path stroke-width="0" id="E13-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMATHI-6A" x="0" y="0"></use></g></svg></span><script type="math/tex">j</script><span> 個 neuron 的 output，再用 Gradient Descent 找一張 image,x 使 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.138ex" height="2.168ex" viewBox="0 -559.6 920.3 933.3" role="img" focusable="false" style="vertical-align: -0.868ex;"><defs><path stroke-width="0" id="E14-MJMATHI-61" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path stroke-width="0" id="E14-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E14-MJMATHI-61" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E14-MJMATHI-6A" x="748" y="-213"></use></g></svg></span><script type="math/tex">a_j</script><span> 被 maximize</span></li><li><strong><span>舉例</span></strong><span>：可使前 9 個 neuron 最大化的圖如下，與 filter 不同的是，filter 觀察的是圖的一小部分，neuron 觀察</span>
-<span>    的是整張圖；故，這裡的 neuron 工作就是偵測較大的 pattern，如有圓圈有線條等</span></li></ul></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_31.jpg" width="70%"></p><ul><li><p><span>Output</span></p><ul><li><p><strong><span>作法</span></strong><span>：找一張 image，讓該維度的 output 最大</span></p></li><li><p><strong><span>舉例</span></strong><span>：下面八張圖就是機器學習到的數字 1~8，顯然地，機器學習到的東西跟人類不一樣</span></p><blockquote><p><span>Deep Neural Network are Easily Fooled  一段影片中有不少例子</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_32.jpg" width="70%"></p><ul><li><p><strong><span>改進</span></strong><span>：對 image, x 做一些限制，讓機器了解雖然有一些 x 可以最大化 output，但這些 x 不是數字</span></p><blockquote><p><span>這裡加的限制是 maximize y 的同時，</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="7.248ex" height="2.887ex" viewBox="0 -869.3 3120.6 1243" role="img" focusable="false" style="vertical-align: -0.868ex;"><defs><path stroke-width="0" id="E15-MJMAIN-3A3" d="M666 247Q664 244 652 126T638 4V0H351Q131 0 95 0T57 5V6Q54 12 57 17L73 36Q89 54 121 90T182 159L305 299L56 644L55 658Q55 677 60 681Q63 683 351 683H638V679Q640 674 652 564T666 447V443H626V447Q618 505 604 543T559 605Q529 626 478 631T333 637H294H189L293 494Q314 465 345 422Q400 346 400 340Q400 338 399 337L154 57Q407 57 428 58Q476 60 508 68T551 83T575 103Q595 125 608 162T624 225L626 251H666V247Z"></path><path stroke-width="0" id="E15-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E15-MJMATHI-6A" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path><path stroke-width="0" id="E15-MJMAIN-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path stroke-width="0" id="E15-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMAIN-3A3" x="0" y="0"></use><g transform="translate(722,-150)"><use transform="scale(0.707)" xlink:href="#E15-MJMATHI-69" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMATHI-6A" x="345" y="0"></use></g><use xlink:href="#E15-MJMAIN-7C" x="1357" y="0"></use><g transform="translate(1635,0)"><use xlink:href="#E15-MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#E15-MJMATHI-69" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMATHI-6A" x="345" y="0"></use></g></g><use xlink:href="#E15-MJMAIN-7C" x="2842" y="0"></use></g></svg></span><script type="math/tex">\Sigma_{ij}|x_{ij}|</script><span> 越小越好，亦即找出來的 image，只有少部分是筆畫</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_33.jpg" width="70%"></p></li></ul><hr /><h3><a name="deep-dream" class="md-header-anchor"></a><span>Deep Dream</span></h3><ul><li><span>精神：給機器一張 image，它會在 image 裡面加上它看到的東西</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_37.jpg" width="70%"></p><ul><li><p><span>原理：</span></p><ul><li><span>將 image 丟入 CNN 後，把某一個 hidden layer 拿出來，將這個 filter 的值調大</span></li><li><span>讓 positive 的越大，negative 的越小（正的越正，負的越負）</span></li><li><span>再將這個調整後的 vector 當作新 image 的目標</span></li></ul><p><span>亦即，讓 CNN 誇大化它看到的東西（如下圖，有一些念獸出現）</span></p></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_38.jpg" width="70%"></p><hr /><h3><a name="deep-style" class="md-header-anchor"></a><span>Deep Style</span></h3><ul><li><p><span>精神：給機器一張 image，讓機器修改這張圖，給予另一張圖的風格</span></p><blockquote><p><span>例：在原本的照片基礎上，增加吶喊一幅畫的風格</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_39.jpg" width="70%"></p><ul><li><p><span>原理：</span></p><ol start='' ><li><span>原圖丟入 CNN 處理後，得到的 output 代表這張 image 的 content</span></li><li><span>欲成為的風格圖也丟入 CNN 處理後，得到的 output 代表這張 image 的 style</span></li><li><span>用同一個 CNN，找一張能同時 maximize 左右兩邊的 image 即為 output</span></li></ol><blockquote><p><em><span>reference: A Neural Algorithm od Artistic Style</span></em></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_41.jpg" width="70%"></p><ul><li><span>成果</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_40.jpg" width="70%"></p><hr /><h3><a name="more-application-of-cnn" class="md-header-anchor"></a><span>More Application of CNN</span></h3><ul><li><p><span>圍棋（Go）</span></p><blockquote><p><span>其實一般的 neural network 也可讓 machine 學會下圍棋，但 CNN 可獲得更好的表現</span></p></blockquote><ul><li><span>對 CNN 來說，棋盤可以當成一張 19*19 的 image 來看</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_42.jpg" width="70%"></p><ul><li><span>training data 就是棋譜，而 machine 將學會 output 落子的地方</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_43.jpg" width="70%"></p><ul><li><p><span>使用 CNN 可以獲得較佳表現的原因，是因為圍棋有一些特性，跟講義開頭講的三種 property 類似</span></p><ol start='' ><li><span>圍棋有一些 pattern 就如同鳥喙，只需看整張圖的一小部分即可偵測出來</span></li><li><span>同樣的 pattern 可能重複出現在一張棋盤的其他地方，並代表相同的意義</span></li></ol></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_44.jpg" width="70%"></p><ul><li><p><strong><span>但是</span></strong><span>，第三點 subsampling（Max pooling）在圍棋不適用，那怎麼解釋 AlphaGo 優異的表現呢？</span></p></li><li><p><strong><span>其實</span></strong><span>，AlphaGo 沒有使用 Max Pooling</span></p><blockquote><p><span>下圖為 AlphaGo 論文附錄的內容，底線處描述了它 neural network 的 structure</span></p></blockquote></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_45.jpg" width="70%"></p><hr /></li><li><p><span>音像處理（Speech）</span></p><blockquote><p><span>將音像以頻譜表示（橫軸：一段時間、縱軸：那段時間裡聲音的頻率）</span></p></blockquote><ul><li><span>我們可以將聲音頻譜當作 input 的 image，讓 CNN 判斷這對應到什麼樣的聲音訊號</span></li><li><span>特別的是，我們移動 filter 的時候，只移動 frequency 的方向，在時間方向移動沒有太大幫助</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_46.jpg" width="70%"></p><hr /></li><li><p><span>文字處理（Text）</span></p><blockquote><p><span>每一個 word 都用一個 vector 表示，一個 sentence 中所有的 word 排在一起，就變成一張 image</span></p></blockquote><ul><li><span>丟入一個 word sequence，我們希望 CNN output 這個句子的含義是正面的還是負面的</span></li><li><span>Filter 的高和 image 的高相同，沿著 word 順序移動；</span>
-<span>不同的 filter 會得到不同的 vector，再做 Max Pooling；</span>
-<span>丟入 Fully Connected Feeddorward layer，最後得到 output。</span></li></ul><p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_47.jpg" width="70%"></p></li></ul></div>
+</ul>
+<p>亦即，讓 CNN 誇大化它看到的東西（如下圖，有一些念獸出現）</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_38.jpg" width="70%"></p>
+<hr />
+<h3>Deep Style</h3>
+<ul>
+<li><p>精神：給機器一張 image，讓機器修改這張圖，給予另一張圖的風格</p>
+<blockquote><p>例：在原本的照片基礎上，增加吶喊一幅畫的風格</p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_39.jpg" width="70%"></p>
+<ul>
+<li><p>原理：</p>
+<ol start='' >
+<li>原圖丟入 CNN 處理後，得到的 output 代表這張 image 的 content</li>
+<li>欲成為的風格圖也丟入 CNN 處理後，得到的 output 代表這張 image 的 style</li>
+<li>用同一個 CNN，找一張能同時 maximize 左右兩邊的 image 即為 output</li>
+
+</ol>
+<blockquote><p><em>reference: A Neural Algorithm od Artistic Style</em></p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_41.jpg" width="70%"></p>
+<ul>
+<li>成果</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_40.jpg" width="70%"></p>
+<hr />
+<h3>More Application of CNN</h3>
+<ul>
+<li><p>圍棋（Go）</p>
+<blockquote><p>其實一般的 neural network 也可讓 machine 學會下圍棋，但 CNN 可獲得更好的表現</p>
+</blockquote>
+<ul>
+<li>對 CNN 來說，棋盤可以當成一張 19*19 的 image 來看</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_42.jpg" width="70%"></p>
+<ul>
+<li>training data 就是棋譜，而 machine 將學會 output 落子的地方</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_43.jpg" width="70%"></p>
+<ul>
+<li><p>使用 CNN 可以獲得較佳表現的原因，是因為圍棋有一些特性，跟講義開頭講的三種 property 類似</p>
+<ol start='' >
+<li>圍棋有一些 pattern 就如同鳥喙，只需看整張圖的一小部分即可偵測出來</li>
+<li>同樣的 pattern 可能重複出現在一張棋盤的其他地方，並代表相同的意義</li>
+
+</ol>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_44.jpg" width="70%"></p>
+<ul>
+<li><p><strong>但是</strong>，第三點 subsampling（Max pooling）在圍棋不適用，那怎麼解釋 AlphaGo 優異的表現呢？</p>
+</li>
+<li><p><strong>其實</strong>，AlphaGo 沒有使用 Max Pooling</p>
+<blockquote><p>下圖為 AlphaGo 論文附錄的內容，底線處描述了它 neural network 的 structure</p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_45.jpg" width="70%"></p>
+<hr />
+</li>
+<li><p>音像處理（Speech）</p>
+<blockquote><p>將音像以頻譜表示（橫軸：一段時間、縱軸：那段時間裡聲音的頻率）</p>
+</blockquote>
+<ul>
+<li>我們可以將聲音頻譜當作 input 的 image，讓 CNN 判斷這對應到什麼樣的聲音訊號</li>
+<li>特別的是，我們移動 filter 的時候，只移動 frequency 的方向，在時間方向移動沒有太大幫助</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_46.jpg" width="70%"></p>
+<hr />
+</li>
+<li><p>文字處理（Text）</p>
+<blockquote><p>每一個 word 都用一個 vector 表示，一個 sentence 中所有的 word 排在一起，就變成一張 image</p>
+</blockquote>
+<ul>
+<li>丟入一個 word sequence，我們希望 CNN output 這個句子的含義是正面的還是負面的</li>
+<li>Filter 的高和 image 的高相同，沿著 word 順序移動；
+不同的 filter 會得到不同的 vector，再做 Max Pooling；
+丟入 Fully Connected Feeddorward layer，最後得到 output。</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Convolutional_Neural_Network/Convolutional_Neural_Network_47.jpg" width="70%"></p>
+</li>
+
+</ul>
 </body>
 </html>

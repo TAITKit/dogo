@@ -6,6 +6,7 @@ handout_list = JSON.parse(data);
 
 
 function createList() {
+  
 
   var cardLists = document.getElementById("cardLists");
   var menu = document.getElementById("menu");

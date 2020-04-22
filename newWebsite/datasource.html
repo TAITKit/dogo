@@ -42,13 +42,13 @@
       <div id = "keywords" class="row mt-1 d-flex justify-content-center">
         <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
           <span class="btn-badge"><span class="badge-text" style="">#</span></span>
-        <span class="btn-text" style="position : relative; top: .07rem;">All</span></button>
+        <span class="btn-text" onclick="allOnclick('all')" style="position : relative; top: .07rem;">All</span></button>
       </div>
       <div class="row d-flex justify-content-center">
         
         <div class="col-7 mt-4">
           <div id="cardLists" style="height:60rem; overflow-y: scroll;padding:5px; ">
-            <div class="card mt-1" id="list-item-1" >
+            <!--<div class="card mt-1" id="list-item-1" >
               <div class="card-body">
                 <h5 class="card-title">A Unified RvNN Framework for End-to-End Chinese Discourse Parsing</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Chuan-An Lin Hen-Hsen Huang Zi-Yuan Chen</h6>

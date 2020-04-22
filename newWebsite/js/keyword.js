@@ -11,27 +11,47 @@ function parseID() {
     });
 }
 
+function keywordOnclick(key_string) {
+    var elements = document.getElementsByClassName("card");
+    console.log(key_string);
+    for(var i = 0; i< elements.length; i++){ 
+        var x = elements[i];
+        //console.log(elements[i].className);
+        if(x.className.includes(key_string)){
+            x.style.display = "block";
+        }
+        else{
+            x.style.display = "none";
+        }
+            
+    }
+    // if (x.style.display === "none") {
+    //     x.style.display = "block";
+    // } else {
+    //     x.style.display = "none";
+    // }
+}
+
+function allOnclick(key_string) {
+    var elements = document.getElementsByClassName("card");
+    console.log(key_string);
+    for(var i = 0; i< elements.length; i++){ 
+        var x = elements[i];
+        x.style.display = "block";            
+    }
+    // if (x.style.display === "none") {
+    //     x.style.display = "block";
+    // } else {
+    //     x.style.display = "none";
+    // }
+}
+
 function parseKeywordandContent () {
     for(var i = 0; i < GlobalID.length; i++) {
         $.getJSON('https://taitk.org/api/algorithms/' + GlobalID[i].id, function(subdata) {
             //console.log(subdata.data)
-            
             var content = subdata.data;
-            //One ID multiple category
-            //DONE: split the category by comma, also, the 32th category is blank (remove ID: 18)
-            /*
-            rawkeywords = subdata.data.category
-            rawkeywords = rawkeywords.split(', ');
-            //console.log(temp)
-            for(var x = 0; x < rawkeywords.length; x++) {
-                temp = rawkeywords[x]
-                temp = keywordAlias(temp)
-                if(!GlobalKeywordObj.hasOwnProperty(temp)) {
-                    createKeyword(temp, 1);
-                    GlobalKeywordObj[temp] = 1;
-                } 
-            }*/
-            createCard(content.title, content.authors, content.unit, content.description, content.links, content.datasets, 1);
+            key_string = ""; 
 
             //One ID one tag
             rawkeywords = subdata.data.tags;
@@ -42,9 +62,25 @@ function parseKeywordandContent () {
                     createKeyword(temp, 1);
                     GlobalKeywordObj[temp] = 1;
                 } 
+                key_string += " " + temp;
             }
             
+            //One ID multiple category
+            //DONE: split the category by comma, also, the 32th category is blank (remove ID: 18)
+            rawkeywords = subdata.data.category
+            rawkeywords = rawkeywords.split(', ');
+            //console.log(temp)
+            for(var x = 0; x < rawkeywords.length; x++) {
+                temp = rawkeywords[x]
+                temp = keywordAlias(temp)
+                if(!GlobalKeywordObj.hasOwnProperty(temp)) {
+                    createKeyword(temp, 1);
+                    GlobalKeywordObj[temp] = 1;
+                } 
+                key_string += " " + temp;
+            }
             
+            createCard(key_string, content.title, content.authors, content.unit, content.description, content.links, content.datasets, 1);
         });
     }
 }
@@ -128,6 +164,10 @@ function createKeyword(key_string, id) {
     keyword.appendChild(badge);
     keyword.appendChild(button_text);
 
+    //keyword.onclick = keywordOnclick(key_string);
+    console.log("keywordOnclick(" + key_string + ")");
+    keyword.setAttribute("onclick", "keywordOnclick('" + key_string + "')");
+
     var keywords = document.getElementById("keywords");
     keywords.appendChild(keyword);
 
@@ -139,9 +179,9 @@ function createKeyword(key_string, id) {
     // </button>
 }
 
-function createCard(title, authors, facility, text, links, datasets, id){
+function createCard(classname, title, authors, facility, text, links, datasets, id){
     var card = document.createElement("div"); 
-    card.className = "card mt-1";
+    card.className = "card mt-1 " + classname;
 
     var card_body = document.createElement("div"); 
     card_body.className = "card-body";
