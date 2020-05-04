@@ -2,8 +2,9 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>AINTU 講義</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="data-style.css">
       <script src="js/keyword.js"></script>
@@ -17,7 +18,10 @@
       <a class="navbar-brand ml-4" href="index.html">
         <img src="./logo1.png" width=326.83rem height= 60rem alt="">
       </a>
-      <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+      <button class="navbar-toggler" onclick = "togglecollapse()" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse mr-4 collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto mr-sm-4">
           <li class="nav-item">
             <a class="nav-link " href="index.html">機器學習講義 </a>
@@ -31,22 +35,23 @@
         </ul>
       </div>
     </nav>
-    <div class="d-flex align-items-center" width="100%" height="33%" style="background-image: url('http://ai.ntu.edu.tw/wp-content/uploads/2019/07/bn-1500x430.jpg'); min-height: 395.47px; min-width: 1378px;">
+    <div class="d-flex align-items-center biglogo">
       <div class="ml-4">
         <h2 style="color: white">科技部補助人工智慧技術暨全幅健康照護聯合研究中心<br>臺灣大學人工智慧中心</h2>
         <p style="color: white">MOST JOINT RESEARCH CENTER FOR AI TECHNOLOGY AND ALL VISTA HEALTHCARE</p>
       </div>
     </div>
-    <div class="container">
-      <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
-      <div id = "keywords" class="row mt-1 d-flex justify-content-center">
+    <div class="container-fluid">
+
+      <div id = "keywords" class="row mt-2 d-flex justify-content-center mx-auto" style="max-width: 70rem;">
         <button type="button" class="btn mt-1 mr-1 keyword-button" data-toggle="button" style="border-radius: 50rem; padding: .4rem;"> 
           <span class="btn-badge"><span class="badge-text" style="">#</span></span>
         <span class="btn-text" onclick="allOnclick('all')" style="position : relative; top: .07rem;">All</span></button>
       </div>
+
       <div class="row d-flex justify-content-center">
         
-        <div class="col-7 mt-4">
+        <div class="col mt-2" align="center">
           <div id="cardLists" style="height:60rem; overflow-y: scroll;padding:5px; ">
             <!--<div class="card mt-1" id="list-item-1" >
               <div class="card-body">
@@ -72,9 +77,13 @@
           </div>
         </div>
       </div>
+      <div class="mx-auto mt-1 mb-1" align="center">
+        <a>If it's not responding, please go to <a href="https://taitk.org/api/algorithms">here</a> first.</a>
+      </div>
     </div>
+    
     <footer class="page-footer font-small" style="background-color: #5b646b; color: #bfbfbf;">
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <div class="footer-copyright text-center py-3">版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人<br>© 2020 Copyright:
         <a style="color: #bfbfbf;" href="http://ai.ntu.edu.tw/"><u>臺灣大學人工智慧中心</u></a>
       </div>
     </footer>

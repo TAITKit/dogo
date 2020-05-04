@@ -11,6 +11,13 @@ function parseID() {
     });
 }
 
+function togglecollapse(){
+    var element = document.getElementById("collapsibleNavbar");
+    if(element.className == "navbar-collapse mr-4 collapse")
+        element.className = "navbar-collapse mr-4 collapsed"
+    else
+        element.className = "navbar-collapse mr-4 collapse" 
+}
 function keywordOnclick(key_string) {
     var elements = document.getElementsByClassName("card");
     console.log(key_string);
@@ -181,7 +188,7 @@ function createKeyword(key_string, id) {
 
 function createCard(classname, title, authors, facility, text, links, datasets, id){
     var card = document.createElement("div"); 
-    card.className = "card mt-1 " + classname;
+    card.className = "card mt-3 " + classname;
 
     var card_body = document.createElement("div"); 
     card_body.className = "card-body";

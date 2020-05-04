@@ -4,8 +4,46 @@
     margin-top: .5rem;
     overflow-y: scroll;
 }
-
-.card {
-    width: 30rem;
+.card{
+    max-width: 40rem;
 }
+.screen-hidden{
+    max-width: 30rem;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+    .screen-hidden{
+        display: none;
+    }
+    .logo{
+        width: 10rem
+    }
+}
+.biglogo{
+    /* Location of the image */
+    background-image: url('http://ai.ntu.edu.tw/wp-content/uploads/2019/07/bn-1500x430.jpg'); 
+    min-height: 25rem;/*395.47px;*/
+    /*min-width: 1378px; */
+    background-size: contain;
+    
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+    
+    /* Makes the image fixed in the viewport so that it doesn't move when 
+        the content height is greater than the image height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+    
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color:#464646;
+    
+    /* SHORTHAND CSS NOTATION
+        * background: url(background-photo.jpg) center center cover no-repeat fixed;
+        */
+}
+
 

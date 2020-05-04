@@ -29,7 +29,7 @@ function createList() {
       card.className = "card mt-1";
     else
       card.className = "card mt-3";
-    card.style = "width: 33rem";
+    card.style = "";
     card.id = "list-item-" + (i + 1);
 
     var cardBody = document.createElement("div");
