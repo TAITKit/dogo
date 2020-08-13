@@ -1,0 +1,528 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>ML 21-1</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = ''><h1><a name="recurrent-neural-network" class="md-header-anchor"></a><span>Recurrent Neural Network</span></h1><blockquote><p><span>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 </span><a href='http://ai.ntu.edu.tw/' target='_blank' class='url'>http://ai.ntu.edu.tw/</a></p></blockquote><p>&nbsp;</p><h3><a name="前導知識字轉成vetctor的方式" class="md-header-anchor"></a><span>前導知識：字轉成vetctor的方式</span></h3><ul><li><p><span>1-of-N encoding</span></p><ul><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_3.jpg" width="70%"></li></ul></li><li><p><span>Beyond 1-of-N encoding</span></p><ul><li><p><span>1-of-N encoding 的一些問題</span></p><ul><li><span>起因：很多詞彙可能從來沒有見過</span></li><li><span>解法：多加一個 dimension，這個 dimension 代表 other</span></li></ul></li><li><p><span>Beyond</span></p><ul><li><span>用某一個詞彙的字母來表示，像是 n-gram</span></li><li><span>舉例 apple (3-gram)：有 &quot;app&quot;、 &quot;ppl&quot;、 &quot;ple&quot;</span></li><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_4.jpg" width="70%"></li></ul></li></ul></li></ul><hr /><h3><a name="task-example-slot-filling" class="md-header-anchor"></a><span>Task example: Slot Filling</span></h3><ul><li><span>實際例子：智慧客服、訂票系統</span></li><li><span>分析一段句子有哪些slot，如：Destination、Time of Arrival</span></li><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_1.jpg" width="70%"></li></ul><h3><a name="解法-naive-model" class="md-header-anchor"></a><span>解法 (Naive Model)</span></h3><ul><li><p><span>可以用一個 Feedforward 的 Neural Network 來解</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_2.jpg" width="70%"></p></li><li><p><span>input 是一個詞彙（像 Taipei 可以轉成一個 vector）</span></p></li><li><p><span>output 是一個 probability distribution，代表說我們現在 input 的這個詞彙屬於哪一個 slot 的機率 (像Taipei 屬於 destination 的機率，還是屬於 time of departure 的機率)</span></p></li><li><p><span>Problem: example </span></p><ul><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_6.jpg" width="70%"></li><li><span>Taipei 在下面的例子並不是destination，但對於model來說，上下input一樣，會得到相同結果。</span></li><li><span>希望 model 可以有 </span><strong><em><span>記憶力</span></em></strong><span>（先看過arrive或是leave）</span></li></ul></li></ul><p>&nbsp;</p><h3><a name="解法-rnn" class="md-header-anchor"></a><span>解法 (RNN)</span></h3><blockquote><p><span>Recurrent Neural Network，有記憶力的 neural network</span></p></blockquote><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_7.jpg" width="70%"></p><p>&nbsp;</p><ul><li><span>每一次我們的 hidden layer 裡面的 neuron 產生 output 的時候，這個 output 都會被存到 memory（藍色的方塊）裡面去</span></li><li><span>下一次當有 input 的時候，這些 neuron 不是只會考慮input 的這個 x1 跟 x2，它還會考慮存在這些 memory 裡面的值（ hidden layer的值）</span></li><li><span>換句話說：除了 x1 跟 x2 以外，存在 memory 裡面的值（a1、a2） 也會影響它的 output</span></li></ul><hr /><h4><a name="實際例子" class="md-header-anchor"></a><span>實際例子</span></h4><ul><li><p><span>假設條件：下圖的這個 network</span></p><ul><li><span>所有的 weight 都是 1</span></li><li><span>所有的 neuron 沒有 bias 值</span></li><li><span>所有的 activation function 都是 linear</span></li><li><span>memory 起始值 0</span></li></ul></li><li><p><span>input 是 [1  1]、[1  1]、[2  2]</span></p></li></ul><hr /><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_8.jpg" width="70%"></p><ul><li><p><span>RNN吃到第一個 [1  1]</span></p><ul><li><p><span>第一層（綠色） Neuron 吃到的</span></p><ul><li><span>input（黃色）：[1  1]</span></li><li><span>memory（藍色）：[0  0]</span></li><li><span>output：2 </span><em><span>（得到的 output 存回 memory）</span></em></li></ul></li><li><p><span>第二層（紅色） Neuron 吃到的</span></p><ul><li><span>input（綠色）：[2  2]</span></li><li><span>output：4</span></li></ul></li></ul></li></ul><hr /><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_9.jpg" width="70%"></p><ul><li><p><span>RNN吃到第二個 [1  1]</span></p><ul><li><p><span>第一層（綠色） Neuron 吃到的</span></p><ul><li><span>input（黃色）：[1  1]</span></li><li><span>memory（藍色）：[2  2]</span></li><li><span>output： </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="17.421ex" height="2.11ex" viewBox="0 -755.9 7500.9 908.7" role="img" focusable="false" style="vertical-align: -0.355ex;"><defs><path stroke-width="0" id="E1-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E1-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E1-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E1-MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-32" x="0" y="0"></use><use xlink:href="#E1-MJMAIN-2B" x="722" y="0"></use><use xlink:href="#E1-MJMAIN-32" x="1722" y="0"></use><use xlink:href="#E1-MJMAIN-2B" x="2444" y="0"></use><use xlink:href="#E1-MJMAIN-31" x="3444" y="0"></use><use xlink:href="#E1-MJMAIN-2B" x="4167" y="0"></use><use xlink:href="#E1-MJMAIN-31" x="5167" y="0"></use><use xlink:href="#E1-MJMAIN-3D" x="5945" y="0"></use><use xlink:href="#E1-MJMAIN-36" x="7000" y="0"></use></g></svg></span><script type="math/tex">2 + 2 + 1 + 1 = 6</script><span> </span><em><span>（得到的 output 存回 memory）</span></em></li></ul></li><li><p><span>第二層（紅色） Neuron 吃到的</span></p><ul><li><span>input（綠色）：[6  6]</span></li><li><span>output：12</span></li></ul></li></ul></li></ul><h4><a name="小結論" class="md-header-anchor"></a><span>小結論：</span></h4><ul><li><span>對 Recurrent Neural Network 來說，就算是輸入一樣的東西，它的 output 是有可能會不一樣的</span></li><li><span>因為存在 memory，裡面的值會改變結果</span></li></ul><hr /><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_10.jpg" width="70%"></p><ul><li><p><span>RNN吃到第三個 [2  2]</span></p><ul><li><p><span>memory 起始值 0</span></p></li><li><p><span>第一層（綠色） Neuron 吃到的</span></p><ul><li><span>input（黃色）：[1  1]</span></li><li><span>memory（藍色）：[6  6]</span></li><li><span>output： </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="18.583ex" height="2.11ex" viewBox="0 -755.9 8000.9 908.7" role="img" focusable="false" style="vertical-align: -0.355ex;"><defs><path stroke-width="0" id="E2-MJMAIN-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path stroke-width="0" id="E2-MJMAIN-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path stroke-width="0" id="E2-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E2-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E2-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-36" x="0" y="0"></use><use xlink:href="#E2-MJMAIN-2B" x="722" y="0"></use><use xlink:href="#E2-MJMAIN-36" x="1722" y="0"></use><use xlink:href="#E2-MJMAIN-2B" x="2444" y="0"></use><use xlink:href="#E2-MJMAIN-32" x="3444" y="0"></use><use xlink:href="#E2-MJMAIN-2B" x="4167" y="0"></use><use xlink:href="#E2-MJMAIN-32" x="5167" y="0"></use><use xlink:href="#E2-MJMAIN-3D" x="5945" y="0"></use><g transform="translate(7000,0)"><use xlink:href="#E2-MJMAIN-31"></use><use xlink:href="#E2-MJMAIN-36" x="500" y="0"></use></g></g></svg></span><script type="math/tex">6 + 6 + 2 + 2 = 16</script><span> </span><em><span>（得到的 output 存回 memory）</span></em></li></ul></li><li><p><span>第二層（紅色） Neuron 吃到的</span></p><ul><li><span>input（綠色）：[16  16]</span></li><li><span>output：32</span></li></ul></li></ul></li></ul><h4><a name="使用-rnn-要注意的事" class="md-header-anchor"></a><span>使用 RNN 要注意的事</span></h4><ul><li><span>input 的 sequence 並不是 independent， sequence 的 order 很重要</span></li><li><span>任意調換 input sequence 的順序，那 output 會完全不一樣</span></li></ul><hr /><h4><a name="回歸-slot-filling" class="md-header-anchor"></a><span>回歸 slot filling</span></h4><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_11.jpg" width="70%"></p><ul><li><p><span>有一個使用者說 </span><strong><span>arrive Taipei on November 2nd</span></strong></p></li><li><p><span>當RNN 吃到 arrive</span></p><ul><li><span>那 arrive 就變成一個 vector，丟到 neural network裡面</span></li><li><span>output 為 a1，是一個 vector</span></li><li><span>根據 a1，產生 y1（arrive 屬於哪一個 slot 的機率）</span></li><li><span>a1 會被存到 memory 裡面</span></li></ul></li><li><p><span>當RNN 吃到 Taipei</span></p><ul><li><span>hidden layer 會同時考慮 Taipei 這個 input 跟存在 memory 裡面的 a1，得到 a2</span></li><li><span>根據 a2，產生 y2（Taipei 屬於哪一個 slot 的機率）</span></li></ul></li><li><p><span>依此類推 ...</span></p></li><li><p><span>並非3個 network，而是同一個 network在 </span><strong><em><span>三個不同的時間點</span></em></strong><span>，被 </span><strong><em><span>使用了3次</span></em></strong></p></li></ul><hr /><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_12.jpg" width="70%"></p><p>&nbsp;</p><p><span>所以有了 memory 以後，剛才講的輸入同一個詞彙，希望它 output 不同的這個問題，就有可能被解決。</span></p><p><span>比如說，同樣是輸入 Taipei 這個詞彙，但是因為紅色 Taipei 前面接的是 leave，綠色 Taipei 前面接的是 arrive。</span></p><p><span>因為 leave 跟 arrive 它們的 vector 不一樣，所以 hidden layer 的 output 也會不同，所以存在 memory 裡面的值呢，也會不同。</span></p><p><span>即使 x2 是一模一樣的，但是因為存在 memory 裡面的值不同，所以 hidden layer 的 output 也會不一樣，所以最後的 output 也就會不一樣。</span></p><hr /><h4><a name="其他-recurrent-neural-network-的架構設計" class="md-header-anchor"></a><span>其他 Recurrent Neural Network 的架構設計</span></h4><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_13.jpg" width="70%"></p><ul><li><p><span>可以是 deep 的 Recurrent Neural Network</span></p><ul><li><span>比如說，我們把 x1 丟進去以後，它可以通過很多個 hidden layer，才得到最後的 output</span></li><li><span>每一個 hidden layer 的 output 都會被存在 memory 裡面，在下一個時間點的時候呢再讀出來</span></li><li><span>要多deep，要幾層，都可以</span></li></ul></li></ul><hr /><p>&nbsp;</p><h4><a name="一些有名字的-recurrent-neural-network" class="md-header-anchor"></a><span>一些有名字的 Recurrent Neural Network </span></h4><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_14.jpg" width="70%"></p><ul><li><p><span>Elman Network</span></p><ul><li><span>把 hidden layer的值存起來，在下一個時間點再讀出來</span></li></ul></li><li><p><span>Jordan Network</span></p><ul><li><p><span>存的是整個 network 的 output 的值，把 output 的值存在 memory 裡面</span></p></li><li><p><span>傳說這個可以得到比較好的 performance</span></p><ul><li><span>因為這邊的 hidden layer，它是沒有 target 的。</span></li><li><span>如果有target，可以比較好控制它學到什麼樣的 hidden 的 information 放到 memory 裡面。</span></li></ul></li></ul></li></ul><hr /><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_15.jpg" width="70%"></p><p>&nbsp;</p><ul><li><span>假設句子裡面的每一個詞彙我們都用 x^t 來表示它的話，它就是先讀 x^t，再讀 x^(t+1)，再讀 x^(t+2)。但是，其實它的讀取方向也可以是反過來，它可以先讀 x^(t+2)，再讀 x^(t+1)，再讀 x^t</span></li><li><span>同時 train 一個正向的 Recurrent Neural Network，又同時 train 一個逆向的 Recurrent Neural Network。把這兩個 Recurrent Neural Network 的 hidden layer 拿出來，都接給一個 output layer，得到最後的 y</span></li><li><span>舉例：在 input x^t 的時候。正向的 network 的 output 跟逆向的 network 的 output，都丟給 output layer。產生 y^t。</span></li><li><span>好處：network 看的範圍比較廣，看頭又看尾</span></li></ul><hr /><p>&nbsp;</p><h4><a name="long-short-term-memory-lstm" class="md-header-anchor"></a><span>Long Short-Term Memory (LSTM)</span></h4><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_16.jpg" width="70%"></p><p>&nbsp;</p><h5><a name="lstm-有-3-個-gate由model自己學要打開還是關起來" class="md-header-anchor"></a><span>LSTM 有 3 個 gate，由model自己學要打開還是關起來</span></h5><ul><li><p><span>input gate</span></p><ul><li><span>當外界，當 neural network 的其他部分，某個 neuron 的 output 想要被寫到 memory cell 裡面的時候，必須要通過</span></li><li><span>要被打開的時候，你才能夠把值寫到 memory cell 裡面去</span></li></ul></li><li><p><span>output gate</span></p><ul><li><span>output gate 會決定說，外界、其他的 neuron 可不可以從 memory 裡面把值讀出來</span></li></ul></li><li><p><span>forget gate</span></p><ul><li><span>甚麼時候 memory 要把過去記得的東西忘掉，或是它甚麼時候要把過去記得的東西 format 掉</span></li></ul></li></ul><h5><a name="整個-lstm-呢可以看成它有4個-input1-個-output" class="md-header-anchor"></a><span>整個 LSTM 呢，可以看成它有4個 input，1 個 output</span></h5><ul><li><p><span>4 個input</span></p><ul><li><p><span>想要被存到 memory cell 裡面的值</span></p><ul><li><span>然後它不一定存得進去，這 depend on input gate 要不要讓這個information 過去</span></li></ul></li><li><p><span>操控 input gate 的這個訊號</span></p></li><li><p><span>操控 output gate 的這個訊號</span></p></li><li><p><span>操控 forget gate 的訊號</span></p></li></ul></li></ul><p>&nbsp;</p><h5><a name="long-short-term-memory-lstm-小小的冷知識" class="md-header-anchor"></a><span>Long Short-Term Memory (LSTM) 小小的冷知識</span></h5><ul><li><span>就是這個 dash，</span><code>-</code><span>，應該放在 short 跟 term 之間</span></li><li><span>只是比較長的 short-term memory</span></li><li><span>之前我們看那個 Recurrent neural network 阿，它的 memory 在每一個時間點都會被洗掉。所以這個 short-term 是非常 short</span></li><li><span>但是如果是 long short-term 的話，它可以記得比較長一點，只要 forget gate不要決定要 format 的話，它的值就會被存起來。</span></li></ul><hr /><p>&nbsp;</p><h4><a name="formulation-of-lstm" class="md-header-anchor"></a><span>Formulation of LSTM</span></h4><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_17.jpg" width="70%"></p><ul><li><p><span>名詞解釋</span></p><ul><li><span>要被存到 cell 裡面的 input 叫做 z</span></li><li><span>操控 input gate 的 signal 叫做 zi</span></li><li><span>操控 forget gate 的 signal 叫做 zf</span></li><li><span>操控 output gate 的 signal 叫做 zo</span></li><li><span>綜合這些東西以後，最後會得到一個 output，這邊寫作 a</span></li></ul></li></ul><p>&nbsp;</p><blockquote><p><span>假設裡面一開始已經存了值 c，現在呢，假設要輸入z</span></p></blockquote><ul><li><p><span>得到真正的 input</span></p><ul><li><p><span>z 通過一個 activation function得到 g(z)</span></p></li><li><p><span>把 zi 通過 另外一個 activation function，得到 f(zi)</span></p><ul><li><span>假設 f(zi) = 0，input gate被關閉的時後，那 g(z) * f(zi) 就等於 0，就好像是沒有輸入一樣</span></li></ul></li></ul></li><li><p><span>利用前一步的 Input，來 update memory</span></p><ul><li><p><span>把 g(z) 乘上這個 input gate 的值 f(zi) 得到 g(z)*f(zi)</span></p></li><li><p><span>zf 這個 signal 也通過這個 activation function，得到 f(zf)</span></p></li><li><p><span>把存在 memory 裡面的值 c 乘上 f(zf)，得到 c*f(zf)</span></p></li><li><p><span>把c</span><span>*</span><span>f(zf) 加上 g(z)</span><span>*</span><span>f(zi) 得到 c&#39;，存回去memory</span></p><ul><li><span>假設 f(zf) 是 0， forget gate 被關閉的時候， 0 乘上 c 還是 0，也就是過去存在 memory  裡面的值呢，就會被遺忘</span></li></ul></li></ul></li><li><p><span>得到真正的output a</span></p><ul><li><span>把這個 c&#39; 通過 h，得到 h(c&#39;)</span></li><li><span>zo 通過 f 得到 f(zo) 跟這個 h(c&#39;) 乘起來，得到 h(c&#39;) * f(zo)，也就是最後的 a</span></li></ul><p>&nbsp;</p></li><li><p><span>這3個 zi, zf, zo 他們通過的這3個 activation function </span><strong><em><span>f</span></em></strong><span> ，通常我們會選擇 </span><strong><em><span>sigmoid</span></em></strong><span> function</span></p><ul><li><span>sigmoid 的值是介在 0~1 之間的，而這個 0~1 之間的，代表了這個 gate 被</span><u><span>打開的程度</span></u></li><li><span>如果這個 f 的 output 這個 activation function 的 output 是 1，代表這個 gate 是處於被打開的狀態，反之呢，代表這個 gate 是被關起來的。</span></li></ul></li></ul><hr /><p>&nbsp;</p><h3><a name="經典的手爆lstm舉例" class="md-header-anchor"></a><span>經典的手爆LSTM舉例</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_18.jpg" width="70%"></p><p>&nbsp;</p><p>&nbsp;</p><h5><a name="介紹" class="md-header-anchor"></a><span>介紹</span></h5><ul><li><span>在 network 裡面，只有一個 LSTM 的 cell</span></li><li><span>那我們的 input 都是三維的 vector</span></li><li><span>output 都是一維的 vector</span></li></ul><h5><a name="memory-gate模擬" class="md-header-anchor"></a><span>Memory Gate模擬</span></h5><ul><li><p><span>第二個 dimension x2 的值是 1 的時候</span></p><ul><li><span>x1 的值就會被寫到 memory 裡面去</span></li></ul></li><li><p><span>假設 x2 的值是 -1 的時候</span></p><ul><li><span>memory 就會被 reset</span></li></ul></li></ul><h5><a name="output-gate模擬" class="md-header-anchor"></a><span>Output Gate模擬</span></h5><ul><li><p><span>假設 x3 等於 1 的時候</span></p><ul><li><span>你才會把 output gate 打開，才能夠看到輸出</span></li></ul></li></ul><p>&nbsp;</p><blockquote><p><span>手爆的完整過程查看影片比較清楚</span></p></blockquote><hr /><p>&nbsp;</p><h4><a name="跟原本rnn的關係" class="md-header-anchor"></a><span>跟原本RNN的關係</span></h4><ul><li><p><span>原來的 neural network 裡面會有很多的 neuron</span></p><ul><li><span>我們會把 input 乘上很多不同的 weight，然後當作是不同 neuron 的輸入</span></li><li><span>然後每一個 neuron 它都是一個 function。它輸入一個 scalar，output 另外一個 scalar</span></li></ul></li><li><p><span>LSTM</span></p><ul><li><span>把那個 LSTM 的那個 memory cell 想成是一個 neuron 就好</span></li><li><span>做的事情只是把原來一個簡單的 neuron，換成一個 LSTM 的 cell</span></li><li><span>而現在的 input 它會乘上不同的 weight，當作 LSTM 的不同的輸入</span></li></ul></li></ul><hr /><p>&nbsp;</p><ul><li><p><span>怎麼得到LSTM的四個input？現在假設只有兩個neuron：</span></p><ul><li><span>那 x1, x2乘上某一組 weight，會去操控第一個 LSTM 的 output gate</span></li><li><span>乘上另外一組 weight，操控第一個 LSTM 的input gate</span></li><li><span>乘上一組 weight，當作第一個 LSTM的input</span></li><li><span>乘上另外一組 weight，當作另外一個 LSTM的forget gate的 input</span></li></ul></li></ul><p>&nbsp;</p><ul><li><span>在原來的 neural network 裡面，一個 neuron 就是一個 input，一個 output，</span></li><li><span>在 LSTM 裡面它需要 4 個 input，它才能夠產生一個 output</span></li></ul><p>&nbsp;</p><figure><table><thead><tr><th style='text-align:center;' ><span>Origin</span></th><th style='text-align:center;' ><span>LSTM</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_25.jpg" width="70%"></td><td style='text-align:center;' ><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_26.jpg" width="70%"></td></tr></tbody></table></figure><ul><li><span>一般的 neural network 只需要部分的參數</span></li><li><span>LSTM 還要操控另外三個 gate，所以他需要 4 倍的參數</span></li></ul><hr /><p>&nbsp;</p><h3><a name="再更細一點的解釋" class="md-header-anchor"></a><span>再更細一點的解釋</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_27.jpg" width="70%"></p><ul><li><p><span>假設我們現在有一整排的 neuron，假設有一整排的 LSTM</span></p></li><li><p><span>那這一整排的 LSTM 裡面，每一個 LSTM 的 cell，它裡面都存了一個 scalar。把所有的 scalar 接起來，就變成一個 vector，這邊寫成 c^(t-1) （橘色）</span></p></li><li><p><span>這邊每一個 memory 它裡面存的 scalar，就是代表這個 vector 裡面的一個 dimension</span></p></li><li><p><span>先得到一整排 input z</span></p><ul><li><span>在時間點 t，input 一個 vector, x^t，這個 vector，它會先乘上一個 linear 的 transform，變成另外一個 vector z</span></li><li><span>z 這個 vector 的每一個 dimension 呢，就代表了操控每一個 LSTM 的 input。所以 z 它的 dimension 就正好是 LSTM 的 memory cell 的數目。</span></li></ul></li><li><p><span>再得到一整排 input gate z^i</span></p><ul><li><span>這個 x^t 會再乘上另外一個 transform，得到 z^i</span></li><li><span>這個 z^i 呢，它的 dimension 也跟 cell 的數目一樣，每一個 dimension都會去操控一個 memory</span></li></ul></li><li><p><span>再得到一整排 forget gate z^f，一整排 output gate z^o</span></p></li><li><p><span>這 4 個 vector 的 dimension 都跟 cell 的數目是一樣的，那這 4 個 vector 合起來就會去操控這些 memory cell 的運作</span></p></li></ul><p>&nbsp;</p><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_28.jpg" width="70%"></p><p><span>現在 input 分別是 z, z^i, z^f, z^o，注意一下就是這 4 個 z 其實都是 vector</span></p><p><span>所有的 cell 是可以共同一起被運算的，怎麼一起共同被運算呢</span></p><ul><li><p><span>把 z^i 先通過 activation function，然後把它跟 z 相乘</span></p><ul><li><span>這個乘呢，是這個 element-wise 的 product 的意思</span></li></ul></li><li><p><span>這個 z^f 也要通過 forget gate 的 activation function的值，跟之前已經存在 cell 裡面的值，兩者相乘，存回memory</span></p></li><li><p><span>把上述這兩個值加起來（ z^i 跟 z 相乘的值加上 z^f 跟 c^(t-1) 相乘的值）</span></p></li><li><p><span>把 z^o 通過 activation function的值， 跟相加以後的結果再相乘，就得到最後的 output 的 y</span></p></li></ul><p><span>（上述的過程跟單一cell都差不多，只是這次是一整排一起做，直接矩陣相乘）</span></p><hr /><p>&nbsp;</p><h3><a name="lstm-的最終型態" class="md-header-anchor"></a><span>LSTM 的最終型態</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_29.jpg" width="70%"></p><ul><li><p><span>以上只是一個 simplified 的 version</span></p></li><li><p><span>真正的 LSTM 會怎麼做呢：</span></p><ul><li><p><span>把前一個 hidden layer 的輸出接進來當作下一個時間點的 input（如上圖紅色線，指到的c）</span></p></li><li><p><span>還會加一個東西呢，叫做 &quot;peephole&quot;</span></p><ul><li><span>把存在 memory cell 裡面的值也拉過來 （上圖藍色h）</span></li></ul></li></ul></li><li><p><span>讓人傻眼的複雜模型：</span></p><ul><li><span>同時考慮了 x, 同時考慮了 h, 同時考慮了 c</span></li><li><span>把這 3 個 vector 並在一起，乘上4個不同的 transform，得到這4個不同的 vector，再去操控 LSTM</span></li><li><span>通常不會只有一層，都胡亂疊個五、六層</span></li></ul></li></ul><p>&nbsp;</p><hr /><p>&nbsp;</p><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_30.jpg" width="70%"></p><p><span>Keras 支援三種 Recurrent neural networks</span></p><ul><li><p><span>一個是 LSTM</span></p></li><li><p><span>一個是 GRU</span></p><ul><li><span>LSTM 的一個稍微簡化的版本，它只有兩個 gate</span></li><li><span>performance 跟 LSTM 差不多，而且少了 1/3 的參數，所以比較不容易 over-fitting</span></li></ul></li><li><p><span>一個是 SimpleRNN</span></p></li></ul></div>
+</body>
+</html>
