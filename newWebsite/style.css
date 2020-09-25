@@ -19,6 +19,8 @@
     }
 }
 .biglogo{
+    display: none;
+
     /* Location of the image */
     background-image: url('http://ai.ntu.edu.tw/wp-content/uploads/2019/07/bn-1500x430.jpg'); 
     min-height: 25rem;/*395.47px;*/

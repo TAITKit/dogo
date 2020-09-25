@@ -15,7 +15,7 @@ handout_list = [
 	new handoutObj("Lecture 1: Regression - Case Study", "李宏毅", "", [new urlObj("講義", "./handouts/ML1.html"), new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
 	new handoutObj("Lecture 1: Regression - Demo", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
 	new handoutObj("Lecture 2: Where does the error come from?", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
-	new handoutObj("Lecture 3-1: Gradient Descent", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
+	new handoutObj("Lecture 3-1: Gradient Descent", "李宏毅", "", [new urlObj("講義", "./handouts/ML3-1.html"), new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
 	new handoutObj( "Lecture 3-2: Gradient Descent (Demo by AOE)", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
 	new handoutObj( "Lecture 3-3: Gradient Descent (Minecraft)", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),
 	new handoutObj( "Lecture 4: Classification", "李宏毅", "", [new urlObj("講義", "./handouts/ML4.html"), new urlObj("影片", "https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1")]),

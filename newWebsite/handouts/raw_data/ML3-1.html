@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>ML3-1</title></head>
+<body><h1>ML Lecture 3-1: Gradient Descent</h1>
+<blockquote><p>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 <a href='http://ai.ntu.edu.tw/'>http://ai.ntu.edu.tw</a></p>
+</blockquote>
+<h3>Review </h3>
+<ul>
+<li><p><strong>使用時機</strong>：
+Machine Lraening 的第二步驟，我們定義了 loss function, $L$；而到第三步驟，
+我們<u>希望找到一個參數 $\theta$，最小化 loss function 的 output</u>，這時我們就可以用 Gradient Descent</p>
+</li>
+<li><p><strong>實作</strong>：</p>
+<ul>
+<li>假設 $\theta$ 有兩個參數，記成 $\{\theta_1, \theta_2\}$</li>
+<li>首先，隨機選一組初始值， $\theta^0 = \{\theta^0_1, \theta^0_2\}$</li>
+<li>再來計算下一個時間點的參數 $\theta^1$，等於 $\theta^0$ 減掉 learning rate 乘上 $\theta^0$ 對 loss function 的偏微分，即 $\theta^1=\theta^0-\eta∇L(\theta^0)$</li>
+<li>不斷反覆進行上一步驟，這就是 Gradient Descent</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_1.jpg" width="70%"></p>
+<ul>
+<li><p><strong>視覺化</strong>：</p>
+<ul>
+<li>將上述步驟視覺化的呈現，即在圖中隨機選一初始位置 $\theta^0$，計算這個參數對 $L$ 的 Gradient，及紅色箭頭</li>
+<li>再把 Gradient 乘上 $\eta$，取負號，就是藍色的箭頭，再加上 $\theta^0$，就得到 $\theta^1$</li>
+<li>上述步驟反覆進行下去，就是 Gradient Descent</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_2.jpg" width="70%"></p>
+<hr />
+<h3>Tips 1: Tuning your learning rate</h3>
+<ul>
+<li><p><strong>視覺化「參數的變化 v.s. loss 的變化」</strong></p>
+<ul>
+<li><p>learning rate 調<u><strong>太小</strong></u> (<strong>藍</strong>)：速度太慢，但終究會走到 local minimum</p>
+</li>
+<li><p>learning rate 調<u><strong>太大</strong></u> (<strong>綠</strong>)：步伐太大，永遠走不到 local minimum 的地方</p>
+</li>
+<li><p><strong><u>合適</u></strong>的 learning rate (<strong>紅</strong>)：順利的走到 local minimum</p>
+<p>所以，在做 Gradient Descent 前，可以先視覺化「參數的變化 v.s. loss 的變化」，如右下圖，避免結果爛掉</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_4.jpg" width="70%"></p>
+<ul>
+<li><p><strong>調整 learning rate 的原則</strong></p>
+<ul>
+<li><p>隨著參數 update，learning rate 應該越來越小</p>
+<p>舉例：learning rate $\eta$ 是 time dependent 的參數，$\eta^t=\eta/\sqrt{t+1}$</p>
+</li>
+<li><p>每個不同的參數都應該給不一樣的 learning rate，需要因材施教</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_5.jpg" width="70%"></p>
+</li>
+<li><p><strong>Adagrad</strong>：調整 learning rate 一個容易實作的方法</p>
+<ul>
+<li>作法：將每一個參數的 learning rate，除上之前算出微分值的 root mean square</li>
+<li>舉例：
+w 是某一個參數，原本做 Gradient Descent 的時候，只 depend on 時間的值 $\Rightarrow$ $w^{t+1}\leftarrow w^t-\eta^tg^t$
+而 Adagrad 中，會把 $\eta^t$ 再除以 $\sigma^t$ (過去所有微分值的 root mean square )，這個值對每一個參數都是不一樣的；
+故，不同的參數， learning rate 都是不一樣的。</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_6.jpg" width="70%"></p>
+<ul>
+<li><p>實作（如下圖所示）
+初始參數 $w^0、 g^0$，用 Adagrad 反覆 update 到第 t+1 次</p>
+<p>可以推導出，第 t+1 次，$w^{t+1} \leftarrow w^t-\frac{\eta^t}{\sigma^t} g^t$ 、 $\sigma^t=\sqrt{\frac{1}{(t+1)}\Sigma^t_{i=0}(g^i)^2}$</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_7.jpg" width="70%"></p>
+<ul>
+<li>Adagrad 中的<strong>矛盾</strong>
+在一般的 Gradient Descent，<u>gradient 越大，參數 update 的越快</u>
+但是，在 Adagrad 中，<u>gradient 越大，<strong>分子 update 的步伐越大，分母 update 的步伐卻越小</strong></u>，兩者互相矛盾</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_9.jpg" width="70%"></p>
+</li>
+<li><p>論文中對<strong>矛盾</strong>的一些解釋</p>
+<ul>
+<li>直觀想法：Adagrad 中想要考慮的是 gradient 的<strong>「反差」</strong>，也就是遇到某一個特別大或特別小的 gradient 時的反差有多大這樣</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_10.jpg" width="70%"></p>
+<ul>
+<li><p>正式想法（只有一個參數時）</p>
+<ol start='' >
+<li>考慮一個二次函數，及其絕對值的圖形，最低點就是 $-\frac{b}{2a}$ </li>
+<li>隨機找一個點 ($x_0$) 做 Gradient Descent ，那最好的步伐就是這個點與最低點的距離，也就是 $|x_0+\frac{b}{2a}|$；
+整理下，又可以寫成 $\frac{|2ax_0+b|}{2a}$ ，而 $|2ax_0+b|$ 就是$x_0$ 這一點的微分</li>
+<li>所以，如果今天算出來的微分值越大，代表離原點越遠，踏出去最好的步伐跟微分大小成正比
+但是！這件事只在考慮「一個參數」的時候才成立，在多個參數的時候，不一定成立。</li>
+
+</ol>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_11.jpg" width="70%"></p>
+<ul>
+<li><p>正式想法（多個參數時）</p>
+<ol start='' >
+<li><p>只考慮 $w_1$ (藍色切線) 時，可以看到 error surface 上「a 的微分值 &gt; b」，a 也的確離原點較遠</p>
+<p>只考慮 $w_2$ (綠色切線) 時，可以看到 error surface 上「c 的微分值 &gt; d」，c 也的確離原點較遠</p>
+</li>
+<li><p>但跨參數，同時比較「a 對 $w_1$ 的微分」及「c 對 $w_2$ 的微分」，可以發現<u>後者較大，但是後者離低點比較近</u></p>
+</li>
+
+</ol>
+<p>$\Rightarrow$ 所以，update參數選擇和微分值大小成正比是在「單一參數」的條件下才成立。</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_12.jpg" width="70%"></p>
+<ul>
+<li><p>多參數時的 Adagrad</p>
+<p>我們回過頭看上一個圖，任一點 ($x_0$) 最好的步伐 $\frac{|2ax_0+b|}{2a}$  中，分母 $2a$ 這項其實是 $y$ 的二次微分。</p>
+<p>所以，最好的步伐要<u>正比於一次微分</u>且與<u>二次微分的大小成反比</u>。</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_13.jpg" width="70%"></p>
+<p>當參數量大、資料量多的時候，我們可以從一次微分去估算二次微分（如下圖）</p>
+<p>藍色是比較平滑的峽谷（二次微分較小）、綠色是比較陡峭的峽谷（二次微分較大）</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_15.jpg" width="70%"></p>
+</li>
+
+</ul>
+<hr />
+<h3>Tips 2: Stochastic Gradient Descent</h3>
+<ul>
+<li><p><strong>想法比較</strong></p>
+<ul>
+<li>Regression 的 Loss function：$L=\Sigma_n(\hat{y}^n-(b+\Sigma w_ix_i^n))^2$，是 summation over <u>所有 training data</u></li>
+<li>Stochastic Gradient Descent：每次取一個 $x^n$ (可隨機也可照順序)，<u>只考慮這個 example</u> 的 Loss function，寫作 $L^n$
+而在 update 參數的時候，就只看這個 example 的 loss 更新參數；每看完一個參數，就更新一次。</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_17.jpg" width="70%"></p>
+<ul>
+<li><p><strong>優點</strong></p>
+<ul>
+<li>Gradient Descent：會看完<u>全部 example</u>，再 update 參數，較<strong>穩定</strong>。</li>
+<li>Stochastic：每看完一個 example，就更新一次，假設有 20 個 example 的話，更新速度就是上者的 <strong>20 倍</strong>。</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_19.jpg" width="70%"></p>
+<hr />
+<h3>Tip 3: Feature Scaling</h3>
+<ul>
+<li><strong>目的</strong>：希望讓不同 feature 有相同的 scaling（讓他們的 range 分佈變成一樣）</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_21.jpg" width="70%"></p>
+<ul>
+<li><p><strong>舉例</strong>：$y=b+w_1x_1+w_2x_2$</p>
+<ul>
+<li><p>圖形：</p>
+<p>左圖：$x_1$ 的值都是比較小的，$x_2$ 的值都是較大的；當 $w_1$ 跟 $w_2$ 做一樣的更動時，$w_1$ 的變化對 $y$ 較小，$w_2$ 的變化對 $y$ 較大</p>
+<p>右圖：$x_1$ 跟 $x_2$ 的 scale 是接近的，$w_1$、$w_2$ 對 loss 有差不多的影響力，畫出來的圖形接近圓形</p>
+</li>
+<li><p>執行 Gradient Descent：</p>
+<p>左圖：長橢圓的 error surface 需要不同的 learning rate，也就是要用 adaptive learning </p>
+<p>右圖：正圓形的 error surface，不論從哪個點開始，都會向著圓心走</p>
+<p>$\Rightarrow$ 有做 feature scaling，則在參數的 update 上較有效率。</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_22.jpg" width="70%"></p>
+<ul>
+<li><p><strong>常見作法</strong>：</p>
+<p>對 r 個 example 的每一個 dimension $i$ 做 <strong>normalization</strong>（$x^r_i \leftarrow \frac{x^r_i-m_i}{\sigma_i}$）
+使得每個 dimension 的 <strong>mean = 0</strong>, <strong>variance = 1</strong></p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Gradient_Descent/Gradient_Descent_23.jpg" width="70%"></p>
+</li>
+
+</ul>
+</body>
+</html>
