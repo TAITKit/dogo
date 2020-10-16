@@ -60,12 +60,8 @@
       <div class="row" align="center">
         <div class="col" align="center">
         <div class="card mt-4 mb-4" width=50% height=10%>
-              <label for="exampleInputEmail1">比較文句1</label>
-              <input class="form-control" id="exampleInput1" placeholder="Enter text">
-              <small id="emailHelp" class="form-text text-muted">請輸入欲比較之文句</small>
-              <label for="exampleInputPassword1">比較文句2</label>
-              <input class="form-control" id="exampleInput2" placeholder="Enter text">
-            <button onclick = "printCor()" class="btn btn-primary">Submit</button>
+          <input type="file" accept="audio/*" capture id="recorder">
+          <audio id="player" controls></audio>
         </div>
         </div>
         <img src="" id="MyPix"/>
