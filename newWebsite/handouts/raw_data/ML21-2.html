@@ -1,0 +1,548 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>ML21-2</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+  .typora-export h1::after, .typora-export h2::after, .typora-export h3::after, .typora-export h4::after, .typora-export h5::after, .typora-export h6::after { content: ""; display: block; height: 100px; margin-bottom: -100px; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        border-top: 1px solid #eee;
+        margin-top: .3em;
+    }
+}
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export'>
+<div id='write'  class=''><h1><a name="recurrent-neural-network" class="md-header-anchor"></a><span>Recurrent Neural Network</span></h1><blockquote><p><span>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 </span><a href='http://ai.ntu.edu.tw/' target='_blank' class='url'>http://ai.ntu.edu.tw/</a></p></blockquote><h3><a name="如何學習-how-to-learning" class="md-header-anchor"></a><span>如何學習 How to Learning</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_31.jpg" width="70%"></p><ul><li><p><span>須先定義 Cost function 以及 Loss</span></p></li><li><p><span>Example: Slot Filling</span></p><ul><li><p><span>每一個output有其對應的slot</span></p><ul><li><span>第一個 word 屬於 other 這個 slot</span></li><li><span>台北 屬於 destination 這個 slot</span></li><li><span>on 屬於 other slot</span></li><li><span>November 2nd 屬於抵達時間的 slot</span></li></ul></li><li><p><span>算 </span><u><span>每一個時間點</span></u><span> 的 RNN output 跟 reference vector 的 cross entropy</span></p><ul><li><span>slot 的 cross entropy</span></li></ul></li><li><p><span>得到 loss function，接著 gradient decent</span></p></li><li><p><span>Back propagation</span></p></li></ul></li></ul><p>&nbsp;</p><hr /><h3><a name="back-propagation-through-time" class="md-header-anchor"></a><span>Back propagation Through Time</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_32.jpg" width="70%"></p><p>&nbsp;</p><ul><li><span>BPTT，Back propagation 的進階版</span></li><li><span>因為 RNN 是在 time sequence 上運作，所以 BPTT 需要考慮時間的information</span></li><li><span>不詳細說明，只需要知道 RNN 用 gradient decent train 可以 train</span></li></ul><hr /><h3><a name="困難點" class="md-header-anchor"></a><span>困難點</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_33.jpg" width="70%"></p><blockquote><p><span>有時訓練無法像藍色一樣順利，會向綠色一樣</span></p><p><span>這個 learning curve ，抖到某個地方，就突然 NaN，然後程式就segmentation fault</span></p></blockquote><hr /><h3><a name="rnn-的-error-surface" class="md-header-anchor"></a><span>RNN 的 Error Surface</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_34.jpg" width="70%"></p><ul><li><p><span>分析原因：RNN 的 error surface 非常的陡峭</span></p><ul><li><span>error surface 就是 Total Loss 對參數的變化</span></li><li><span>崎嶇的意思是：這個 error surface 有些地方非常平坦，有些地方非常陡峭</span></li></ul></li><li><p><span>舉例，參考上圖：</span></p><ul><li><p><span>假設從橙色那個點開始，跳到下一個橙色的點</span></p></li><li><p><span>可能正好就跳過一個懸崖 =&gt; Loss 會突然暴增</span></p><ul><li><span>因為之前 gradient 很小，所以 learning rate 調得比較大</span></li><li><span>gradient 突然很大 =&gt; 很大的 gradient 再乘上很大的 learning rate</span></li><li><span>參數就 update 很多，就 NaN =&gt; 程式就 segmentation fault</span></li></ul></li></ul></li><li><p><span>解決辦法</span></p><ul><li><p><span>clipping</span></p><ul><li><span>當 gradient 大於某一個threshold 時後，不要讓他超過那個 threshold</span></li><li><span>Ex：當 gradient 大於 15 的時候就等於15</span></li></ul></li></ul></li></ul><hr /><h3><a name="為什麼-rnn-會有這種奇特的特性" class="md-header-anchor"></a><span>為什麼 RNN 會有這種奇特的特性</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_35.jpg" width="70%"></p><ul><li><p><span>用直觀方法來知道一個 gradient 的大小</span></p><ul><li><span>把某一個參數做小小的變化，看他對 network output 的變化有多大</span></li></ul></li><li><p><span>假設：</span></p><ul><li><span>一個簡單的 RNN，一個 linear neuron，weight 是 1，沒有 bias</span></li><li><span>一個 input ，output weight 也是 1，transition 部分的 weight 是 w</span></li><li><span>如果 input 是 [1  0  ...  0  0]  =&gt;  第 1000 個時間點的 output 值是 w 的 999 次方</span></li></ul></li><li><p><span>觀察：</span></p><ul><li><span>假設 w = 1，network 在最後時間點的 output 也是 1</span></li><li><span>假設 w = 1.01，network 在最後時間點的 output 是 20000</span></li><li><span>假設 w = 0.99，network 在最後時間點的 output 是 0</span></li></ul></li><li><p><span>在 1 這個地方有很大的 gradient ，但在 0.99 的地方 gradient 就突然變得非常非常的小</span></p><ul><li><span>有時候需要一個很大的 learning rate</span></li><li><span>設 learning rate 很麻煩，error surface 很崎嶇</span></li></ul></li><li><p><span>RNN training 的問題</span></p><ul><li><span>來自於 RNN 把同樣的東西，在 transition 的時候反覆使用</span></li><li><span>造成 gradient vanishing 以及 gradient explode</span></li></ul></li></ul><hr /><h3><a name="解決方法" class="md-header-anchor"></a><span>解決方法</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_36.jpg" width="70%"></p><p>&nbsp;</p><ul><li><p><span>LSTM 可以讓 error surface 不要那麼崎嶇</span></p><ul><li><span>解決 gradient vanishing </span></li><li><span>不會解決 gradient explode</span></li></ul></li><li><p><span>關於 LSTM 的常見問答</span></p><ul><li><p><span>為什麼我們把 RNN 換成 LSTM ?</span></p><ul><li><span>因為 LSTM 可以 handle gradient vanishing 的問題</span></li></ul></li><li><p><span>為什麼 LSTM 可以 handle gradient vanishing 的問題呢？</span></p><ul><li><p><span>因為它們在面對 memory 的時候，處理的 operation 不一樣</span></p><ul><li><span>RNN 在每一個時間點 memory 裡面的資訊，都會被洗掉</span></li><li><span>LSTM 會透過 forget gate 決定要不要洗去memory，如果過去的memory被影響，那這個影響有高機率會留著</span></li></ul></li><li><p><span>註：早期的LSTM是為了解決 gradient vanishing 的問題，一開始沒有 forget gate，後來才加上去的</span></p></li></ul></li></ul></li><li><p><span>Gated Recurrent Unit (GRU)</span></p><ul><li><p><span>用 gate 操控 memory 的 cell</span></p></li><li><p><span>GRU 的 gate 只有 2 個</span></p><ul><li><span>參數量是比較少的，training時間少，比較robust</span></li></ul></li><li><p><span>精神：舊的不去，新的不來</span></p><ul><li><span>input gate 跟 forget gate 連動起來</span></li><li><span>input gate 被打開的時候，forget gate 就會被自動關閉，反之亦然</span></li></ul></li></ul></li></ul><hr /><h3><a name="更多處理-gradient-vanishing-的-techniques" class="md-header-anchor"></a><span>更多處理 gradient vanishing 的 techniques</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_37.jpg" width="70%"></p><ul><li><span>Clockwise RNN</span></li><li><span>SCRN</span></li><li><span>Vanilla(一般) RNN + identity matrix + ReLU activation function</span></li></ul><hr /><h3><a name="更多應用" class="md-header-anchor"></a><span>更多應用</span></h3><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_38.jpg" width="70%"></p><h5><a name="rnn-可以做到更複雜的事情" class="md-header-anchor"></a><span>RNN 可以做到更複雜的事情</span></h5><ul><li><p><span>Sentiment Analysis</span></p><ul><li><span>知道一句話是 positive 還是 negative</span></li><li><span>影評分析</span></li></ul></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_39.jpg" width="70%"></p></li></ul><p>&nbsp;</p><ul><li><p><span>key term extraction</span></p><ul><li><span>Given 一篇文章， predict 這篇文章有那些關鍵詞彙</span></li></ul></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_40.jpg" width="70%"></p></li></ul><p>&nbsp;</p><h5><a name="也可以是多對多的" class="md-header-anchor"></a><span>也可以是多對多的</span></h5><ul><li><p><span>語音辨識 (Speech Recognition)</span></p><ul><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_41.jpg" width="70%"></p></li><li><p><span>input 是一串 acoustic feature sequence (每一小段時間切一個vector，0.01秒之類)</span></p></li><li><p><span>output 是 character 的 sequence</span></p></li><li><p><span>Trimming</span></p><ul><li><span>好好好棒棒棒棒棒 =&gt; 好棒</span></li><li><span>沒有辦法辨識 好棒棒 (與 好棒 意思相反)</span></li></ul></li><li><p><span>CTC</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_42.jpg" width="70%"></p></li><li><p><span>在 output 的時候，不只是 output 所有中文的 character。還多 output 一個符號，叫做 Null，叫做 沒有任何東西。</span></p><ul><li><span>output 就會變成是 </span><strong><em><span>好 null null 棒 null null null null</span></em></strong><span> 或是 </span><strong><em><span>好 null null 棒 null 棒 null null</span></em></strong><span>，能夠區分 </span><strong><em><span>好棒</span></em></strong><span> 跟 </span><strong><em><span>好棒棒</span></em></strong></li><li><span>解決疊字的問題</span></li></ul></li></ul></li></ul><h5><a name="sequence-to-sequence-learning" class="md-header-anchor"></a><span>Sequence to sequence learning</span></h5><ul><li><p><span>input 和 output 都是 sequence，但長度不一樣</span></p><ul><li><span>與CTC不同（input長，output 短），不確定誰長誰短</span></li></ul></li><li><p><span>實際case</span></p><ul><li><p><span>machine translation</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_45.jpg" width="70%"></p><ul><li><span>用 RNN 讀過去，在最後一個時間點呢，memory </span>
+<span>存了所有 input 的整個 sequence 的 information（例如：讀進machine learning</span></li><li><span>接下來，你就讓 RNN 吐開始吐 character（從機、器、學、習、慣、性⋯⋯</span></li></ul></li><li><p><span>問題：output停不下來</span></p></li><li><p><span>解法：加一個「斷」的token</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_48.jpg" width="70%"></p></li><li><p><span>同樣的做法可以用在語音辨識</span></p><ul><li><span>input：acoustic feature sequence</span></li><li><span>output：character sequence</span></li><li><span>沒有CTC強，但是意外的work</span></li></ul></li><li><p><span>結合語音辨識跟翻譯，例如：input是一段英文訊號，output中文句子</span></p><ul><li><span>搜集訓練資料變得比較容易（不需要中間的英文句子）</span></li><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_49.jpg" width="70%"></li></ul></li></ul></li></ul><h5><a name="beyond-sequence" class="md-header-anchor"></a><span>Beyond Sequence</span></h5><ul><li><p><span>Syntactic parsing tree </span></p><ul><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_50.jpg" width="70%"></li><li><span>Input：一個句子</span></li><li><span>Output：這個句子的文法的結構樹</span></li></ul></li><li><p><span>讓 machine 得到這樣的樹狀的結構</span></p><ul><li><p><span>過去：structure learning</span></p></li><li><p><span>現在：把這個樹狀圖，描述成一個 sequence</span></p><ul><li><span>root 的地方是 S</span></li></ul></li></ul></li></ul><hr /><h5><a name="sequence-to-sequence-auto-encoder" class="md-header-anchor"></a><span>Sequence to sequence auto-encoder </span></h5><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_51.jpg" width="70%"></p><ul><li><p><span>Document to vector</span></p><ul><li><p><span>bag-of-word</span></p><ul><li><span>忽略 word order 的 information</span></li><li><span>字的排列可能造成句子正命或是負面的影響</span></li></ul></li><li><p><span>Sequence to sequence auto-encoder </span></p><ul><li><p><span>input 一個 word sequence</span></p></li><li><p><span>通過 RNN 把它變成一個 embedded 的 vector（潛藏重要資訊）</span></p></li><li><p><span>把這個 embedded vector 當成 decoder 的輸入，讓這個 decoder 長回一個一模一樣的句子</span></p></li><li><p><span>好處：</span></p><ul><li><span>不需要 label data，只需要收集到大量的文章</span></li></ul></li></ul></li><li><p><span>Hierarchical neural auto-encoder</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_53.jpg" width="70%"></p><ul><li><span>output target會是下一個句子</span></li><li><span>比較好得到 </span><u><strong><span>語意</span></strong></u><span> 的意思</span></li></ul></li></ul></li></ul><p><span>那如果我們要把一個 document 表示成一個 vector 的話</span></p><p><span>往往會用 bag-of-word 的方法</span></p><hr /><h4><a name="語音上的應用" class="md-header-anchor"></a><span>語音上的應用</span></h4><ul><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_54.jpg" width="70%"></p></li><li><p><span>audio 的 word to vector</span></p><ul><li><span>應用：語音搜尋</span></li><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_55.jpg" width="70%"></li><li><span>使用者輸入一段話（語音），轉成vector後可以跟database裡的資料對比相似度。</span></li></ul></li><li><p><span>先把audio segment 抽成 acoustic feature sequence當作input，丟入RNN（encoder）</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_57.jpg" width="70%"></p></li><li><p><span>然後再透過另外一個RNN decode，output要跟input越像越好</span></p></li><li><p><span>有趣的結果：</span></p><ul><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_58.jpg" width="70%"></li><li><span>各個字詞具有「聲音」上的意義，但沒有「語意」上的意義（把f換成n的，向量變化方向差不多）</span></li></ul></li></ul><h5><a name="實際應用demo" class="md-header-anchor"></a><span>實際應用Demo </span></h5><ul><li><p><span>Chatbot (聊天機器人)</span></p><ul><li><span>Sequence to sequence auto encoder</span></li><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_59.jpg" width="70%"></li></ul></li><li><p><span>Attention-base model</span></p><ul><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_66.jpg" width="70%"></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_67.jpg" width="70%"></p><ul><li><span>當你輸入一個 input 的時候，這個 input 會被丟進一個中央處理器</span></li><li><span>這個中央處理器，可能是一個 DNN/RNN，用來操控一個讀寫頭（reading head controller）</span></li><li><span>這個 reading head controller 會決定這個 reading head放的位置，然後 machine 再從這個 reading head 放的位置，去讀取 information 出來，產生最後的 output</span></li></ul></li><li><p><span>Neural Turing Machine（2.0 版本）</span></p></li><li><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_68.jpg" width="70%"></p><ul><li><span>會多去操控一個 writing head controller</span></li><li><span>不只有讀的功能，還可以把資訊 discover 出來的東西，寫到它的 memory 裡面去</span></li></ul></li></ul></li><li><p><span>Reading comprehension</span></p><ul><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_69.jpg" width="70%"></li><li><span>attention-based model</span></li><li><span>先讓model看一堆document，再問問題，透過attention model找出答案</span></li></ul></li><li><p><span>Visual Question Answering</span></p><ul><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_72.jpg" width="70%"></li><li><span>讓 machine 看一張圖，然後問它一個問題</span></li><li><span>透過 CNN 可以把這個圖的每一小塊 region 用一個 vector 來表示</span></li></ul></li><li><p><span>Speech Question Answering</span></p><ul><li><span>讓 machine 聽一段聲音，然後問他問題，讓他從四個選項裡面選出正確選項（TOFEL）</span></li><li><span>同樣使用 attention-based model</span></li><li><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_74.jpg" width="70%"></li></ul></li></ul><hr /><h4><a name="rnn-vs-structured-learning" class="md-header-anchor"></a><span>RNN v.s. Structured learning</span></h4><p><img src="http://ai.ntu.edu.tw/aho/JPG/Recurrent_Neural_Network/Recurrent_Neural_Network_80.jpg" width="70%"></p><p><span>我這邊其實有一個問題</span></p><p><span>我們講了 Deep learning</span>
+<span>也講了 Structured learning</span></p><ul><li><p><span>不同之處：</span><span>	</span></p><ul><li><p><span>考慮整個句子：</span></p><ul><li><span>uni-directional 的 RNN 或 LSTM只看一半</span></li><li><span>透過 Viterbi 的 algorithm，可以考慮的是整個句子</span></li><li><span>但RNN/LSTM 等等，也可以做 Bi-directional</span></li></ul></li><li><p><span>能否直接限制 label 和 label 之間的關係</span></p><ul><li><span>用 Viterbi algorithm 求解的時候，可以直接把你要的 constrain 下到 Viterbi algorithm 裡面</span></li></ul></li><li><p><span>RNN 和 LSTM 的 cost function跟實際上最後要考慮的 error 往往是沒有關係的</span></p><ul><li><span>如果是用 structured learning 的話，它的 cost會是你 error 的 upper bound</span></li></ul></li><li><p><span>Deep</span></p><ul><li><span>RNN/LSTM 可以是 deep</span></li><li><span>HMM, CRF 拿來做 deep learning 是比較困難的</span></li></ul></li><li><p><span>整體說起來 RNN/LSTM 在 sequence labeling task 上面表現是比較好的</span></p></li></ul></li></ul><hr /><h3><a name="deep-learning-和-structured-learning-的結合" class="md-header-anchor"></a><span>Deep learning 和 structured learning 的結合</span></h3><ul><li><p><span>舉例：</span></p><ul><li><span>input 的 feature 先通過 RNN/LSTM</span></li><li><span>通過 RNN/LSTM 的 output 再做為 HMM, CRF... 的 input</span></li><li><span>用 RNN/LSTM 的 output 來定義 HMM, CRF... 的 evaluation function</span></li></ul></li><li><p><span>同時又享有 deep 的好處，又享有 structured learning 的好處</span></p></li><li><p><span>語音上常見的組合 </span></p><ul><li><span>deep learning 的 model: CNN/LSTM/DNN ，加上 HMM</span></li><li><span>HMM 往往都還在</span></li></ul></li><li><p><span>Slot filling</span></p><ul><li><span>很流行用 Bi-directional LSTM，再加上 CRF 或是 structured SVM</span></li><li><span>先用 Bi-directional LSTM 抽出 feature，再拿這些 feature 來定義 CRF 或者是 structured SVM 裡面需要用到的 feature</span></li></ul></li><li><p><span>也許 deep and structured 是未來一個研究的重點的方向</span></p></li></ul></div>
+</body>
+</html>
