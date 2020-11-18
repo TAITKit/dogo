@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <meta charset="utf-8">
+      <title>AINTU 講義</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+
+   <body>
+        <div id="head"></div>
+       <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+          <a class="navbar-brand ml-4" href="../index.html">
+                <img src="../logo1.png" width=326.83rem height= 60rem alt="">
+              </a>
+          <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-sm-4">
+              <li class="nav-item">
+                <a class="nav-link active" href="../index.html">機器學習講義 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../datasource.html">機器學習資料源</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+      
+      <div class="container">
+          <p class="mt-4">- 版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人 -</p>
+ 
+                
+
+    <div class="row">
+      
+         
+      <div class="col-9 ml-4 mt-4" style="/*height: 40rem; overflow-y: scroll;*/">
+         <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper site-min-height">
+          <div class="row mt">
+            <div class="col-lg-9">
+              <h1>ML Lecture 19: Transfer Learning</h1>
+<blockquote><p>臺灣大學人工智慧中心 科技部人工智慧技術暨全幅健康照護聯合研究中心 <a href='http://ai.ntu.edu.tw/'>http://ai.ntu.edu.tw</a></p>
+</blockquote>
+<h3>Overview</h3>
+<ul>
+<li><p><strong>使用時機</strong>：利用一些<u> 與 task 不直接相關的 data</u> 來幫助現在要進行的 task</p>
+<p>舉例：input domain 相似，但 task 不一樣；task 相似，但 input domain 不一樣</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_1.jpg" width="70%"></p>
+</li>
+<li><p><strong>使用原因</strong>：有些 task 的 data 是較少的，我們可以試著用其他語言的 data 來 improve 原本的 task</p>
+<p>舉例：要做台語的語音辨識，但台語的資料量少，我們可以嘗試用中文、英文等其他語言的 data 來 improve 台語的 task</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_2.jpg" width="70%"></p>
+<p>舉例：現實生活中的 transfer learning，研究生的生活可以參考漫畫「爆漫王」</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_3.jpg" width="70%"></p>
+</li>
+<li><p>名詞介紹</p>
+<ul>
+<li><strong>target data</strong>：跟要做的 task <u>有直接相關</u>的 data，可能是 labelled 或 unlabelled</li>
+<li><strong>sorce data</strong>：跟 task <u>沒有直接相關</u>的 data，也可能是 labelled 或 unlabelled</li>
+
+</ul>
+<p>故可將 transfer learning 分成<u>四個象限</u>討論，</p>
+<p>先介紹 <u>sorce data 及 target data 都 laballed 的情況下</u>，最常見也最簡的就是對 model 做 <strong>Fine-tuning</strong> </p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_35.jpg" width="70%"></p>
+<hr />
+<h3>Model Fine-tuning</h3>
+<ul>
+<li><p>概覽</p>
+<ul>
+<li><p><strong>使用時機</strong>：有 labelled 的 <u>大量 source data($x^s, y^s$)</u> 及<u>少量 target data($x^t, y^t$)</u></p>
+</li>
+<li><p><strong>想法</strong>：我們想知道在 target data 很少的情況下，一大堆不相干的 source data 有沒有可能對 task 有幫助</p>
+</li>
+<li><p><strong>作法</strong>：使用 source data 去 train 一個 model，再用 target data 去 fine-tuning 這個 model；</p>
+<p>            亦即將 source data training 出的 model 當作初始值，再用 traget data 做 training。</p>
+</li>
+<li><p><strong>One-shot learning</strong>：如果 target data 的量非常少，少到只有幾個 example，就叫做 One-shot learning </p>
+</li>
+<li><p><strong>舉例</strong>：語音上，最典型的例子是 <u>speaker adaption</u></p>
+<blockquote><p>target data 是某一個人的聲音，source data 是一大堆來自不同人的 audio data</p>
+</blockquote>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_5.jpg" width="70%"></p>
+<ul>
+<li><p><strong>Conservative Training</strong>：Fine-tuning 時的技巧之一</p>
+<ul>
+<li><p><strong>作法</strong>：在 traget data training 時加一些 constrain (即 regularization)，讓 train 完後的新 model 跟原本的舊 model 不要差太多</p>
+<p>           這樣可以防止 overfitting，防止如果 target data 非常少，一 train 就壞掉的情況。</p>
+</li>
+<li><p><strong>舉例</strong>：可以加 constrain 讓新 model 跟舊 model 看到同一筆 data 的時候，output 越接近越好；或是 L2-norm 的差距越小越好</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_6.jpg" width="70%"></p>
+<ul>
+<li><p><strong>Layer Transfer</strong>：Fine-tuning 的技巧之二</p>
+<ul>
+<li><p><strong>作法</strong>：將 source data train 好的 model 中某幾個 layer 拿出來，直接 copy 到新的 model 中，再用 target data train 剩下 (沒有 </p>
+<p>           copy) 的 layer；如果 target data 夠多，要 fine-tuning 整個 model 也是可以的</p>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_7.jpg" width="70%"></p>
+</li>
+<li><p><strong>技巧</strong>：如何選擇哪些 layer 應該被 trasfer，哪些不應該被 transfer？</p>
+<ul>
+<li><p>語音辨識：通常是 <u>copy 最後幾層</u>，重新 train input 那幾層</p>
+<blockquote><p>前幾層：從<u>聲音訊號</u>得知說話者的<u>發音方式</u>，而每個人的口腔結構不同，同樣的發音方式，得到的聲音是不一樣的</p>
+<p>後幾層：根據<u>發音方式</u>判斷現在說的是哪一個<u>詞彙</u>，即可得辨識的結果，這個過程跟說話者較無關</p>
+</blockquote>
+</li>
+<li><p>圖片辨識：通常是 <u>copy 前面幾層</u>，重新 train 最後幾層</p>
+<blockquote><p>前幾層：往往是 detect pattern，如直線、橫線、幾何圖形等，可被 transfer</p>
+<p>後幾層：往往是比較抽象的概念，沒有辦法 transfer</p>
+</blockquote>
+</li>
+
+</ul>
+<p>故不同的 task，需要被 transfer 的 layer 往往是不一樣的，需要一些 domain know-how 來幫助判斷</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_8.jpg" width="70%"></p>
+<ul>
+<li><p><strong>舉例</strong>：image 在 layer transfer 上的實驗，出自 <u>Bengio</u> 在 NIPS, 2014 的 paper</p>
+<ul>
+<li><p>定義</p>
+<blockquote><p>橫軸：代表做 transfer learning 時 copy 的 layer 數目</p>
+<p>縱軸：為 Top -1accuracy，越高代表表現越好</p>
+<p>Data：將 ImageNet 中 120 萬張 image，其中 500 個 class 歸為 source data，另外 500 個 clasee 歸為 target data</p>
+<p>Baseline：圖中空白圓點，完全沒做 transfer learning</p>
+</blockquote>
+</li>
+<li><p>結果</p>
+<blockquote><ol start='' >
+<li><p>只 copy 第一個 layer 的時候，performance 稍有進步；但 copy 越多層 layer，performance 就壞掉了</p>
+<p>所以，實驗顯示出在不同的 data 上面，前面幾層 layer 是可以共用的，後面幾層 layer 是無法共用的</p>
+</li>
+<li><p>最上面那條橙色的線是「Transfer learning + Fine-tuning」，可以發現在做有的 case 上 performance 都有進步</p>
+</li>
+
+</ol>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_9.jpg" width="70%"></p>
+<ul>
+<li><p>發現</p>
+<blockquote><p>紅色的線：跟上圖中的紅線是同一條</p>
+<p>綠色的線：假設參數是 random 時，結果壞掉</p>
+</blockquote>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_10.jpg" width="70%"></p>
+</li>
+
+</ul>
+<hr />
+<h3>Multitask Learning</h3>
+<ul>
+<li><p>概覽</p>
+<ul>
+<li><p><strong>使用時機</strong>：同時關心 target domain 及 source domain 的表現，希望兩者表現都好</p>
+</li>
+<li><p><strong>訓練模型</strong>：Deep learning based 的方法，特別適合用來做 multitask learning</p>
+</li>
+<li><p><strong>舉例</strong>：</p>
+<blockquote><p>(左圖)：兩個不同的 task，相同的 input feature，只是影像辨識的 class 不同
+我們就可以 learn 一個 NN，input 相同的 feature，但是中間岔開分別 output task A 及 B 的結果。
+這麼做的<strong><u>前提</u></strong>是這兩個 task 有<u>共通性</u>；<strong><u>優點</u></strong>是前面幾個 layer 使用較多的 data train，表現可能較好</p>
+</blockquote>
+<blockquote><p>(右圖)：兩種不同的 task，不同的 input feature，使用不同的 NN
+我們可以把它 transform 到同一個 domain 上，這樣中間幾個 layer 也可以做 multitask learning，最後，再 apply 到不同的 NN，分別 output 各自的結果</p>
+</blockquote>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_12.jpg" width="70%"></p>
+</li>
+
+</ul>
+</li>
+<li><p><strong>應用</strong>：Multitask learning 一個很成功的例子是「多語言的語音辨識」</p>
+<ul>
+<li><p>Input 是各種不同語言的 data，在 train model 時，<u>前面幾層的 layer 會共用參數</u>，後面分岔；</p>
+<p>因為不同的語言都是人類說的，所以<u>前面幾層可以 share</u> 同樣的資訊。</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_13.jpg" width="70%"></p>
+<ul>
+<li><p><strong>推廣</strong>：「翻譯」也可以做同樣的事</p>
+<ul>
+<li>在<u>中翻英</u>、<u>中翻日</u>時，因為都要先 process 中文 data 的部分，因此一部分的 network 就可以共用</li>
+<li>這種語言 transfer 的範圍有多大呢？目前的發現是<u><strong>幾乎所有的語言都可以 transfer</strong></u></li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_14.jpg" width="70%"></p>
+<ul>
+<li>藍線是只有中文 data training 的結果，橘線是從歐洲語言 transfer 到中文上面，可以發現
+<u>單獨 train 中文 100 小時</u>的 performance 跟 <u>train with 歐洲語言 50 小時</u>的效果是一樣的，
+亦即在這個例子中，我們只需要 1/2 以下的 data，就可以跟原來有兩倍的 data 的效果一樣好。</li>
+
+</ul>
+</li>
+<li><p><strong>Progressive Neural Network</strong>：</p>
+<ul>
+<li><strong>想法</strong>：先 train 一個 task 1 的 NN，train 好後，task 2 的每一層 hidden layer  就去接 task 1 某一層 hidden layer 的參數，而 task 2也可以把這些參數直接設成 0，亦即最糟的情況跟 task 2自己 train 的 performance 是一樣的。而 task 3 再從 task 1 及 task 2 的 hidden layer 得到 information</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_15.jpg" width="70%"></p>
+<hr />
+<h3>Domain-adverserial Training</h3>
+<ul>
+<li><p><strong>概覽</strong></p>
+<ul>
+<li><p><strong>使用時機</strong>：資料是 <strong>labelled source data</strong> 及 <strong>unlabelled target data</strong> 時</p>
+<blockquote><p>source data: $(x^s, y^s)$, target data: $(x^t)$ </p>
+</blockquote>
+</li>
+<li><p><strong>舉例</strong>：以下圖為例</p>
+<blockquote><p>source data 是 MNIST 上有 labeled 的 image，target data 是 MNIST-M 上沒有 labeled 的 image
+這種情況下，我們通常將 source data 視為 train data，target data 視為 testing data
+但遇到一個問題是：training data 跟 testing data 非常的 <strong>mismatch</strong></p>
+</blockquote>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_18.jpg" width="70%"></p>
+</li>
+<li><p><strong>實作</strong></p>
+<ul>
+<li><p>想法：</p>
+<ul>
+<li>如果直接 learn 一個 model，如下圖，會發現前面幾層抽 feature 的結果是爛的。
+藍色很明顯地分成十群，紅色這群卻是一坨。</li>
+<li>在 feature extraction 時，source domain 跟 target domain 不在同一位置上，所以，我們希望
+能把 <strong>domain 的特性去除掉</strong> 。 </li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_19.jpg" width="70%"></p>
+<ul>
+<li><p><strong>實現</strong>：</p>
+<ul>
+<li>在 feature extractor 後面接一個 <strong>domain classifier</strong>，將 output 丟到 domain classifier，如此一來，就能將 domain 的特性消掉，將不同 domain 的 image 混在一起</li>
+<li>而有一個 generator 的 output 跟有一個 discriminator 這樣的<strong>架構</strong>，非常像 GAN</li>
+<li>但在 domain-adversarial training 中，要產生一張 image 騙過 classifier 太簡單了，所以 feature extractor 的 output 不只要<strong>騙過 domain classifier</strong> 還要同時<strong>讓 label predictor 做好</strong></li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_20.jpg" width="70%"></p>
+<ul>
+<li><p>domain-adversarial training 三個 part 的目標是各自不同的</p>
+<blockquote><p>Feature extractor :  增進 label predictor 正確率的同時，最小化 domain classifier 的正確率</p>
+<p>Label predictor : 最大化 classification 的正確率</p>
+<p>Domain classifier : 正確的預測一個 image 屬於哪一個 domain</p>
+</blockquote>
+<p>所以，feature extractor 跟 domain classifier 想做的事情是相反的</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_21.jpg" width="70%"></p>
+<ul>
+<li>Feature extractor 只要在最後加上一個 gradient reversal 的 layer；
+這樣 domain classifier 做 back propagation，計算 backward path 時，feature extractor 會將 domain classifier 傳進來的 output 故意<strong>乘上負號</strong>，做跟 domain classifier 要求相反的事</li>
+<li>這樣，domain classifier 會因看不到真正的 image，而 fail 掉
+但是，domain classifier 一定會 <strong>struggle</strong> 完才 fail，這樣才能把 domain 的特性去掉</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_22.jpg" width="70%"></p>
+<ul>
+<li>故 domain-adversarial training 實際上也沒有很好 train</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p><strong>例子</strong></p>
+<blockquote><p>引用 ICML,2015 跟 JMLR,2016 的 paper 中一些實驗的結果</p>
+</blockquote>
+<ul>
+<li><p>概覽</p>
+<ul>
+<li>資料：包括 MNIST 到 MNIST-M、一個數字的 corpus 到另一個數字的 corpus、數字的 corpus 到 MNIST 及兩種不同道路號誌 data 互相 transfer 等</li>
+<li>縱軸：每筆資料用四種不同方法得到的實驗結果</li>
+
+</ul>
+</li>
+<li><p>比較</p>
+<ol start='' >
+<li><strong>Source only</strong> 是直接在 source domain 上 train 一個 model，再到 testing domain 上 test</li>
+<li><strong>Proposed</strong> 的即 domain-adversarial training </li>
+<li><strong>Train on target</strong> 則是直接拿 target domain 的 data 去做 training，得到的 performance 即 upper bound</li>
+
+</ol>
+</li>
+<li><p>發現</p>
+<ul>
+<li>source only 跟 train on targert 間有很大的 gap，而用 domain-adversarial training 在不同的 case 上，都可以得到很好的 improvement</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_23.jpg" width="70%"></p>
+</li>
+
+</ul>
+<hr />
+<h3>Zero-shot Learning</h3>
+<ul>
+<li><p><strong>概覽</strong></p>
+<ul>
+<li><p><strong>使用時機</strong>：資料是 <strong>labeled source data</strong> 及 <strong>unlabeled target data</strong>，且 source data 跟 target data 要做的的 task 是不一樣的</p>
+</li>
+<li><p><strong>舉例</strong>：</p>
+<blockquote><p>如下圖，source data 要分辨貓跟狗，target data 的 image 則是草泥馬</p>
+<p>最常見的則是<u><strong>語音</strong>上的應用</u></p>
+</blockquote>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_25.jpg" width="70%"></p>
+</li>
+
+</ul>
+</li>
+<li><p><strong>實作</strong></p>
+<ul>
+<li><p><strong>Representing</strong>：</p>
+<ul>
+<li><p>將每一個 class 用他的 <strong>attribute</strong> 表示；
+亦即，有一個 database 存每一個 obeject 跟所有可能的特性（如下圖右下表）</p>
+<blockquote><p>ex: 狗：毛茸茸、四隻腳、有尾巴；魚：不毛茸茸、沒有四隻腳、有尾巴......等</p>
+</blockquote>
+</li>
+<li><p><strong>每個 class 都要有獨一無二的 attribute</strong>，亦即 attribute 要定的夠豐富才行
+一旦有兩個 class 有一模一樣的 attribute，這個方法就會 fail 掉</p>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_26.jpg" width="70%"></p>
+</li>
+<li><p><strong>Training &amp; Testing</strong></p>
+<ul>
+<li>在 training 時，要做的是<strong>辨識每一張 image 具備什麼樣的 attribute</strong>，而不是直接辨識這張 image 屬於哪一個 class；所以即使 testing 時出現一張不存在的動物，我們只要辨識出它具有哪些 attribute，查 database 找最接近的動物，就可以了</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_27.jpg" width="70%"></p>
+</li>
+<li><p><strong>Attribute embedding</strong></p>
+<ul>
+<li>當 attribute 的 <strong>dimension 很龐大</strong>時，我們可以做 attribute 的 embedding</li>
+<li>將 training data 上的每一張 image 跟每一個 attribute 都 transform 成 embedding space 上的一個點 <strong>$f(x^1), g(y^1)$</strong></li>
+<li> $f,g$ 都可以是 neural network，training 時希望 <strong>$f(x^n)$ 跟 $g(x^n)$ 越接近越好</strong></li>
+<li>出現一張沒看過的草泥馬 $x^3$ 時，就投影到 $f(x^3)$，再找最近的 $g(y^3)$，$y^3$ 就是他的 attribute，再看對應到哪一個動物，就結束了</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_28.jpg" width="70%"></p>
+</li>
+<li><p><strong>Convex combination of semantic embedding</strong></p>
+<ul>
+<li><p><strong>條件</strong>：有一組 <strong>word vector</strong> + 一個<strong>語音辨識系統</strong></p>
+</li>
+<li><p><strong>作法</strong>：</p>
+<ol start='' >
+<li>將圖片丟到 NN 中，得到有0.5的機率是獅子、0.5的機率是老虎</li>
+<li>再找獅子跟老虎的 word vector 用上面的比例(1:1)混合，得到新的 vector</li>
+<li>再找哪一個 word 跟混合出的新 vector 最接近， 最後得到<u>獅虎</u>，這張圖片就是<u>獅虎</u></li>
+
+</ol>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_31.jpg" width="70%"></p>
+</li>
+
+</ul>
+<hr />
+<h3>Self-taught Learning</h3>
+<ul>
+<li><p><strong>概覽</strong></p>
+<ul>
+<li><p><strong>使用時機</strong>：資料是 <strong>unlabeled source data</strong> 及 <strong>labeled target data</strong></p>
+</li>
+<li><p><strong>作法</strong>：</p>
+<ul>
+<li>用夠多的 <u>unlabeled source data 去 learn 一個 feature extractor</u></li>
+<li>再用這個 <u>feature extractor 在 target data 上抽 feature</u></li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="http://ai.ntu.edu.tw/aho/JPG/Transfer_Learning/Transfer_Learning_36.jpg" width="70%"></p>
+</li>
+
+</ul>
+              
+            </div>
+            
+            <div class="col-lg-3">
+              
+            </div>
+          </div>
+
+  </section><! --/wrapper -->
+    </section><!-- /MAIN CONTENT -->
+    <!--main content end-->
+    <div id="bottom"></div>
+      </div>
+
+      <div class="col mr-4 mt-4">
+        <div class="list-group" style="position: sticky; position: -webkit-sticky; top: 2rem;">
+          <a class="list-group-item list-group-item-action" href="#head"><i class="fa fa-arrow-up mr-2" style=""></i>講義開頭</a>
+          <a class="list-group-item list-group-item-action" href="#bottom"><i class="fa fa-arrow-down mr-2" style=""></i>講義末尾</a>
+          <a class="list-group-item list-group-item-action" href="../index.html"><i class="fa fa-home mr-2" style=""></i>選單主頁</a>
+        </div>
+     </div>
+    </div>
+      </div>
+   </body>
+        <div id="head"></div>
+</html>
