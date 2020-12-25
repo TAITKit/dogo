@@ -37,13 +37,13 @@ handout_list = [
 	new handoutObj( "Lecture 16: Unsupervised Learning - Auto-encoder", "李宏毅", "", [new urlObj("講義", "./handouts/ML16.html"), new urlObj("影片", "https://www.youtube.com/watch?v=Tk5B4seA-AU&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=25")]),
 	new handoutObj( "Lecture 17: Unsupervised Learning - Deep Generative Model (Part I)", "李宏毅", "", [new urlObj("講義", "./handouts/ML17.html"), new urlObj("影片", "https://www.youtube.com/watch?v=YNUek8ioAJk&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=26")]),
 	new handoutObj( "Lecture 18: Unsupervised Learning - Deep Generative Model (Part II)", "李宏毅", "", [new urlObj("講義", "./handouts/ML18.html"), new urlObj("影片", "https://www.youtube.com/watch?v=8zomhgKrsmQ&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=27")]),
-	new handoutObj( "Lecture 19: Transfer Learning", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=qD6iD4TFsdQ&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=28")]),
+	new handoutObj( "Lecture 19: Transfer Learning", "李宏毅", "", [new urlObj("講義", "./handouts/ML19.html"), new urlObj("影片", "https://www.youtube.com/watch?v=qD6iD4TFsdQ&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=28")]),
 	new handoutObj( "Lecture 20: Support Vector Machine (SVM)", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=QSEPStBgwRQ&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=29")]),
-	new handoutObj( "Lecture 21-1: Recurrent Neural Network (Part I)", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=xCGidAeyS4M&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=30")]),
-	new handoutObj( "Lecture 21-2: Recurrent Neural Network (Part II)", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=rTqmWlnwz_0&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=31")]),
+	new handoutObj( "Lecture 21-1: Recurrent Neural Network (Part I)", "李宏毅", "", [new urlObj("講義", "./handouts/ML21-1.html"), new urlObj("影片", "https://www.youtube.com/watch?v=xCGidAeyS4M&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=30")]),
+	new handoutObj( "Lecture 21-2: Recurrent Neural Network (Part II)", "李宏毅", "", [new urlObj("講義", "./handouts/ML21-2.html"), new urlObj("影片", "https://www.youtube.com/watch?v=rTqmWlnwz_0&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=31")]),
 	new handoutObj( "Lecture 22: Ensemble", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=tH9FH1DH5n0&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=32")]),
-	new handoutObj( "Lecture 23-1: Deep Reinforcement Learning", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=W8XF3ME8G2I&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=33")]),
-	new handoutObj( "Lecture 23-2: Policy Gradient", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=y8UPGr36ccI&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=34")]),
+	new handoutObj( "Lecture 23-1: Deep Reinforcement Learning", "李宏毅", "", [new urlObj("講義", "./handouts/ML23-1.html"), new urlObj("影片", "https://www.youtube.com/watch?v=W8XF3ME8G2I&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=33")]),
+	new handoutObj( "Lecture 23-2: Policy Gradient", "李宏毅", "", [new urlObj("講義", "./handouts/ML23-2.html"), new urlObj("影片", "https://www.youtube.com/watch?v=y8UPGr36ccI&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=34")]),
 	new handoutObj( "Lecture 23-3: Reinforcement Learning", "李宏毅", "", [new urlObj("影片", "https://www.youtube.com/watch?v=2-JNBzCq77c&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=35")]),
 	new handoutObj( "Lecture 24: Matrix Factorization", "李宏毅", "", [new urlObj("講義", "./handouts/ML24.html"), new urlObj("影片", "https://youtu.be/iwh5o_M4BNU?t=4670")])
 ];
