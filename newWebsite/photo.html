@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AINTU 講義</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161710545-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-161710545-1');
+  </script>
+  <script src="https://ipmeta.io/plugin.js"></script>
+  <script>
+    provideGtagPlugin({
+      serviceProvider: 'dimension1',
+      networkDomain: 'dimension2',
+      networkType: 'dimension3',
+    });
+  </script>
+  <!-- End of Google Analytics -->
+  <style>
+      #preview video { position: absolute; top: 0; left: 0}
+  </style>
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+    <a class="navbar-brand ml-4" href="http://ai.ntu.edu.tw/resource/index.html" rel="noopener noreferrer">
+      <img src="http://ai.ntu.edu.tw/resource/logo1.png" alt="台大AI" style="height: 47px">
+    </a>
+    <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mr-sm-4">
+        <li class="nav-item">
+          <a class="nav-link" href="http://ai.ntu.edu.tw/resource/" rel="noopener noreferrer">機器學習講義</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="datasource.html">機器學習資料源 <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-8 col-md-10 col-sm-10 mx-auto card my-3">
+        <div class="card-body text-center">
+          <h5 class="card-title">相片</h5>
+          <div id="preview" style="width: 100%; padding-top: 75%; position: relative"></div>
+          <img id="result" style="width: 100%; height: auto; display: none;"></div>
+          <button class="form-control btn-success btn my-1" id="recorder-btn">拍攝</button>
+          <button class="form-control btn-info btn my-1" id="submit-btn" style="display: none">送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer font-small" style="background-color: #5b646b; color: #bfbfbf;">
+    <div class="footer-copyright text-center py-3">
+      版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人<br /> 
+      © 2020 Copyright: <a style="color: #bfbfbf;" href="http://ai.ntu.edu.tw/"><u>臺灣大學人工智慧中心</u></a>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="js/webcam.js"></script>
+  <script>
+    Webcam.attach( '#preview' );
+        
+    function startPreview() {
+        $('#recorder-btn').one('click', () => {
+            $('#recorder-btn').text('拍攝')
+            Webcam.snap( function(data_uri) {
+                $('#preview').hide()
+                $('#result').attr('src', data_uri)
+                $('#result').show()
+                $('#submit-btn').show()
+                $('#recorder-btn').text('重新拍攝')
+                $('#recorder-btn').one('click', () => {
+                    $('#submit-btn').hide()
+                    $('#result').hide()
+                    $('#preview').show()
+                    startPreview()
+                })
+            } );
+        })
+    }
+
+    startPreview()
+  </script>
+</body>
+</html>

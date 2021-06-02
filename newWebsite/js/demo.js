@@ -105,31 +105,27 @@ function clearCanvas()
 }
 
 
-function printCor()
-{
+function printCor(){
   const cors = 'https://cors-anywhere.herokuapp.com/'; // use cors-anywhere to fetch api data
   var input1 = document.getElementById("exampleInput1").value;
   var input2 = document.getElementById("exampleInput2").value;
   //console.log(input1, input2);
   var vec1, vec2, correlation;
-  
+  const corstatus = document.getElementById("correlation")
+  const spinner = document.getElementById("spin")
+  spinner.style = ""
   $.getJSON(cors + 'taitk.org:8050/vectorize?q=' + input1, function(raw) {
-      //console.log("parseID:", algorithms);
-      //console.log(data);
-      //console.log(raw);
       vec1 = raw.embedding;
       $.getJSON(cors + 'taitk.org:8050/vectorize?q=' + input2, function(raw1) {
-      //console.log("parseID:", algorithms);
-      //console.log(data);
-      //console.log(raw);
-      vec2 = raw1.embedding;
-      
-      console.log(vec1, vec2);
-      correlation = Math.round(cosineSimilarity(vec1[0], vec2[0]) * 100);
-      alert("相似度 " + correlation + "%");
-      //console.log(Math.round(cosineSimilarity(vec1[0], vec2[0]) * 100) / 100);
-      //parseKeywordandContent();
-  });  
+        vec2 = raw1.embedding;
+        //console.log(vec1, vec2);
+        correlation = Math.round(cosineSimilarity(vec1[0], vec2[0]) * 100);
+        //alert("相似度 " + correlation + "%");
+        corstatus.innerText = "兩文句相似度為" + correlation + "%"
+        spinner.style = "display: none"
+        //console.log(Math.round(cosineSimilarity(vec1[0], vec2[0]) * 100) / 100);
+        //parseKeywordandContent();
+      }); 
       //parseKeywordandContent();
   });          
 }

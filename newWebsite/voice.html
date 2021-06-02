@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AINTU 講義</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161710545-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-161710545-1');
+  </script>
+  <script src="https://ipmeta.io/plugin.js"></script>
+  <script>
+    provideGtagPlugin({
+      serviceProvider: 'dimension1',
+      networkDomain: 'dimension2',
+      networkType: 'dimension3',
+    });
+  </script>
+  <!-- End of Google Analytics -->
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light static-top primary">
+    <a class="navbar-brand ml-4" href="index.html">
+      <img src="./logo1.png" width=326.83rem height= auto alt="">
+    </a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse mr-4" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto mr-sm-4">
+        <li class="nav-item">
+          <a class="nav-link " href="index.html">機器學習講義 </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://taitk.org/resource_demo/datasource.html">機器學習資料源</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="example.html">機器學習範例<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://taitk.org/resource_demo/news.html">AI News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://ai.ntu.edu.tw/aiss2019/">AISS 2019</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-xl-6 col-lg-8 col-md-10 col-sm-10 mx-auto card my-3">
+        <div class="card-body text-center">
+          <h5 class="card-title">聲音轉換</h5>
+          <h6 class="card-subtitle text-muted mb-2">請錄製聲音並送出</h6>
+          <audio hidden id="preview" class="w-100 my-1" controls="controls" type="audio/mpeg"></audio>
+          <button class="form-control btn-success btn my-1" id="recorder-btn">開始錄製</button>
+          <button class="form-control btn-info btn my-1" id="submit-btn" hidden>送出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer font-small fixed-bottom" style="background-color: #5b646b; color: #bfbfbf; bottom: 0;">
+    <div class="footer-copyright text-center py-3">版權屬於講師所有 勿任意轉載、散佈、更改 引用請知會版權擁有權人<br>© 2020 Copyright:
+      <a style="color: #bfbfbf;" href="http://ai.ntu.edu.tw/"><u>臺灣大學人工智慧中心</u></a>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/mic-recorder-to-mp3@2.2.2/dist/index.min.js"></script>
+  <script>
+    const $recorderBtn = $('#recorder-btn')
+    const $previewAudio = $('#preview')
+    const $submitBtn = $('#submit-btn')
+    const recorder = new MicRecorder({
+      bitRate: 128
+    })
+
+    let stoped
+    let recordedChunks = []
+    let stream
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+      $recorderBtn.one('click', () => {
+        startRecord()
+      })
+    } else {
+      $recorderBtn.text('不支援的瀏覽器')
+      $recorderBtn.removeClass('btn-success')
+      $recorderBtn.addClass('btn-danger')
+    }
+
+    function startRecord() {
+      $previewAudio.attr('hidden', true)
+      $submitBtn.attr('hidden', true)
+
+      $recorderBtn.text('錄製中...（點擊停止）')
+      $recorderBtn.removeClass('btn-success')
+      $recorderBtn.addClass('btn-outline-success')
+
+      recorder.start().then(() => {
+        $recorderBtn.one('click', () => {
+          recorder.stop().getMp3().then(([buffer, blob]) => {
+            $recorderBtn.text('錄製完成（點擊重錄）')
+            $recorderBtn.removeClass('btn-outline-success')
+            $recorderBtn.addClass('btn-success')
+            $recorderBtn.one('click', () => {
+              startRecord()
+            })
+
+            const file = new File(buffer, 'recorded.mp3', { type: blob.type })
+            const objUrl = URL.createObjectURL(file)
+
+            $previewAudio.attr('src', objUrl)
+            $previewAudio.removeAttr('hidden')
+            $submitBtn.removeAttr('hidden')
+          })
+        })
+      }).catch (err => {
+        console.trace(err)
+        $recorderBtn.text('發生錯誤，請重新載入')
+        $recorderBtn.removeClass('btn-success')
+        $recorderBtn.addClass('btn-danger')
+      })
+    }
+  </script>
+</body>
+</html>

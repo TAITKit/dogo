@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>AINTU 講義</title>
       
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="style.css">
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161710545-1"></script>
@@ -40,16 +40,19 @@
       <div class="collapse navbar-collapse mr-4" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto mr-sm-4">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">機器學習講義 </a>
+            <a class="nav-link" href="index.html">機器學習講義 </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://taitk.org/resource_demo/datasource2.html">機器學習資料源</a>
+            <a class="nav-link" href="https://taitk.org/resource_demo/datasource.html">機器學習資料源</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="example.html">機器學習範例<span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="example.html">機器學習範例<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://ai.ntu.edu.tw/aiss2019/">AI Sumer School</a>
+            <a class="nav-link" href="https://taitk.org/resource_demo/news.html">AI News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://ai.ntu.edu.tw/aiss2019/">AISS 2019</a>
           </li>
         </ul>
       </div>
@@ -63,16 +66,17 @@
     <div class="container-fluid">
       <div class="row" align="center">
         <div class="col" align="center">
-        <div class="card mt-4 mb-4" width=50% height=10%>
+          <span><h2 id="correlation" style="display: inline">文句相似度判斷</h2> <span style="display: none" id="spin" class="spinner-border" role="status"></span></span>
+          
+          <div class="card mt-4 mb-4" width=50% height=10%>
               <label for="exampleInputEmail1">比較文句1</label>
               <input class="form-control" id="exampleInput1" placeholder="Enter text">
               <small id="emailHelp" class="form-text text-muted">請輸入欲比較之文句</small>
               <label for="exampleInputPassword1">比較文句2</label>
               <input class="form-control" id="exampleInput2" placeholder="Enter text">
             <button onclick = "printCor()" class="btn btn-primary">Submit</button>
+          </div>
         </div>
-        </div>
-        <img src="" id="MyPix"/>
           
       </div>
 

@@ -4,14 +4,16 @@
 //handout_list = JSON.parse(data);
 //handout_list = [{"title":"CNN","subtitle":"","content":"","url_list":[{"url_type":"example code","url":"https://https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py"}]},
 //{"title":"autoencoder","subtitle":"","content":"","url_list":[{"url_type":"example code","url":"https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49&index=1"}]}]
-handout_list = [{"title":"Tensorflow 30天學習筆記","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"英文連結","url":"https://ithelp.ithome.com.tw/users/20103494/ironman/1231?page=1"}]},
+handout_list = [{"title":"數字辨識Demo","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"demo.html"}, {"url_type":"示範程式碼","url":"https://www.tensorflow.org/js/tutorials/training/handwritten_digit_cnn"}]},
+{"title":"句子相似度計算","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"demo1.html"}, {"url_type":"示範程式碼","url":"https://engineering.fb.com/ai-research/laser-multilingual-sentence-embeddings/"}]},
+{"title":"語音風格轉換Demo","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"voice.html"}, {"url_type":"示範程式碼","url":"https://github.com/inzva/Audio-Style-Transfer"}]},
+{"title":"手勢辨識Demo","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"photo.html"}, {"url_type":"示範程式碼","url":"https://github.com/CMU-Perceptual-Computing-Lab/openpose"}]},
+{"title":"Tensorflow 30天學習筆記","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"連結","url":"https://ithelp.ithome.com.tw/users/20103494/ironman/1231?page=1"}]},
 {"title":"100-Days-of-ML-Code","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"英文連結","url":"https://github.com/Avik-Jain/100-Days-Of-ML-Code"}]},
 {"title":"Machine Learning is Fun!","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"英文連結","url":"https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471"}]},
-{"title":"PaddlePaddle","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"PaddleGAN","url":"https://github.com/PaddlePaddle/PaddleGAN"}, {"url_type":"詞法分析", "url":"https://nlp.baidu.com/homepage/nlptools/document?f=词法分析"}, {"url_type":"文本情感分類","url":"https://nlp.baidu.com/homepage/nlptools/document?f=文本情感分类"}]},
 {"title":"Github 教學","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"英文連結","url":"https://github.com/wepe/MachineLearning"}]},
-{"title":"數字辨識Demo","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"demo.html"}, {"url_type":"示範程式碼","url":"https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py"}]},
-{"title":"句子相似度計算","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"demo1.html"}, {"url_type":"示範程式碼","url":"https://engineering.fb.com/ai-research/laser-multilingual-sentence-embeddings/"}]},
-{"title":"語音風格轉換Demo","subtitle":"","content":"","url_list":[{"url_type":"示範頁面","url":"voice.html"}]}]
+{"title":"PaddlePaddle","subtitle":"外部參考資料","content":"","url_list":[{"url_type":"PaddleGAN","url":"https://github.com/PaddlePaddle/PaddleGAN"}, {"url_type":"詞法分析", "url":"https://nlp.baidu.com/homepage/nlptools/document?f=词法分析"}, {"url_type":"文本情感分類","url":"https://nlp.baidu.com/homepage/nlptools/document?f=文本情感分类"}]}]
+
 
 
 function createList() {
@@ -53,6 +55,9 @@ function createList() {
     var cardSubtitle = document.createElement("h6");
     cardSubtitle.className = "card-subtitle mb-2 text-muted";
     cardSubtitle.textContent = handout_list[i].subtitle;
+    if(handout_list[i].subtitle === "外部參考資料"){
+      card.style = "background-color: rgba(247, 248, 249);";
+    }
     cardBody.appendChild(cardSubtitle);
 
     var cardText = document.createElement("p");

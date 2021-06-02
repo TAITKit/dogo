@@ -29,7 +29,7 @@ function Draw(x, y, isDown) {
         ctx = document.getElementById('myCanvas').getContext("2d");
         ctx.beginPath();
         ctx.strokeStyle = "red";
-        ctx.lineWidth = 30;
+        ctx.lineWidth = 20;
         ctx.lineJoin = "round";
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(x, y);
